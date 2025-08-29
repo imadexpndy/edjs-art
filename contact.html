@@ -78,26 +78,6 @@
 		Header Area
 	==============================-->
   <header class="vs-header">
-    <div class="vs-header__top">
-      <div class="container container--custom">
-        <div class="row align-items-center justify-content-between gy-1 text-center text-lg-start">
-          <div class="col-lg-auto d-none d-lg-block">
-            <div class="d-flex align-items-center flex-wrap gap-4">
-              <div class="vs-header__info">
-                <i class="fa-solid fa-envelope"></i>
-                <span> Email : <a href="mailto:info@edjs.ma">info@edjs.ma</a></span>
-              </div>
-              <div class="vs-header__info">
-                <i class="fa-solid fa-phone-volume"></i>
-                <span> Téléphone : <a href="tel:+212522981085">+212 5 22 98 10 85</a></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-auto">
-          </div>
-        </div>
-      </div>
-    </div>
     <!--==============================
 		Mobile Menu
 	============================== -->
@@ -481,7 +461,7 @@
           <div class="row justify-content-between align-items-center">
             <div class="col">
               <div class="vs-header__logo">
-                <a href="/"><img src="assets/img/edjs logo black@4x.png" alt="EDJS" class="logo" style="height: 90px; width: auto;"></a>
+                <a href="/"><img src="assets/img/edjs logo black@4x.png" alt="L'École des jeunes spectateurs" class="logo" style="height: 100px !important; width: auto !important; max-width: none !important; min-height: 100px !important;"></a>
               </div>
             </div>
             <div class="col-auto">
@@ -528,27 +508,21 @@
                     </a>
                   </li>
                   <li>
-                    <a class="vs-svg-assets" href="contact">
+                    <a class="vs-svg-assets active" href="contact">
                       CONTACT
                       <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
                         <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
                       </svg>
                     </a>
+                  </li>
                 </ul>
               </nav>
-            </div>
-            <div class="col-auto">
-              <div class="vs-header__action">
-                <div class="d-none d-md-inline-flex align-items-center">
-                  <button class="searchBoxTggler">
-                    <i class="far fa-search"></i>
-                  </button>
-                </div>
-                <div class="d-none d-xxl-inline-flex">
-                  <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="vs-btn"><span class="vs-btn__border"></span>Je m'inscris</a>
-                </div>
-                <div class="d-none d-lg-inline-flex align-items-center">
-                  <button class="sideMenuToggler">
+              <div class="header-buttons">
+                <a href="registration" class="vs-btn vs-btn-outline" style="margin-right: 10px;">Se connecter</a>
+                <a href="registration" class="vs-btn vs-style1">Je m'inscris</a>
+              </div>
+              <div class="header-icons">
+                <button type="button" class="vs-menu-toggle d-inline-block d-lg-none">
                     <svg width="31" height="23" viewBox="0 0 31 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M2.9165 4.5H28.4165C29.6594 4.5 30.6665 3.49292 30.6665 2.25C30.6665 1.00708 29.6594 0 28.4165 0H2.9165C1.67358 0 0.666504 1.00708 0.666504 2.25C0.666504 3.49292 1.67358 4.5 2.9165 4.5Z" fill="currentColor" />
                       <path d="M28.4165 9H2.9165C1.67358 9 0.666504 10.0071 0.666504 11.25C0.666504 12.4929 1.67358 13.5 2.9165 13.5H28.4165C29.6594 13.5 30.6665 12.4929 30.6665 11.25C30.6665 10.0071 29.6594 9 28.4165 9Z" fill="currentColor" />
@@ -571,13 +545,13 @@
     ==============================-->
   <!-- Breadcrumb -->
   <div class="breadcrumb-wrapper z-index-common overflow-hidden">
-    <div class="vs-balls vs-balls--screen" data-balls-bottom="-6px" data-balls-color="#ffffff"></div>
+    <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#ffffff" style="top: -6px;"></div>
     <div class="breadcrumb-wrapper__bg wow animate__fadeInUp" data-wow-delay="0.15s" data-vs-gsap-parallax-speed="2" data-vs-gsap-parallax-zoom>
-      <img src="assets/edjs img/Casse-Noisette_Web_035.webp" alt="EDJS Contact">
+      <img src="assets/edjs img/bg-header-home-v2.webp" alt="EDJS Background">
     </div>
     <div class="container">
       <div class="breadcrumb-wrapper__content wow animate__fadeInUp" data-wow-delay="0.45s">
-        <h1 class="breadcrumb-wrapper__title">Contactez-nous</h1>
+        <h1 class="breadcrumb-wrapper__title">Contact</h1>
         <div class="breadcrumb-wrapper__menu--wrap">
           <ul class="breadcrumb-wrapper__menu">
             <li class="breadcrumb-wrapper__menu--item"><a href="/">Accueil</a></li>
@@ -586,6 +560,7 @@
         </div>
       </div>
     </div>
+    <div class="vs-balls vs-balls--screen" data-balls-bottom="-6px" data-balls-color="#ffffff"></div>
   </div>
   <!-- Breadcrumb End -->
   <!-- Contact Info Cards -->

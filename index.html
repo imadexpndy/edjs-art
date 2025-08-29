@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>
-    EDJS - Plateforme Culturelle pour Écoles et Familles au Maroc
+    L'École des jeunes spectateurs - Plateforme Culturelle pour Écoles et Familles au Maroc
   </title>
-  <meta name="author" content="EDJS">
-  <meta name="description" content="EDJS connecte les spectacles théâtraux et culturels avec les écoles, associations et familles au Maroc. Accès gratuit pour écoles publiques, tarifs préférentiels pour écoles privées.">
+  <meta name="author" content="L'École des jeunes spectateurs">
+  <meta name="description" content="L'École des jeunes spectateurs connecte les spectacles théâtraux et culturels avec les écoles, associations et familles au Maroc. Accès gratuit pour écoles publiques, tarifs préférentiels pour écoles privées.">
   <meta name="keywords" content="théâtre enfants Maroc, spectacles culturels, écoles, associations, billets gratuits, culture accessible">
   <meta name="robots" content="INDEX,FOLLOW">
   <!-- Mobile Specific Metas -->
@@ -56,8 +56,52 @@
     .vs-hero {
       position: relative;
       overflow: hidden;
-      min-height: 100vh;
+      min-height: 85vh;
       background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+    }
+
+    /* HARD CSS OVERRIDES - Maximum Specificity */
+    body .vs-hero .swiper-wrapper,
+    html body .vs-hero .swiper-wrapper,
+    .vs-hero .swiper.vs-hero__active--zoom .swiper-wrapper {
+      position: relative !important;
+      width: 100% !important;
+      height: 70% !important;
+      max-height: 70% !important;
+      min-height: 70% !important;
+      z-index: 1 !important;
+      display: flex !important;
+      transition-property: transform !important;
+      transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial) !important;
+      box-sizing: content-box !important;
+    }
+
+    /* Force Hero Section Height */
+    body .vs-hero,
+    html body .vs-hero,
+    section.vs-hero {
+      min-height: 85vh !important;
+      max-height: 85vh !important;
+      height: 85vh !important;
+      overflow: hidden !important;
+    }
+
+    /* Force Hero Content Height */
+    body .vs-hero .vs-hero__content,
+    html body .vs-hero .vs-hero__content,
+    .vs-hero .container .vs-hero__content {
+      min-height: 85vh !important;
+      max-height: 85vh !important;
+      height: 85vh !important;
+    }
+
+    /* Force Swiper Slide Height */
+    body .vs-hero .swiper-slide,
+    html body .vs-hero .swiper-slide,
+    .vs-hero .swiper .swiper-slide {
+      height: 85vh !important;
+      max-height: 85vh !important;
+      min-height: 85vh !important;
     }
 
     /* Static Background for Hero Section */
@@ -993,13 +1037,29 @@
     
     /* Enhanced Mobile Responsive Design */
     @media (max-width: 768px) {
-      .vs-hero {
-        min-height: 70vh !important;
+      body .vs-hero,
+      html body .vs-hero,
+      section.vs-hero {
+        min-height: 8vh !important;
+        max-height: 8vh !important;
+        height: 8vh !important;
       }
       
-      .vs-hero__content {
-        padding: 20px 0 !important;
-        min-height: 70vh !important;
+      body .vs-hero .vs-hero__content,
+      html body .vs-hero .vs-hero__content,
+      .vs-hero .container .vs-hero__content {
+        padding: 5px 0 !important;
+        min-height: 8vh !important;
+        max-height: 8vh !important;
+        height: 8vh !important;
+      }
+      
+      body .vs-hero .swiper-wrapper,
+      html body .vs-hero .swiper-wrapper,
+      .vs-hero .swiper.vs-hero__active--zoom .swiper-wrapper {
+        height: 60% !important;
+        max-height: 60% !important;
+        min-height: 60% !important;
       }
       
       .hero-slide {
@@ -1148,12 +1208,28 @@
     font-size: 14px !important;
   }
   
-  .vs-hero {
-    min-height: 60vh !important;
+  body .vs-hero,
+  html body .vs-hero,
+  section.vs-hero {
+    min-height: 6vh !important;
+    max-height: 6vh !important;
+    height: 6vh !important;
   }
   
-  .vs-hero__content {
-    min-height: 60vh !important;
+  body .vs-hero .vs-hero__content,
+  html body .vs-hero .vs-hero__content,
+  .vs-hero .container .vs-hero__content {
+    min-height: 6vh !important;
+    max-height: 6vh !important;
+    height: 6vh !important;
+  }
+  
+  body .vs-hero .swiper-wrapper,
+  html body .vs-hero .swiper-wrapper,
+  .vs-hero .swiper.vs-hero__active--zoom .swiper-wrapper {
+    height: 50% !important;
+    max-height: 50% !important;
+    min-height: 50% !important;
   }
   
   .vs-hero__title--main {
@@ -1291,7 +1367,7 @@
   <div class="vs-menu-wrapper">
     <div class="vs-menu-area text-center">
       <div class="mobile-logo">
-        <a href="/"><img src="assets/img/edjs logo black@4x.png" alt="EDJS" class="logo" style="height: 120px; width: auto; max-width: none !important;"></a>
+        <a href="/"><img src="assets/img/edjs logo black@4x.png" alt="L'École des jeunes spectateurs" class="logo" style="height: 120px; width: auto; max-width: none !important;"></a>
         <button class="vs-menu-toggle">
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -1434,7 +1510,7 @@
           </li>
         </ul>
         <div class="mobile-contact-info" style="padding: 20px; border-top: 1px solid #eee; margin-top: 20px;">
-          <h4 style="color: #7e8a01; margin-bottom: 15px; font-size: 16px;">EDJS - Culture Pour Tous</h4>
+          <h4 style="color: #7e8a01; margin-bottom: 15px; font-size: 16px;">L'École des jeunes spectateurs - Culture Pour Tous</h4>
           <p style="font-size: 14px; margin-bottom: 10px; color: #666;">Connecter la culture au Maroc à travers des spectacles théâtraux pour écoles, associations, familles et partenaires.</p>
           <div style="margin-bottom: 8px;">
             <i class="fa-solid fa-envelope" style="color: #7e8a01; margin-right: 8px;"></i>
@@ -1494,7 +1570,7 @@
     <div class="cart-sidebar-content">
       <!-- Close Button -->
       <div class="sidemenu-logo cart-animation-item">
-        <a href="/"><img src="assets/img/edjs logo black@4x.png" alt="EDJS" class="logo" style="height: 80px; width: auto; max-width: none !important;"></a>
+        <a href="/"><img src="assets/img/edjs logo black@4x.png" alt="L'École des jeunes spectateurs" class="logo" style="height: 80px; width: auto; max-width: none !important;"></a>
         <button class="cart-close-button">X</button>
       </div>
       <!-- Shopping Cart Widget -->
@@ -1605,7 +1681,7 @@
   <div class="sidemenu-wrapper">
     <div class="sidemenu-content">
       <div class="sidemenu-logo sidemenu-item">
-        <a href="/"><img src="assets/img/edjs logo black@4x.png" alt="EDJS" class="logo" style="height: 80px; width: auto; max-width: none !important;"></a>
+        <a href="/"><img src="assets/img/edjs logo black@4x.png" alt="L'École des jeunes spectateurs" class="logo" style="height: 80px; width: auto; max-width: none !important;"></a>
         <button class="closeButton sideMenuCls">X</button>
       </div>
       <hr class="sidemenu-hr sidemenu-item">
@@ -1675,33 +1751,13 @@
         Header layout 1
     ==============================-->
   <header class="vs-header">
-    <div class="vs-header__top">
-      <div class="container container--custom">
-        <div class="row align-items-center justify-content-between gy-1 text-center text-lg-start">
-          <div class="col-lg-auto d-none d-lg-block">
-            <div class="d-flex align-items-center flex-wrap gap-4">
-              <div class="vs-header__info">
-                <i class="fa-solid fa-envelope"></i>
-                <span> Email : <a href="mailto:info@edjs.ma">info@edjs.ma</a></span>
-              </div>
-              <div class="vs-header__info">
-                <i class="fa-solid fa-phone-volume"></i>
-                <span> Téléphone : <a href="tel:+212522981085">+212 5 22 98 10 85</a></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-auto">
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="sticky-wrapper">
       <div class="sticky-active">
         <div class="container container--custom">
           <div class="row justify-content-between align-items-center">
             <div class="col">
               <div class="vs-header__logo">
-                <a href="/"><img src="assets/img/edjs logo black@4x.png" alt="EDJS" class="logo" style="height: 100px !important; width: auto !important; max-width: none !important; min-height: 100px !important;"></a>
+                <a href="/"><img src="assets/img/edjs logo black@4x.png" alt="L'École des jeunes spectateurs" class="logo" style="height: 100px !important; width: auto !important; max-width: none !important; min-height: 100px !important;"></a>
               </div>
             </div>
             <div class="col-auto">
@@ -1764,7 +1820,8 @@
                     <i class="far fa-search"></i>
                   </button>
                 </div>
-                <div class="d-none d-xxl-inline-flex">
+                <div class="d-none d-xxl-inline-flex" style="display: flex; gap: 15px; align-items: center;">
+                  <a href="auth" class="vs-btn-login" style="background: transparent; color: #BDCF00; border: 2px solid #BDCF00; padding: 10px 20px; border-radius: 25px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; font-size: 14px;">Se connecter</a>
                   <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="vs-btn"><span class="vs-btn__border"></span>Je m'inscris</a>
                 </div>
                 <button class="vs-menu-toggle style2 d-inline-block d-lg-none">
@@ -1804,6 +1861,9 @@
         <div class="hero-slide" style="background-image: url('assets/img/Les_Fourberies_De_Scapin_Web_005.jpg');"></div>
         <div class="hero-slide" style="background-image: url('assets/img/Tara_Sur_La_Lune_Web_020.jpg');"></div>
       </div>
+      <!-- Top Wave Design -->
+      <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#ffffff" style="top: -6px;"><div class="vs-balls__ball" style="left: 0px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 13.9px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 27.8px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 41.7px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 55.6px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 69.5px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 83.4px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 97.3px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 111.2px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 125.1px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 139px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 152.9px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 166.8px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 180.7px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 194.6px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 208.5px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 222.4px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 236.3px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 250.2px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 264.1px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 278px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 291.9px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 305.8px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 319.7px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 333.6px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 347.5px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 361.4px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 375.3px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 389.2px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 403.1px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 417px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 430.9px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 444.8px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 458.7px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 472.6px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 486.5px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 500.4px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 514.3px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 528.2px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 542.1px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 556px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 569.9px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 583.8px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 597.7px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 611.6px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 625.5px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 639.4px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 653.3px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 667.2px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 681.1px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 695px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 708.9px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 722.8px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 736.7px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 750.6px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 764.5px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 778.4px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 792.3px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 806.2px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 820.1px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 834px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 847.9px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 861.8px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 875.7px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 889.6px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 903.5px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 917.4px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 931.3px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 945.2px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 959.1px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 973px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 986.9px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1000.8px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1014.7px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1028.6px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1042.5px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1056.4px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1070.3px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1084.2px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1098.1px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1112px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1125.9px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1139.8px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1153.7px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1167.6px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1181.5px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1195.4px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1209.3px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1223.2px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1237.1px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1251px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1264.9px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1278.8px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1292.7px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1306.6px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1320.5px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1334.4px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1348.3px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1362.2px; background-color: rgb(255, 255, 255);"></div><div class="vs-balls__ball" style="left: 1376.1px; background-color: rgb(255, 255, 255);"></div></div>
+      
       <!-- Enhanced Overlay with Gradient -->
       <div class="hero-overlay"></div>
       
@@ -1811,7 +1871,7 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="container container--custom">
-              <div class="vs-hero__content" style="position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+              <div class="vs-hero__content" style="position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; min-height: 85vh;">
                 <!-- Hero Content -->
                 <div class="hero-content-container" style="
                   position: relative;
@@ -1821,7 +1881,7 @@
                   align-items: center;
                   justify-content: center;
                   text-align: center;
-                  padding: 80px 40px;
+                  padding: 10px 40px;
                 ">
                   <span class="vs-hero__title--sub" style="color: white; font-size: 24px; margin-bottom: 20px; font-weight: 500;">
                     L'École du Jeune Spectateur
@@ -1830,7 +1890,7 @@
                     Le théâtre pour tous !
                   </h1>
                   <p class="vs-hero__desc" style="color: white; font-size: 20px; margin: 0; margin-top: 35px; padding: 0; line-height: 1.6; opacity: 0.9; transform: translateY(-30px); display: block;" data-aos="fade-up" data-aos-delay="600">
-                    Depuis 2013, nous initions des milliers d'enfants au théâtre et aux arts vivants à travers un parcours ludique, éducatif et culturel unique au Maroc.
+                    Rejoignez-nous dans cette aventure inspirante où chaque moment contribue au développement et à l'épanouissement des spectateurs de demain.
                   </p>
                   <div class="hero-buttons" data-aos="fade-up" data-aos-delay="800" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
                     <a href="contact" class="vs-btn hero-btn-primary" style="background: #BDCF00; color: #000; border: none; padding: 15px 30px; border-radius: 30px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(189,207,0,0.3);">Découvrir Plus</a>
@@ -1896,7 +1956,7 @@
         <div class="scroll-arrow"><i class="fa-solid fa-chevron-down"></i></div>
       </div>
       
-      <div class="vs-balls vs-balls--screen" data-balls-bottom="-6px" data-balls-color="#f6f1e4"></div>
+      <div class="vs-balls vs-balls--screen" data-balls-bottom="-6px" data-balls-color="#ffffff"></div>
     </section>
     <!-- Hero End -->
     
@@ -1908,8 +1968,8 @@
           <div class="col-lg-8 mx-auto">
             <div class="vs-title text-center title-anime animation-style2">
               <div class="title-anime__wrap">
-                <span class="vs-title__sub">Pourquoi choisir EDJS ?</span>
-                <h2 class="vs-title__main">Nous facilitons l'accès à la culture pour tous</h2>
+                <span class="vs-title__sub">Pourquoi choisir L'École des jeunes spectateurs ?</span>
+                <h2 class="vs-title__main">Faciliter l'accès à la culture pour tous</h2>
               </div>
             </div>
           </div>
@@ -1918,7 +1978,7 @@
           <div class="row justify-content-center swiper vs-carousel vs-carousel--service z-index-common pl-0" data-xl="3" data-loop="true" data-autoplay-delay="6000" data-nav-next=".nav-next-2" data-nav-prev=".nav-prev-1">
             <div class="swiper-wrapper">
               <div class="col-lg-4 col-md-6 swiper-slide">
-                <div class="vs-service wow animate__fadeInUp" data-wow-delay="0.25s" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 20px 40px rgba(0,0,0,0.05); transition: all 0.3s ease; overflow: hidden; background: white;">
+                <div class="vs-service wow animate__fadeInUp" data-wow-delay="0.25s" style="border-radius: 20px; border: 2px solid #000; transition: all 0.3s ease; overflow: hidden; background: white;">
                   <div class="vs-service__figure" style="position: relative; overflow: hidden; border-radius: 20px 20px 0 0;">
                     <a href="service-details" class="vs-service__image--link" style="display: block; position: relative; overflow: hidden;">
                       <img class="vs-service__image" src="assets/edjs img/Casse-Noisette_Web_039-1024x683.webp" alt="Spectacle pour écoles publiques" style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s ease;">
@@ -1943,7 +2003,7 @@
                 </div>
               </div>
               <div class="col-lg-4 col-md-6 swiper-slide">
-                <div class="vs-service wow animate__fadeInUp" data-wow-delay="0.35s" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 20px 40px rgba(0,0,0,0.05); transition: all 0.3s ease; overflow: hidden; background: white; position: relative;">
+                <div class="vs-service wow animate__fadeInUp" data-wow-delay="0.35s" style="border-radius: 20px; border: 2px solid #000; transition: all 0.3s ease; overflow: hidden; background: white; position: relative;">
                   <div class="vs-service__figure" style="position: relative; overflow: hidden; border-radius: 20px 20px 0 0;">
                     <a href="service-details" class="vs-service__image--link" style="display: block; position: relative; overflow: hidden;">
                       <img class="vs-service__image" src="assets/edjs img/Casse-Noisette_Web_048-1024x683.webp" alt="Spectacle pour écoles privées" style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s ease;">
@@ -1968,7 +2028,7 @@
                 </div>
               </div>
               <div class="col-lg-4 col-md-6 swiper-slide">
-                <div class="vs-service wow animate__fadeInUp" data-wow-delay="0.45s" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 20px 40px rgba(0,0,0,0.05); transition: all 0.3s ease; overflow: hidden; background: white; position: relative;">
+                <div class="vs-service wow animate__fadeInUp" data-wow-delay="0.45s" style="border-radius: 20px; border: 2px solid #000; transition: all 0.3s ease; overflow: hidden; background: white; position: relative;">
                   <div class="vs-service__figure" style="position: relative; overflow: hidden; border-radius: 20px 20px 0 0;">
                     <a href="service-details" class="vs-service__image--link" style="display: block; position: relative; overflow: hidden;">
                       <img class="vs-service__image" src="assets/edjs img/Casse-Noisette_Web_013-1024x683.webp" alt="Spectacle pour associations" style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s ease;">
@@ -2021,7 +2081,7 @@
                 <div class="vs-service wow animate__fadeInUp" data-wow-delay="0.65s" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s ease; overflow: hidden; background: white; position: relative;">
                   <div class="vs-service__figure" style="position: relative; overflow: hidden; border-radius: 20px 20px 0 0;">
                     <a href="partners" class="vs-service__image--link" style="display: block; position: relative; overflow: hidden;">
-                      <img class="vs-service__image" src="assets/edjs img/Casse-Noisette_Web_035.webp" alt="Partenaires EDJS" style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s ease;">
+                      <img class="vs-service__image" src="assets/edjs img/Casse-Noisette_Web_035.webp" alt="Partenaires L'École des jeunes spectateurs" style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s ease;">
                     </a>
                   </div>
                   <div class="vs-service__content" style="padding: 30px 25px;">
@@ -2135,11 +2195,9 @@
         <div class="row align-items-center">
           <div class="col-lg-6 mb-30 wow animate__fadeInUp" data-wow-delay="0.25s">
             <div class="vs-about--image">
-              <div class="vs-about--image__figure1 wow animate__fadeInUp" data-wow-delay="0.25s">
-                <img src="assets/img/Les_Fourberies_De_Scapin_Web_043.jpg" alt="Les Fourberies de Scapin" width="198" height="214" loading="lazy">
+              <div class="vs-about--image__figure1 wow animate__fadeInUp" data-wow-delay="0.25s" style="background-image: url('assets/img/Les_Fourberies_De_Scapin_Web_043.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 198px; height: 214px;">
               </div>
-              <div class="vs-about--image__figure2 wow animate__fadeInUp" data-wow-delay="0.35s">
-                <img src="assets/img/Casse-Noisette_Web_058.jpg" alt="Casse-Noisette" width="400" height="461" loading="lazy">
+              <div class="vs-about--image__figure2 wow animate__fadeInUp" data-wow-delay="0.35s" style="background-image: url('assets/img/Casse-Noisette_Web_058.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 400px; height: 461px;">
               </div>
               <div class="vs-about--image__ele3 wow animate__zoomIn" data-wow-delay="0.55s" style="background-color: #BDCF00;"></div>
               <div class="vs-about--yoe">
@@ -2175,136 +2233,11 @@
       
       <!-- Large Logo at Bottom -->
       <div class="about-bottom-logo">
-        <img src="assets/img/Asset 3@4x.png" alt="EDJS Logo" class="bottom-logo">
+        <img src="assets/img/Asset 3@4x.png" alt="EDJS Logo" class="bottom-logo" style="z-index: 5; position: relative;">
       </div>
     </section>
     <!-- About End -->
     
-    <!-- Vs Session Time Area -->
-    <section class="vs-session--area space space-extra-bottom bg-theme-color-1 z-index-common overflow-hidden">
-      <div class="vs-session--bg-image" data-vs-gsap-parallax-speed="5" data-vs-gsap-parallax-zoom>
-        <img src="assets/img/Tara_Sur_La_Lune_Web_020.jpg" alt="Tara Sur La Lune">
-      </div>
-      <div class="vs-session--ele1" data-vs-gsap-parallax-speed="2" data-vs-gsap-parallax-zoom>
-        <img src="assets/img/session/session-ele-1.png" alt="session ele">
-      </div>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-7 wow animate__fadeInUp" data-wow-delay="0.15s">
-            <div class="vs-title text-center title-anime animation-style2">
-              <div class="title-anime__wrap">
-                <span class="vs-title__sub text-white">Prochaines Séances</span>
-                <h2 class="vs-title__main text-white px-xl-5">Réservez Vos Places
-                  Maintenant</h2>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-10">
-            <div class="row gx-30">
-              <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.2s">
-                <div class="vs-session">
-                  <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                  <div class="vs-session__content">
-                    <h3 class="vs-session__title">Le Petit Prince</h3>
-                    <time class="vs-session__time" datetime="14:00">du 3 au 7 à Rabat | du 8 au 11 à Casablanca</time>
-                  </div>
-                  <span class="vs-session__icon">
-                    <span style="font-size: 16px; font-weight: bold; color: white;">OCT</span>
-                  </span>
-                </div>
-              </div>
-              <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.3s">
-                <div class="vs-session">
-                  <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                  <div class="vs-session__content">
-                    <h3 class="vs-session__title">L'eau-là</h3>
-                    <time class="vs-session__time" datetime="16:00">du 7 au 11 à Rabat | du 12 au 15 à Casablanca</time>
-                  </div>
-                  <span class="vs-session__icon">
-                    <span style="font-size: 16px; font-weight: bold; color: white;">NOV</span>
-                  </span>
-                </div>
-              </div>
-              <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.4s">
-                <div class="vs-session">
-                  <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                  <div class="vs-session__content">
-                    <h3 class="vs-session__title">Simple comme bonjour !</h3>
-                    <time class="vs-session__time" datetime="15:00">du 12 au 16 à Rabat | du 17 au 20 à Casablanca</time>
-                  </div>
-                  <span class="vs-session__icon">
-                    <span style="font-size: 16px; font-weight: bold; color: white;">DÉC</span>
-                  </span>
-                </div>
-              </div>
-              <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.5s">
-                <div class="vs-session">
-                  <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                  <div class="vs-session__content">
-                    <h3 class="vs-session__title">Charlotte</h3>
-                    <time class="vs-session__time" datetime="14:30">du 23 au 27 à Rabat | du 28 au 31 à Casablanca</time>
-                  </div>
-                  <span class="vs-session__icon">
-                    <span style="font-size: 16px; font-weight: bold; color: white;">JAN</span>
-                  </span>
-                </div>
-              </div>
-              <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.6s">
-                <div class="vs-session">
-                  <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                  <div class="vs-session__content">
-                    <h3 class="vs-session__title">Estevanico</h3>
-                    <time class="vs-session__time" datetime="14:30">du 13 au 17 à Rabat | du 18 au 21 à Casablanca</time>
-                  </div>
-                  <span class="vs-session__icon">
-                    <span style="font-size: 16px; font-weight: bold; color: white;">FÉV</span>
-                  </span>
-                </div>
-              </div>
-              <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.7s">
-                <div class="vs-session">
-                  <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                  <div class="vs-session__content">
-                    <h3 class="vs-session__title">L'enfant de l'arbre</h3>
-                    <time class="vs-session__time" datetime="14:30">du 27 au 31 à Rabat | du 1 au 4 avril à Casablanca</time>
-                  </div>
-                  <span class="vs-session__icon">
-                    <span style="font-size: 16px; font-weight: bold; color: white;">MAR</span>
-                  </span>
-                </div>
-              </div>
-              <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.8s">
-                <div class="vs-session">
-                  <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                  <div class="vs-session__content">
-                    <h3 class="vs-session__title">Antigone</h3>
-                    <time class="vs-session__time" datetime="14:30">du 17 au 21 à Rabat | du 22 au 25 à Casablanca</time>
-                  </div>
-                  <span class="vs-session__icon">
-                    <span style="font-size: 16px; font-weight: bold; color: white;">AVR</span>
-                  </span>
-                </div>
-              </div>
-              <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.9s">
-                <div class="vs-session">
-                  <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                  <div class="vs-session__content">
-                    <h3 class="vs-session__title">Alice chez les merveilles</h3>
-                    <time class="vs-session__time" datetime="14:30">du 15 au 19 à Rabat | du 20 au 23 à Casablanca</time>
-                  </div>
-                  <span class="vs-session__icon">
-                    <span style="font-size: 16px; font-weight: bold; color: white;">MAI</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#F8F8F8"></div>
-      <div class="vs-balls vs-balls--screen" data-balls-bottm="-6px" data-balls-color="#F8F8F8"></div>
-    </section>
-    <!-- Vs Session Time Area End -->
     <!-- Vs Gallery Area -->
     <section class="vs-gallery--area space space-extra-bottom overflow-hidden">
       <div class="container">
@@ -2312,7 +2245,7 @@
           <div class="col-lg-8 mx-auto">
             <div class="vs-title text-center title-anime animation-style2">
               <div class="title-anime__wrap">
-                <span class="vs-title__sub">Galerie EDJS</span>
+                <span class="vs-title__sub">Galerie L'École des jeunes spectateurs</span>
                 <h2 class="vs-title__main">Découvrez nos spectacles en images</h2>
               </div>
             </div>
@@ -2413,9 +2346,9 @@
             <div class="vs-title">
               <div>
                 <span class="vs-title__sub text-white">NOS SPECTACLES</span>
-                <h2 class="vs-title__main text-white">Spectacles à l'Affiche</h2>
+                <h2 class="vs-title__main text-white">Spectacles par Tranche d'Âge</h2>
               </div>
-              <p class="text-white fw-bold text-capitalize font-title vs-text-bolder mb-0">Découvrez nos productions culturelles
+              <p class="text-white fw-bold text-capitalize font-title vs-text-bolder mb-0">Des créations adaptées à chaque étape du développement : de 3 à 16 ans, chaque spectacle est conçu pour captiver et éduquer selon l'âge de nos jeunes spectateurs
               </p>
               <div class="text-center mt-4">
                 <a href="spectacles" class="vs-btn style2" style="background: white !important; color: #BDCF00 !important;"><span class="vs-btn__border"></span>Voir Plus</a>
@@ -2501,7 +2434,7 @@
                 <div class="vs-class">
                   <div class="vs-class__figure">
                     <a class="vs-class__figure--link" href="spectacles">
-                      <img class="vs-class__figure--img" src="assets/img/4x/Asset 1@4x.png" alt="Casse-Noisette" style="object-fit: contain !important; padding: 10px; background: white; border-radius: 15px;">
+                      <img class="vs-class__figure--img" src="assets/img/spectacles/charlotte.png" alt="Casse-Noisette" style="object-fit: contain !important; padding: 10px; background: white; border-radius: 15px;">
                       <div class="vs-class__icon--wrap">
                         <span class="vs-class__icon vs-class__icon--color1">
                         <img src="assets/img/icon edjs-11.png" alt="Spectacle Icon" style="width: 35px; height: 35px;">
@@ -2511,10 +2444,10 @@
                   </div>
                   <div class="vs-class__content">
                     <a class="vs-class__heading--link" href="spectacles">
-                      <h3 class="vs-class__heading">Casse-Noisette</h3>
+                      <h3 class="vs-class__heading">Charlotte</h3>
                     </a>
                     <p class="vs-class__text">
-                      Un spectacle magique qui transporte les enfants dans l'univers féerique du ballet classique.
+                      Un spectacle émouvant qui explore les thèmes de l'amitié et de la découverte de soi.
                     </p>
                   </div>
                   <div class="vs-class__bottom">
@@ -2528,7 +2461,7 @@
                 <div class="vs-class">
                   <div class="vs-class__figure">
                     <a class="vs-class__figure--link" href="spectacles">
-                      <img class="vs-class__figure--img" src="assets/img/4x/Asset 2@4x.png" alt="Le Petit Prince" style="object-fit: contain !important; padding: 10px; background: white; border-radius: 15px;">
+                      <img class="vs-class__figure--img" src="assets/img/spectacles/petite prince.png" alt="Le Petit Prince" style="object-fit: contain !important; padding: 10px; background: white; border-radius: 15px;">
                       <div class="vs-class__icon--wrap">
                         <span class="vs-class__icon vs-class__icon--color2">
                         <img src="assets/img/icon edjs-12.png" alt="Spectacle Icon" style="width: 35px; height: 35px;">
@@ -2555,7 +2488,7 @@
                 <div class="vs-class">
                   <div class="vs-class__figure">
                     <a class="vs-class__figure--link" href="spectacles">
-                      <img class="vs-class__figure--img" src="assets/img/4x/Asset 3@4x.png" alt="Tara Sur La Lune" style="object-fit: contain !important; padding: 10px; background: white; border-radius: 15px;">
+                      <img class="vs-class__figure--img" src="assets/img/spectacles/tara sur la lune.png" alt="Tara Sur La Lune" style="object-fit: contain !important; padding: 10px; background: white; border-radius: 15px;">
                       <div class="vs-class__icon--wrap">
                         <span class="vs-class__icon vs-class__icon--color3">
                         <img src="assets/img/icon edjs-18.png" alt="Spectacle Icon" style="width: 35px; height: 35px;">
@@ -2582,7 +2515,7 @@
                 <div class="vs-class">
                   <div class="vs-class__figure">
                     <a class="vs-class__figure--link" href="spectacles">
-                      <img class="vs-class__figure--img" src="assets/img/4x/Asset 4@4x.png" alt="Charlotte" style="object-fit: contain !important; padding: 10px; background: white; border-radius: 15px;">
+                      <img class="vs-class__figure--img" src="assets/img/spectacles/l'eau la.png" alt="L'Eau-Là" style="object-fit: contain !important; padding: 10px; background: white; border-radius: 15px;">
                       <div class="vs-class__icon--wrap">
                         <span class="vs-class__icon vs-class__icon--color4">
                         <img src="assets/img/icon edjs-19.png" alt="Spectacle Icon" style="width: 35px; height: 35px;">
@@ -2592,10 +2525,10 @@
                   </div>
                   <div class="vs-class__content">
                     <a class="vs-class__heading--link" href="spectacles">
-                      <h3 class="vs-class__heading">Charlotte</h3>
+                      <h3 class="vs-class__heading">L'Eau-Là</h3>
                     </a>
                     <p class="vs-class__text">
-                      Un spectacle émouvant qui explore les thèmes de l'amitié et de la découverte de soi.
+                      Une aventure aquatique qui sensibilise les enfants à l'importance de l'eau et de l'environnement.
                     </p>
                   </div>
                   <div class="vs-class__bottom">
@@ -2609,7 +2542,7 @@
                 <div class="vs-class">
                   <div class="vs-class__figure">
                     <a class="vs-class__figure--link" href="spectacles">
-                      <img class="vs-class__figure--img" src="assets/img/4x/Asset 5@4x.png" alt="Les Fourberies de Scapin" style="object-fit: contain !important; padding: 10px; background: white; border-radius: 15px;">
+                      <img class="vs-class__figure--img" src="assets/img/spectacles/simple.png" alt="Simple Comme Bonjour" style="object-fit: contain !important; padding: 10px; background: white; border-radius: 15px;">
                       <div class="vs-class__icon--wrap">
                         <span class="vs-class__icon vs-class__icon--color5">
                         <img src="assets/img/icon edjs-20.png" alt="Spectacle Icon" style="width: 35px; height: 35px;">
@@ -2619,7 +2552,7 @@
                   </div>
                   <div class="vs-class__content">
                     <a class="vs-class__heading--link" href="spectacles">
-                      <h3 class="vs-class__heading">Les Fourberies de Scapin</h3>
+                      <h3 class="vs-class__heading">Simple Comme Bonjour</h3>
                     </a>
                     <p class="vs-class__text">
                       La comédie classique de Molière revisitée pour captiver les jeunes spectateurs.
@@ -2703,7 +2636,7 @@
                       <h3 class="vs-class__heading">Spectacle Musical</h3>
                     </a>
                     <p class="vs-class__text">
-                      Un voyage musical interactif qui éveille la créativité et l'amour de la musique.
+                      Un spectacle interactif qui enseigne aux enfants les valeurs de politesse et de respect mutuel.
                     </p>
                   </div>
                   <div class="vs-class__bottom">
@@ -2753,110 +2686,6 @@
       </div>
     </section>
     <!-- Feature End -->
-    <!-- FAQ Feedback -->
-    <section class="bg-title z-index-common space overflow-hidden">
-      <img src="assets/img/icon edjs-20.png" alt="sec-divider-ele1" class="sec-ele1 position-absolute start-0 end-0 bottom-0 z-index-n2" style="width: 100px; height: 50px;">
-      <div class="feedback-image" data-bg-src="assets/img/Les_Trois_Brigands_Web_044.jpg"></div>
-      <div class="feedback-image--right" data-bg-src="assets/img/feedback/feedback-image-1-2.png"></div>
-      <img class="feedback--ele1 wow animate__fadeInRight" data-wow-delay="0.35s" src="assets/img/feedback/vs-feedback-ele-1.png" alt="elements">
-      <div class="container">
-        <div class="row justify-content-end">
-          <div class="col-lg-7">
-            <div class="feedback-wrapper">
-              <div class="vs-title vs-title--style2 title-anime animation-style2 text-center text-lg-start">
-                <div class="title-anime__wrap">
-                  <span class="vs-title__sub">témoignages</span>
-                  <h2 class="vs-title__main pe-xl-3">
-                    Avis <span>Clients</span> sur nos spectacles
-                  </h2>
-                </div>
-              </div>
-              <div class="swiper feedback-slider">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="feedback-block">
-                      <div class="feedback-block__image">
-                        <img src="assets/img/Dans_la_peau_de_Cyrano_Web_017.jpg" alt="feedback man" width="145" height="145">
-                        <div class="feedback-block__icon--quote">
-                          <img src="assets/img/icon edjs-21.png" alt="svg-quote-icon" style="width: 30px; height: 30px;">
-                        </div>
-                      </div>
-                      <div class="feedback-block__content">
-                        <h4 class="feedback-block__title">Mme Fatima Zahra</h4>
-                        <span class="feedback-block__title--sub">Directrice d'école primaire</span>
-                        <div class="feedback-block__rating">
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="feedback-block__desc">
-                          "Grâce à EDJS, nos élèves découvrent le théâtre dans d'excellentes conditions. Les spectacles sont adaptés à leur âge et enrichissent leur parcours éducatif. Une expérience inoubliable pour tous !"
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="feedback-block">
-                      <div class="feedback-block__image">
-                        <img src="assets/img/Le_Petit_Prince_Web_041.jpg" alt="feedback man" width="145" height="145">
-                        <div class="feedback-block__icon--quote">
-                          <img src="assets/img/icon edjs-21.png" alt="svg-quote-icon" style="width: 30px; height: 30px;">
-                        </div>
-                      </div>
-                      <div class="feedback-block__content">
-                        <h4 class="feedback-block__title">M. Ahmed Benali</h4>
-                        <span class="feedback-block__title--sub">Parent d'élève</span>
-                        <div class="feedback-block__rating">
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="feedback-block__desc">
-                          "Mes enfants reviennent enchantés de chaque spectacle EDJS. La qualité artistique et l'approche pédagogique sont remarquables. C'est un véritable éveil culturel pour toute la famille."
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="feedback-block">
-                      <div class="feedback-block__image">
-                        <img src="assets/img/Gretel_Hansel_Web_029.jpg" alt="feedback man" width="145" height="145">
-                        <div class="feedback-block__icon--quote">
-                          <img src="assets/img/icon edjs-21.png" alt="svg-quote-icon" style="width: 30px; height: 30px;">
-                        </div>
-                      </div>
-                      <div class="feedback-block__content">
-                        <h4 class="feedback-block__title">Mme Aicha Idrissi</h4>
-                        <span class="feedback-block__title--sub">Responsable association culturelle</span>
-                        <div class="feedback-block__rating">
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="feedback-block__desc">
-                          "EDJS nous permet d'offrir à nos jeunes des expériences culturelles exceptionnelles. L'organisation est parfaite et l'impact sur les enfants est visible. Un partenaire de confiance !"
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="vs-feedback-pagination"></div>
-              </div>
-            </div>
-            <!-- End Feedback Wrapper -->
-          </div>
-        </div>
-      </div>
-      <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#FFEFE4"></div>
-      <div class="vs-balls vs-balls--screen" data-balls-bottm="-6px" data-balls-color="#F8F8F8"></div>
-    </section>
-    <!-- FAQ Feedback End -->
     <!-- Blog Section -->
     <section class="space space-extra-bottom z-index-common overflow-hidden" data-bg-src="assets/img/blog/h1-bg-blog.png">
       <div class="container">
@@ -3146,18 +2975,17 @@
             <div class="vs-footer__widget">
               <div class="vs-footer__logo text-center text-md-start mb-25">
                 <a href="/" class="vs-logo">
-                  <img src="assets/img/Asset 2@4x.png" alt="EDJS" style="height: 120px; width: auto; max-width: none !important;">
+                  <img src="assets/img/Asset 2@4x.png" alt="L'École des jeunes spectateurs" style="height: 120px; width: auto; max-width: none !important;">
                 </a>
               </div>
               <p class="vs-footer__desc text-center text-md-start" style="color: #999999;">
-                EDJS propose des spectacles théâtraux éducatifs et
-                des ateliers créatifs pour enfants.
+                Chaque élève a l'opportunité de découvrir et d'explorer la richesse des arts de la scène à travers la danse, le théâtre et la musique, qui sont au cœur de notre programme.
               </p>
               <div class="icon-call justify-content-center justify-content-md-start pt-10 mb-10">
                 <span class="icon-call__icon"><i class="fa-solid fa-phone-rotary"></i></span>
                 <div class="icon-call__content">
                   <span class="icon-call__title">support téléphonique</span>
-                  <a href="tel:+1344688955" class="icon-call__number">+1 344 688 955</a>
+                  <a href="tel:+212522981085" class="icon-call__number">+212 5 22 98 10 85</a>
                 </div>
               </div>
               <div class="social-style social-style--version2 w-100 justify-content-center justify-content-md-start pt-25">
@@ -3185,7 +3013,7 @@
           </div>
           <div class="col-lg-4 col-md-6 wow animate__fadeInUp" data-wow-delay="0.45s">
             <div class="vs-footer__widget">
-              <h3 class="vs-footer__title" style="color: #cccccc;">Instagram</h3>
+              <h3 class="vs-footer__title" style="color: #cccccc;">Gallery</h3>
               <div class="sidebar-gallery" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
                 <div class="gallery-thumb" style="aspect-ratio: 1; overflow: hidden;">
                   <img src="assets/img/Les_Trois_Brigands_Web_026.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: cover;">
@@ -3223,7 +3051,7 @@
           <div class="col-md-auto">
             <p class="vs-footer__copyright mb-0" style="color: #999999;">
               Copyright © <span id="currentYear"></span>
-              <a href="/">EDJS</a>. Tous droits réservés.
+              <a href="/">L'École des jeunes spectateurs</a>. Tous droits réservés.
             </p>
           </div>
           <div class="col-md-auto">

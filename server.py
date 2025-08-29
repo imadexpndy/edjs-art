@@ -19,8 +19,8 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         if not path or path == '/':
             path = 'index.html'
         else:
-            # If path doesn't have .html extension and file doesn't exist, try adding .html
-            if not path.endswith('.html') and not os.path.exists(path):
+            # If path doesn't have .html extension, try adding .html
+            if not path.endswith('.html'):
                 html_path = path + '.html'
                 if os.path.exists(html_path):
                     path = html_path

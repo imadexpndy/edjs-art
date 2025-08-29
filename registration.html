@@ -64,10 +64,6 @@
                 <i class="fa-solid fa-envelope"></i>
                 <span> Email : <a href="mailto:info@edjs.ma">info@edjs.ma</a></span>
               </div>
-              <div class="vs-header__info">
-                <i class="fa-solid fa-phone-volume"></i>
-                <span> Téléphone : <a href="tel:+212522981085">+212 5 22 98 10 85</a></span>
-              </div>
             </div>
           </div>
           <div class="col-lg-auto">
@@ -79,13 +75,36 @@
   <!--==============================
 	Preloader
 	==============================-->
-  <div class="preloader">
     <button class="vs-btn preloaderCls">Cancel Preloader </button>
     <div class="preloader-inner">
       <img src="assets/img/logo-spectateur.svg" alt="L'École du Jeune Spectateur">
       <span class="loader"></span>
     </div>
+  </header>
+  <!--==============================
+    Breadcrumb
+  ===============================-->
+  <div class="breadcrumb-wrapper z-index-common overflow-hidden">
+    <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#ffffff" style="top: -6px;"></div>
+    <div class="breadcrumb-wrapper__bg wow animate__fadeInUp" data-wow-delay="0.15s" data-vs-gsap-parallax-speed="2" data-vs-gsap-parallax-zoom>
+      <img src="assets/edjs img/bg-header-home-v2.webp" alt="EDJS Background">
+    </div>
+    <div class="container">
+      <div class="breadcrumb-wrapper__content wow animate__fadeInUp" data-wow-delay="0.45s">
+        <h1 class="breadcrumb-wrapper__title">Inscription</h1>
+        <div class="breadcrumb-wrapper__menu--wrap">
+          <ul class="breadcrumb-wrapper__menu">
+            <li class="breadcrumb-wrapper__menu--item"><a href="/">Accueil</a></li>
+            <li class="breadcrumb-wrapper__menu--item">Inscription</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="vs-balls vs-balls--screen" data-balls-bottom="-6px" data-balls-color="#ffffff"></div>
   </div>
+  <!--==============================
+    Preloader
+  ===============================-->
   <!--==============================
 		Mobile Menu
 	============================== -->
@@ -472,7 +491,7 @@
           <div class="row justify-content-between align-items-center">
             <div class="col">
               <div class="vs-header__logo">
-                <a href="/"><img src="assets/img/Asset 2@4x.png" alt="EDJS" style="height: 120px; width: auto; max-width: none !important;"></a>
+                <a href="/"><img src="assets/img/edjs logo black@4x.png" alt="L'École des jeunes spectateurs" class="logo" style="height: 100px !important; width: auto !important; max-width: none !important; min-height: 100px !important;"></a>
               </div>
             </div>
             <div class="col-auto">
@@ -536,7 +555,8 @@
                     <i class="far fa-search"></i>
                   </button>
                 </div>
-                <div class="d-none d-xxl-inline-flex">
+                <div class="d-none d-xxl-inline-flex" style="display: flex; gap: 15px; align-items: center;">
+                  <a href="auth" class="vs-btn-login" style="background: transparent; color: #BDCF00; border: 2px solid #BDCF00; padding: 10px 20px; border-radius: 25px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; font-size: 14px;">Se connecter</a>
                   <a href="contact" class="vs-btn"><span class="vs-btn__border"></span>Je m'inscris</a>
                 </div>
                 <div class="d-none d-lg-inline-flex align-items-center">
