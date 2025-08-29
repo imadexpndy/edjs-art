@@ -392,22 +392,6 @@
 <body>
   <!-- Header -->
   <header class="vs-header">
-    <div class="vs-header__top">
-      <div class="container container--custom">
-        <div class="row align-items-center justify-content-between gy-1 text-center text-lg-start">
-          <div class="col-lg-auto d-none d-lg-block">
-            <div class="d-flex align-items-center flex-wrap gap-4">
-              <div class="vs-header__info">
-                <i class="fa-solid fa-envelope"></i>
-                <span> Email : <a href="mailto:info@edjs.ma">info@edjs.ma</a></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-auto">
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="sticky-wrapper">
       <div class="sticky-active">
         <div class="container container--custom">
@@ -472,8 +456,14 @@
             </div>
             <div class="col-auto">
               <div class="vs-header__action">
-                <div class="d-none d-xxl-inline-flex">
-                  <a href="contact" class="vs-btn"><span class="vs-btn__border"></span>Nous Contacter</a>
+                <div class="d-none d-md-inline-flex align-items-center">
+                  <button class="searchBoxTggler">
+                    <i class="far fa-search"></i>
+                  </button>
+                </div>
+                <div class="d-none d-xxl-inline-flex" style="display: flex; gap: 15px; align-items: center;">
+                  <a href="auth" class="vs-btn-login" style="background: transparent; color: #BDCF00; border: 2px solid #BDCF00; padding: 10px 20px; border-radius: 25px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; font-size: 14px;">Se connecter</a>
+                  <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="vs-btn"><span class="vs-btn__border"></span>Je m'inscris</a>
                 </div>
                 <button class="vs-menu-toggle style2 d-inline-block d-lg-none">
                   <i class="fal fa-bars"></i>
