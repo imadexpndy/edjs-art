@@ -14,16 +14,14 @@
   <!-- Mobile Specific Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-icon-76x76.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicons/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
-  <link rel="manifest" href="assets/img/favicons/manifest.json">
-  <meta name="theme-color" content="#ffffff">
+  <!-- L'École des jeunes spectateurs Favicon -->
+  <link rel="icon" type="image/png" href="assets/img/4x/edjs favicon_1@4x.png">
+  <link rel="shortcut icon" href="assets/img/4x/edjs favicon_1@4x.png" type="image/png">
+  <link rel="icon" href="assets/img/4x/edjs favicon_1@4x.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/4x/edjs favicon_1@4x.png">
+  <meta name="msapplication-TileColor" content="#BDCF00">
+  <meta name="msapplication-TileImage" content="assets/img/4x/edjs favicon_1@4x.png">
+  <meta name="theme-color" content="#BDCF00">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,22 +69,6 @@
 
   <!-- Header -->
   <header class="vs-header">
-    <div class="vs-header__top">
-      <div class="container container--custom">
-        <div class="row align-items-center justify-content-between gy-1 text-center text-lg-start">
-          <div class="col-lg-auto d-none d-lg-block">
-            <div class="d-flex align-items-center flex-wrap gap-4">
-              <div class="vs-header__info">
-                <i class="fa-solid fa-envelope"></i>
-                <span> Email : <a href="mailto:info@edjs.ma">info@edjs.ma</a></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-auto">
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="sticky-wrapper">
       <div class="sticky-active">
         <div class="container container--custom">
@@ -151,8 +133,14 @@
             </div>
             <div class="col-auto">
               <div class="vs-header__action">
-                <div class="d-none d-xxl-inline-flex">
-                  <a href="contact.html" class="vs-btn"><span class="vs-btn__border"></span>Contact</a>
+                <div class="d-none d-md-inline-flex align-items-center">
+                  <button class="searchBoxTggler">
+                    <i class="far fa-search"></i>
+                  </button>
+                </div>
+                <div class="d-none d-xxl-inline-flex" style="display: flex; gap: 15px; align-items: center;">
+                  <a href="auth" class="vs-btn-login" style="background: transparent; color: #BDCF00; border: 2px solid #BDCF00; padding: 10px 20px; border-radius: 25px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; font-size: 14px;">Se connecter</a>
+                  <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="vs-btn"><span class="vs-btn__border"></span>Je m'inscris</a>
                 </div>
                 <button class="vs-menu-toggle style2 d-inline-block d-lg-none">
                   <i class="fal fa-bars"></i>
@@ -178,23 +166,40 @@
 
     .spectacle-hero {
       position: relative;
-      min-height: 85vh;
+      min-height: 60vh;
       display: flex;
       align-items: center;
       overflow: hidden;
-      padding: 6rem 0;
+      padding: 0;
+      background: linear-gradient(135deg, #BDCF00 0%, #9FB800 50%, #8AA600 100%);
+    }
+
+    
+    .hero-container {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      position: relative;
+      z-index: 10;
+      display: flex;
+    }
+
+    .hero-left {
+      flex: 1;
+      padding: 4rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #FF6B1A 0%, #FF8A33 25%, #FFA852 50%, #FFBF70 75%, #FFDF80 100%);
+    }
+
+    .hero-right {
+      flex: 1;
+      position: relative;
+      height: 60vh;
+      overflow: hidden;
     }
     
-    .min-vh-75 {
-      min-height: 75vh;
-    }
-    
-    .floating-shape {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.1);
-      animation: float 6s ease-in-out infinite;
-    }
     
     .shape-1 {
       width: 100px;
@@ -243,21 +248,23 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      text-align: center;
-      color: white;
+      padding: 0;
+      max-width: 500px;
     }
 
     .hero-badge {
       background: rgba(255, 255, 255, 0.2);
       color: white;
-      padding: 0.75rem 1.5rem;
+      padding: 0.5rem 1rem;
       border-radius: 2rem;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .hero-title {
@@ -265,30 +272,31 @@
       font-weight: 700;
       margin-bottom: 1rem;
       font-family: 'Amatic SC', cursive;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      line-height: 1.1;
     }
 
     .hero-subtitle {
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
-      opacity: 0.9;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: rgba(255,255,255,0.9);
       font-family: 'Raleway', sans-serif;
+      font-weight: 400;
     }
 
     .hero-description {
-      font-size: 1.1rem;
-      line-height: 1.6;
+      font-size: 0.9rem;
+      line-height: 1.5;
       margin-bottom: 1.5rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      opacity: 0.95;
+      color: rgba(255,255,255,0.85);
       font-family: 'Raleway', sans-serif;
+      max-width: 90%;
     }
 
     .info-pills {
       display: flex;
-      justify-content: center;
-      gap: 1rem;
+      gap: 0.5rem;
       margin-bottom: 1.5rem;
       flex-wrap: wrap;
     }
@@ -296,16 +304,103 @@
     .info-pill {
       background: rgba(255, 255, 255, 0.2);
       color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 1.5rem;
-      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 1rem;
+      font-size: 0.75rem;
       font-weight: 500;
+      font-family: 'Raleway', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary, .btn-secondary {
+      padding: 0.75rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
       font-family: 'Raleway', sans-serif;
     }
 
-    .reservation-btn {
+    .btn-primary {
       background: white;
-      color: var(--primary-color);
+      color: #BDCF00;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      color: #BDCF00;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.8);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: white;
+      transform: translateY(-1px);
+    }
+
+    .hero-image {
+      position: relative;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .hero-img {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .hero-img:hover {
+      transform: scale(1.02);
+    }
+
+    .image-badge {
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      background: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .image-badge i {
+      color: #BDCF00;
+      font-size: 1rem;
+    }
+
+    .reservation-btn {
+      background: #BDCF00;
+      color: white;
       border: none;
       padding: 1rem 2rem;
       border-radius: 2rem;
@@ -314,9 +409,9 @@
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       font-family: 'Raleway', sans-serif;
     }
 
@@ -508,31 +603,50 @@
 
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(180deg); }
     }
 
     @media (max-width: 768px) {
       .spectacle-hero {
-        min-height: 60vh;
-        padding: 3rem 0;
+        min-height: 40vh;
+        padding: 1.5rem 0;
+      }
+      .hero-content {
+        text-align: center;
+        padding: 1rem 0;
       }
       .hero-title { 
         font-size: 2.8rem; 
       }
       .hero-subtitle { 
-        font-size: 1.1rem; 
+        font-size: 0.9rem; 
       }
       .hero-description { 
-        font-size: 1rem; 
-        padding: 0 1rem;
+        font-size: 0.8rem;
+        max-width: 100%;
       }
       .info-pills { 
-        gap: 0.5rem; 
-        padding: 0 1rem;
+        justify-content: center;
+        gap: 0.3rem;
       }
-      .hero-image img { 
-        width: 320px; 
-        height: 213px; 
+      .hero-buttons {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+      }
+      .hero-img {
+        max-width: 280px;
       }
       .content-card { 
         padding: 1.5rem; 
@@ -540,6 +654,146 @@
       }
       .sidebar-card {
         margin: 0 1rem 1.5rem 1rem;
+      }
+    }
+
+    /* Gallery Styles */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(189, 207, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-overlay i {
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    /* Reviews Styles */
+    .reviews-container {
+      margin-top: 1.5rem;
+    }
+
+    .review-item {
+      background: var(--bg-light);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .review-stars {
+      color: #ffc107;
+    }
+
+    .review-author {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 0.9rem;
+    }
+
+    .review-text {
+      color: var(--text-light);
+      font-style: italic;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* FAQ Styles */
+    .faq-container {
+      margin-top: 1.5rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-light);
+      padding: 1rem 0;
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--text-dark);
+      transition: color 0.3s ease;
+    }
+
+    .faq-question:hover {
+      color: var(--primary-color);
+    }
+
+    .faq-question i {
+      color: var(--primary-color);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+      margin-top: 0.75rem;
+      margin-left: 1.5rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+      
+      .gallery-img {
+        height: 150px;
+      }
+      
+      .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
       }
     }
 
@@ -567,79 +821,402 @@
       .sidebar-card {
         padding: 1rem;
       }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
     }
+
+  /* Hero Slider Styles */
+  .hero-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+  }
+
+  .slide.active {
+    opacity: 1;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .slider-nav {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.75rem;
+    z-index: 10;
+  }
+
+  .nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .nav-dot.active {
+    background: white;
+    border-color: white;
+    transform: scale(1.2);
+  }
+
+  .nav-dot:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+
+  @media (max-width: 768px) {
+    .hero-container {
+      flex-direction: column;
+    }
+    
+    .hero-left, .hero-right {
+      flex: none;
+      width: 100%;
+    }
+    
+    .hero-left {
+      padding: 2rem 1.5rem;
+    }
+    
+    .hero-right {
+      height: 50vh;
+    }
+    
+    .spectacle-hero {
+      min-height: auto;
+    }
+    
+  }
+
+  /* Center Affiche Styles */
+  .center-affiche {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0) rotate(180deg);
+    z-index: 15;
+    width: 200px;
+    height: 280px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: afficheEntrance 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s forwards;
+  }
+
+  .center-affiche:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+  }
+
+  @keyframes afficheEntrance {
+    0% {
+      transform: translate(-50%, -50%) scale(0) rotate(180deg);
+      opacity: 0;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.1) rotate(90deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1) rotate(0deg);
+      opacity: 1;
+    }
+  }
+
+  .center-affiche img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* VS Balls Styles */
+  .vs-balls {
+    position: absolute;
+    width: 100vw;
+    height: 14px;
+    display: flex;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  .vs-balls__ball {
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    transform: translateX(0px);
+  }
+
+  @media (max-width: 768px) {
+    .center-affiche {
+      width: 120px;
+      height: 168px;
+      top: 40%;
+    }
+    
+  }
+
+  /* Scroll Down Button Styles */
+  .scroll-down-btn {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    z-index: 20;
+    animation: bounce 2s infinite;
+  }
+
+  .scroll-down-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: white;
+    transform: translateX(-50%) scale(1.1);
+  }
+
+  .scroll-down-btn i {
+    font-size: 1.2rem;
+    animation: arrowPulse 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    40% {
+      transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+      transform: translateX(-50%) translateY(-5px);
+    }
+  }
+
+  @keyframes arrowPulse {
+    0%, 100% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .scroll-down-btn {
+      bottom: 1rem;
+      width: 45px;
+      height: 45px;
+    }
+    
+    .scroll-down-btn i {
+      font-size: 1rem;
+    }
+  }
   </style>
 
+  <script>
+    // Hero Slider JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.nav-dot');
+      const prevBtn = document.querySelector('.prev-btn');
+      const nextBtn = document.querySelector('.next-btn');
+      let currentSlide = 0;
+      let slideInterval;
+
+      function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        const next = (currentSlide + 1) % slides.length;
+        showSlide(next);
+      }
+
+      function prevSlide() {
+        const prev = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prev);
+      }
+
+      function startAutoSlide() {
+        slideInterval = setInterval(nextSlide, 4000);
+      }
+
+      function stopAutoSlide() {
+        clearInterval(slideInterval);
+      }
+
+      // Event listeners
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoSlide();
+        startAutoSlide();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopAutoSlide();
+        startAutoSlide();
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          showSlide(index);
+          stopAutoSlide();
+          startAutoSlide();
+        });
+      });
+
+      // Pause on hover
+      const slider = document.querySelector('.hero-slider');
+      slider.addEventListener('mouseenter', stopAutoSlide);
+      slider.addEventListener('mouseleave', startAutoSlide);
+
+      // Start auto-slide
+      startAutoSlide();
+
+      // Scroll Down Button
+      const scrollBtn = document.querySelector('.scroll-down-btn');
+      if (scrollBtn) {
+        scrollBtn.addEventListener('click', function() {
+          const nextSection = document.querySelector('.spectacle-hero').nextElementSibling;
+          if (nextSection) {
+            nextSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      }
+    });
+  </script>
+
   <!-- Hero Section -->
-  <section class="spectacle-hero" style="background: linear-gradient(135deg, #BDCF00 0%, #A8B800 100%); position: relative; overflow: hidden;">
-    <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#ffffff" style="top: -6px;"></div>
-    <!-- Background Elements -->
-    <div class="hero-bg-elements">
-      <div class="floating-shape shape-1"></div>
-      <div class="floating-shape shape-2"></div>
-      <div class="floating-shape shape-3"></div>
-    </div>
+  <section class="spectacle-hero">
     
-    <div class="container">
-      <div class="row align-items-center min-vh-75">
-        <div class="col-lg-6 order-2 order-lg-1">
-          <div class="hero-content text-center text-lg-start">
-            <div class="hero-badge mb-3">
+    <div class="hero-container">
+        <div class="hero-left">
+          <div class="hero-content">
+            <div class="hero-badge">
               <i class="fas fa-music me-2"></i>
               Spectacle Musical
             </div>
-            <h1 class="hero-title display-1 fw-bold mb-3" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Simple comme bonjour !</h1>
-            <p class="hero-subtitle fs-4 mb-4" style="color: rgba(255,255,255,0.95);">La poésie sensible et engagée de Prévert</p>
-            <p class="hero-description fs-5 mb-4" style="color: rgba(255,255,255,0.9); line-height: 1.6;">
-              Nathan a 8 ans et des questions plein la tête. Avec les mots de Prévert, des chansons inédites et des grands classiques, ce spectacle apporte plein d'espoir, d'insolence et de rêve.
-            </p>
-            <div class="info-pills d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 mb-4">
-              <span class="info-pill px-3 py-2 rounded-pill" style="background: rgba(255,255,255,0.2); color: white; font-weight: 500;">
-                <i class="fas fa-clock me-2"></i>50 min
+            <h1 class="hero-title">Simple comme bonjour !</h1>
+            <p class="hero-subtitle">La poésie sensible et engagée de Prévert</p>
+            <div class="info-pills">
+              <span class="info-pill">
+                <i class="fas fa-clock"></i>50 min
               </span>
-              <span class="info-pill px-3 py-2 rounded-pill" style="background: rgba(255,255,255,0.2); color: white; font-weight: 500;">
-                <i class="fas fa-child me-2"></i>8 ans et +
+              <span class="info-pill">
+                <i class="fas fa-child"></i>8 ans et +
               </span>
-              <span class="info-pill px-3 py-2 rounded-pill" style="background: rgba(255,255,255,0.2); color: white; font-weight: 500;">
-                <i class="fas fa-feather me-2"></i>Prévert
+              <span class="info-pill">
+                <i class="fas fa-feather"></i>Prévert
               </span>
             </div>
-            <div class="hero-buttons d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
-              <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="btn btn-light px-3 py-2 rounded-pill shadow-lg" style="font-weight: 600; transition: all 0.3s ease;">
-                <i class="fas fa-ticket-alt me-2"></i>
+            <div class="hero-buttons">
+              <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="btn-primary">
+                <i class="fas fa-ticket-alt"></i>
                 Réserver Maintenant
               </a>
-              <button class="btn btn-outline-light px-3 py-2 rounded-pill" style="font-weight: 600; border: 2px solid white;">
-                <i class="fas fa-play me-2"></i>
+              <button class="btn-secondary">
+                <i class="fas fa-play"></i>
                 Voir la Bande-annonce
               </button>
-              <a href="assets/dossiers-pedagogiques/simple-comme-bonjour-dossier-pedagogique.pdf" 
-                 class="btn btn-success px-3 py-2 rounded-pill shadow-lg" 
-                 style="background: #BDCF00; border: none; font-weight: 600; transition: all 0.3s ease;" 
-                 download="Simple_Comme_Bonjour_Dossier_Pedagogique.pdf">
-                <i class="fas fa-download me-2"></i>
-                Dossier Pédagogique
-              </a>
             </div>
           </div>
         </div>
         
-        <div class="col-lg-6 order-1 order-lg-2 mb-4 mb-lg-0">
-          <div class="hero-image text-center position-relative">
-            <div class="image-container" style="position: relative; display: inline-block;">
-              <img src="assets/edjs img/Casse-Noisette_Web_007.webp" alt="Simple comme bonjour ! - Spectacle Musical" 
-                   class="img-fluid rounded-4 shadow-lg" 
-                   style="max-width: 500px; width: 100%; height: auto; transform: rotate(-2deg); transition: transform 0.3s ease;">
-              <div class="image-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(189,207,0,0.1), rgba(255,255,255,0.1)); border-radius: 1rem;"></div>
-              <div class="floating-badge" style="position: absolute; top: -10px; right: -10px; background: white; padding: 12px; border-radius: 50%; box-shadow: 0 8px 25px rgba(0,0,0,0.15); animation: bounce 2s infinite;">
-                <i class="fas fa-star" style="color: #BDCF00; font-size: 1.2rem;"></i>
+        <div class="hero-right">
+          <div class="hero-slider">
+            <div class="slider-container">
+              <div class="slide active">
+                <img src="assets/edjs img/Casse-Noisette_Web_007.webp" alt="Simple comme bonjour - Photo 1">
               </div>
+              <div class="slide">
+                <img src="assets/edjs img/Casse-Noisette_Web_013-1024x683.webp" alt="Simple comme bonjour - Photo 2">
+              </div>
+              <div class="slide">
+                <img src="assets/edjs img/Casse-Noisette_Web_017-1024x683.webp" alt="Simple comme bonjour - Photo 3">
+              </div>
+              <div class="slide">
+                <img src="assets/edjs img/Casse-Noisette_Web_007.webp" alt="Simple comme bonjour - Photo 4">
+              </div>
+            </div>
+            <div class="slider-nav">
+              <button class="nav-dot active" data-slide="0"></button>
+              <button class="nav-dot" data-slide="1"></button>
+              <button class="nav-dot" data-slide="2"></button>
+              <button class="nav-dot" data-slide="3"></button>
             </div>
           </div>
         </div>
-      </div>
     </div>
-    <div class="vs-balls vs-balls--screen" data-balls-bottom="-6px" data-balls-color="#ffffff"></div>
+    
+    <!-- Scroll Down Button -->
+    <button class="scroll-down-btn" title="Voir plus d'informations">
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    
+    <!-- Top VS Balls -->
+    <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#ffffff" style="top: -6px;"></div>
+    
+    <!-- Center Affiche -->
+    <div class="center-affiche">
+      <img src="assets/img/spectacles/simple.png" alt="Simple comme bonjour - Affiche">
+    </div>
+    
+    <!-- Bottom VS Balls -->
+    <div class="vs-balls vs-balls--screen" data-balls-bottom="-6px" data-balls-color="#ffffff" style="bottom: -6px;"></div>
   </section>
 
   <!-- Main Content -->
@@ -659,110 +1236,136 @@
             <p style="color: var(--text-light); line-height: 1.7; margin-bottom: 2rem;">
               Avec les mots de Prévert, des chansons inédites et des grands classiques, ce spectacle musical met à l'honneur la poésie sensible et engagée de ce grand poète qui aimait les gens et qui apporte plein d'espoir, d'insolence et de rêve pour petits et grands.
             </p>
-            
-            <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid var(--primary-color); margin-bottom: 2rem;">
-              <h4 style="color: var(--text-dark); margin-bottom: 1rem; font-size: 1.1rem;">Détails du Spectacle</h4>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="info-item">
-                    <i class="fas fa-clock"></i>
-                    <span><strong>Durée:</strong> 50 minutes</span>
-                  </div>
-                  <div class="info-item">
-                    <i class="fas fa-child"></i>
-                    <span><strong>Public:</strong> 8 ans et +</span>
-                  </div>
+          </div>
+
+          <!-- Gallery Section -->
+          <div class="content-card">
+            <h2 class="card-title">
+              <i class="fas fa-images"></i>
+              Galerie Photos
+            </h2>
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <img src="assets/edjs img/Casse-Noisette_Web_007.webp" alt="Simple comme bonjour - Photo 1" class="gallery-img">
+                <div class="gallery-overlay">
+                  <i class="fas fa-expand"></i>
                 </div>
-                <div class="col-md-6">
-                  <div class="info-item">
-                    <i class="fas fa-calendar"></i>
-                    <span><strong>Période:</strong> du 12 au 16/12 à Rabat, du 17 au 20/12 à Casa</span>
-                  </div>
-                  <div class="info-item">
-                    <i class="fas fa-language"></i>
-                    <span><strong>Langue:</strong> Français</span>
-                  </div>
+              </div>
+              <div class="gallery-item">
+                <img src="assets/edjs img/Casse-Noisette_Web_013-1024x683.webp" alt="Simple comme bonjour - Photo 2" class="gallery-img">
+                <div class="gallery-overlay">
+                  <i class="fas fa-expand"></i>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="assets/edjs img/Casse-Noisette_Web_017-1024x683.webp" alt="Simple comme bonjour - Photo 3" class="gallery-img">
+                <div class="gallery-overlay">
+                  <i class="fas fa-expand"></i>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="assets/edjs img/Casse-Noisette_Web_007.webp" alt="Simple comme bonjour - Photo 4" class="gallery-img">
+                <div class="gallery-overlay">
+                  <i class="fas fa-expand"></i>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="assets/edjs img/Casse-Noisette_Web_013-1024x683.webp" alt="Simple comme bonjour - Photo 5" class="gallery-img">
+                <div class="gallery-overlay">
+                  <i class="fas fa-expand"></i>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="assets/edjs img/Casse-Noisette_Web_017-1024x683.webp" alt="Simple comme bonjour - Photo 6" class="gallery-img">
+                <div class="gallery-overlay">
+                  <i class="fas fa-expand"></i>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Artistic Team Card -->
+          <!-- Reviews Section -->
           <div class="content-card">
             <h2 class="card-title">
-              <i class="fas fa-users"></i>
-              Équipe Artistique
+              <i class="fas fa-star"></i>
+              Avis & Témoignages
             </h2>
-            <div class="feature-item">
-              <div class="feature-icon">
-                <i class="fas fa-star"></i>
+            <div class="reviews-container">
+              <div class="review-item">
+                <div class="review-header">
+                  <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="review-author">Sarah M. - Parent</div>
+                </div>
+                <p class="review-text">"Un spectacle magnifique qui a captivé mon fils de 9 ans du début à la fin. La poésie de Prévert prend vie de manière extraordinaire !"</p>
               </div>
-              <div>
-                <strong style="color: var(--text-dark);">Avec : Nathan (personnage)</strong>
-                <p style="color: var(--text-light); margin: 0; font-size: 0.9rem;">Un enfant de 8 ans plein de questions</p>
+              <div class="review-item">
+                <div class="review-header">
+                  <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="review-author">Ahmed K. - Enseignant</div>
+                </div>
+                <p class="review-text">"Parfait pour une sortie scolaire. Les enfants étaient fascinés et ont découvert la beauté de la poésie française."</p>
               </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">
-                <i class="fas fa-theater-masks"></i>
-              </div>
-              <div>
-                <strong style="color: var(--text-dark);">Poésie : Jacques Prévert</strong>
-                <p style="color: var(--text-light); margin: 0; font-size: 0.9rem;">Poésie sensible et engagée</p>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">
-                <i class="fas fa-hand-paper"></i>
-              </div>
-              <div>
-                <strong style="color: var(--text-dark);">Avec : Nathan (personnage)</strong>
-                <p style="color: var(--text-light); margin: 0; font-size: 0.9rem;">Un enfant de 8 ans plein de questions</p>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">
-                <i class="fas fa-heart"></i>
-              </div>
-              <div>
-                <strong style="color: var(--text-dark);">Genre : Spectacle familial</strong>
-                <p style="color: var(--text-light); margin: 0; font-size: 0.9rem;">Pour toute la famille</p>
+              <div class="review-item">
+                <div class="review-header">
+                  <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="review-author">Fatima L. - Grand-mère</div>
+                </div>
+                <p class="review-text">"Une belle expérience intergénérationnelle. J'ai accompagné mes petits-enfants et nous avons tous adoré !"</p>
               </div>
             </div>
           </div>
 
-          <!-- Special Features Card -->
+          <!-- FAQ Section -->
           <div class="content-card">
             <h2 class="card-title">
-              <i class="fas fa-magic"></i>
-              Caractéristiques Spéciales
+              <i class="fas fa-question-circle"></i>
+              Questions Fréquentes
             </h2>
-            <div class="numbered-item">
-              <div class="number-badge">1</div>
-              <div>
-                <strong style="color: var(--text-dark);">Poésie de Prévert</strong>
-                <p style="color: var(--text-light); margin: 0.5rem 0 0 0;">Découverte des mots sensibles et engagés du grand poète</p>
+            <div class="faq-container">
+              <div class="faq-item">
+                <div class="faq-question">
+                  <i class="fas fa-chevron-right"></i>
+                  <span>Le spectacle convient-il vraiment aux enfants de 8 ans ?</span>
+                </div>
+                <div class="faq-answer">
+                  Absolument ! Le spectacle a été spécialement conçu pour captiver l'attention des enfants à partir de 8 ans tout en restant accessible aux plus jeunes.
+                </div>
               </div>
-            </div>
-            <div class="numbered-item">
-              <div class="number-badge">2</div>
-              <div>
-                <strong style="color: var(--text-dark);">Spectacle Musical</strong>
-                <p style="color: var(--text-light); margin: 0.5rem 0 0 0;">Chansons inédites et grands classiques pour tous</p>
+              <div class="faq-item">
+                <div class="faq-question">
+                  <i class="fas fa-chevron-right"></i>
+                  <span>Y a-t-il un entracte pendant le spectacle ?</span>
+                </div>
+                <div class="faq-answer">
+                  Non, le spectacle dure 50 minutes en continu, ce qui est parfait pour maintenir l'attention des jeunes spectateurs.
+                </div>
               </div>
-            </div>
-            <div class="numbered-item">
-              <div class="number-badge">3</div>
-              <div>
-                <strong style="color: var(--text-dark);">Expérience Immersive</strong>
-                <p style="color: var(--text-light); margin: 0.5rem 0 0 0;">Un spectacle qui captive l'attention et stimule l'imagination</p>
-              </div>
-            </div>
-            <div class="numbered-item">
-              <div class="number-badge">4</div>
-              <div>
-                <strong style="color: var(--text-dark);">Valeurs Éducatives</strong>
-                <p style="color: var(--text-light); margin: 0.5rem 0 0 0;">Transmission de valeurs importantes à travers le divertissement</p>
+              <div class="faq-item">
+                <div class="faq-question">
+                  <i class="fas fa-chevron-right"></i>
+                  <span>Peut-on prendre des photos pendant le spectacle ?</span>
+                </div>
+                <div class="faq-answer">
+                  Les photos sont autorisées uniquement avant et après le spectacle, pas pendant la représentation pour respecter les artistes et les autres spectateurs.
+                </div>
               </div>
             </div>
           </div>
@@ -845,11 +1448,11 @@
   </section>
 
   <!-- Sticky Reservation Button -->
-  <div id="stickyReservation" style="position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 50; opacity: 0; visibility: hidden; transition: all 0.3s ease;">
-    <div style="background: white; border-radius: 3rem; padding: 0.75rem; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 4px solid var(--primary-color);">
-      <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="reservation-btn" style="animation: pulse 2s infinite; box-shadow: 0 4px 15px rgba(189, 207, 0, 0.4);">
+  <div id="stickyReservation" style="position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%); z-index: 50; opacity: 1; visibility: visible; transition: 0.3s;">
+    <div style="background: white; border-radius: 2rem; padding: 0.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.12); border: 2px solid var(--primary-color);">
+      <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="reservation-btn" style="animation: pulse 2s infinite; box-shadow: 0 2px 8px rgba(189, 207, 0, 0.3); padding: 0.5rem 1rem; font-size: 0.9rem;">
         <i class="fas fa-ticket-alt"></i>
-        Réserver Maintenant
+        Réserver
       </a>
     </div>
   </div>
@@ -858,10 +1461,9 @@
   <div class="vs-footer bg-title">
     <div class="vs-footer__top z-index-common space-extra-top space-extra-bottom">
       <img src="assets/img/footer/footer-element-2.png" alt="Footer Element" class="vs-footer__ele2">
-      <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#ffffff"></div>
       <div class="container">
         <div class="row gy-4 gx-xxl-5">
-          <div class="col-lg-4 col-md-6 wow animate__fadeInUp" data-wow-delay="0.25s">
+          <div class="col-lg-4 col-md-6">
             <div class="vs-footer__widget">
               <div class="vs-footer__logo text-center text-md-start mb-25">
                 <a href="/" class="vs-logo">
@@ -887,7 +1489,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 wow animate__fadeInUp" data-wow-delay="0.35s">
+          <div class="col-lg-4 col-md-6">
             <div class="vs-footer__widget">
               <h3 class="vs-footer__title" style="color: #cccccc;">Navigation</h3>
               <div class="vs-footer__menu">
@@ -903,7 +1505,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 wow animate__fadeInUp" data-wow-delay="0.45s">
+          <div class="col-lg-4 col-md-6">
             <div class="vs-footer__widget">
               <h3 class="vs-footer__title" style="color: #cccccc;">Instagram</h3>
               <div class="sidebar-gallery" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
@@ -942,7 +1544,7 @@
         <div class="row gy-3 gx-5 align-items-center justify-content-center justify-content-lg-between flex-column-reverse flex-lg-row">
           <div class="col-md-auto">
             <p class="vs-footer__copyright mb-0" style="color: #999999;">
-              Copyright © <span id="currentYear"></span>
+              Copyright &copy; <span id="currentYear"></span>
               <a href="/">L'École des jeunes spectateurs</a>. Tous droits réservés.
             </p>
           </div>
@@ -958,16 +1560,25 @@
   </div>
 
   <script>
-    // Show sticky reservation button after scrolling past hero section
+    // Sticky reservation button visibility
+    const stickyButton = document.getElementById('stickyReservation');
+    const footer = document.querySelector('.vs-footer');
+    
     window.addEventListener('scroll', function() {
-      const heroSection = document.querySelector('.spectacle-hero');
-      const stickyButton = document.getElementById('stickyReservation');
-      const heroHeight = heroSection.offsetHeight;
-      const scrollPosition = window.scrollY;
-
-      if (scrollPosition > heroHeight * 0.8) {
-        stickyButton.style.opacity = '1';
-        stickyButton.style.visibility = 'visible';
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const footerTop = footer.offsetTop;
+      const windowHeight = window.innerHeight;
+      
+      // Show button after scrolling 300px
+      if (scrollTop > 300) {
+        // Hide button when footer is visible
+        if (scrollTop + windowHeight >= footerTop) {
+          stickyButton.style.opacity = '0';
+          stickyButton.style.visibility = 'hidden';
+        } else {
+          stickyButton.style.opacity = '1';
+          stickyButton.style.visibility = 'visible';
+        }
       } else {
         stickyButton.style.opacity = '0';
         stickyButton.style.visibility = 'hidden';
@@ -978,8 +1589,34 @@
   <!-- JS Files -->
   <script src="assets/js/jquery-3.6.0.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/wow.min.js"></script>
   <script src="assets/js/main.js"></script>
+  
+  <script>
+    // VS Balls Implementation
+    function buildBallStrip(strip) {
+      const STEP = 13.9;
+      const ballColor = strip.dataset.ballsColor || '#ffffff';
+      const needed = Math.ceil(window.innerWidth / STEP);
+      
+      strip.innerHTML = '';
+      
+      for (let i = 0; i < needed; i++) {
+        const ball = document.createElement('div');
+        ball.className = 'vs-balls__ball';
+        ball.style.left = `${i * STEP}px`;
+        ball.style.backgroundColor = ballColor;
+        strip.appendChild(ball);
+      }
+    }
+
+    function renderAllStrips() {
+      document.querySelectorAll('.vs-balls').forEach(buildBallStrip);
+    }
+
+    // Initialize on DOM load and resize
+    document.addEventListener('DOMContentLoaded', renderAllStrips);
+    window.addEventListener('resize', renderAllStrips);
+  </script>
 
 </body>
 </html>
