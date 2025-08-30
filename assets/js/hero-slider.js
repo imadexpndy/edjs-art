@@ -111,6 +111,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // Preload images for smooth transitions
 function preloadHeroImages() {
     const imageUrls = [
+        'assets/img/Tara_Sur_La_Lune_Web_024.jpg',
+        'assets/img/Tara_Sur_La_Lune_Web_032.jpg',
         'assets/img/Tara_Sur_La_Lune_Web_041.jpg',
         'assets/img/Tara_Sur_La_Lune_Web_044.jpg',
         'assets/img/Tara_Sur_La_Lune_Web_025.jpg',
