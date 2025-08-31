@@ -732,139 +732,63 @@
       }
     }
 
-    /* Authentication Gate Styles */
-    .auth-gate-section {
-      padding: 80px 0;
+    /* User Type Selection Styles */
+    .user-type-selection {
+      padding: 60px 0;
       background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     }
 
-    .auth-gate-wrapper {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .auth-gate-header {
-      margin-bottom: 50px;
-    }
-
-    .auth-gate-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #2c3e50;
-      margin-bottom: 15px;
-    }
-
-    .auth-gate-subtitle {
-      font-size: 1.1rem;
-      color: #6c757d;
-      margin-bottom: 30px;
-    }
-
-    .auth-gate-divider {
-      width: 80px;
-      height: 4px;
-      background: #BDCF00;
-      margin: 0 auto;
-      border-radius: 2px;
-    }
-
-    .auth-gate-options {
+    .user-type-buttons {
       display: flex;
       justify-content: center;
-      gap: 40px;
-      margin-bottom: 40px;
+      gap: 30px;
+      margin-top: 40px;
       flex-wrap: wrap;
     }
 
-    .auth-option {
+    .user-type-btn {
       background: white;
       border: 3px solid #e9ecef;
       border-radius: 20px;
       padding: 40px 30px;
-      width: 320px;
+      width: 280px;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     }
 
-    .auth-option:hover {
+    .user-type-btn:hover {
       transform: translateY(-8px);
       border-color: #BDCF00;
       box-shadow: 0 15px 40px rgba(189, 207, 0, 0.2);
     }
 
-    .option-icon {
-      margin-bottom: 20px;
-    }
-
-    .option-icon i {
+    .user-type-btn i {
       font-size: 3rem;
       color: #28a745;
       transition: color 0.3s ease;
     }
 
-    .auth-option:hover .option-icon i {
+    .user-type-btn:hover i {
       color: #BDCF00;
     }
 
-    .option-content h3 {
-      font-size: 1.5rem;
+    .btn-title {
+      font-size: 1.4rem;
       font-weight: 700;
       color: #2c3e50;
-      margin-bottom: 10px;
+      margin: 0;
     }
 
-    .option-content p {
-      font-size: 1rem;
-      color: #6c757d;
-      margin-bottom: 25px;
-    }
-
-    .auth-btn {
-      background: #BDCF00;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 25px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1rem;
-    }
-
-    .auth-btn:hover {
-      background: #a8b800;
-      transform: translateY(-2px);
-    }
-
-    .guest-btn {
-      background: #BDCF00;
-    }
-
-    .guest-btn:hover {
-      background: #a8b800;
-    }
-
-    .auth-gate-footer {
-      margin-top: 30px;
-    }
-
-    .help-text {
+    .btn-subtitle {
       font-size: 0.9rem;
-      color: #6c757d;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .help-text i {
-      color: #BDCF00;
+      color: var(--primary-color);
+      margin: 0;
     }
 
     .back-btn {
@@ -905,19 +829,14 @@
     }
 
     @media (max-width: 768px) {
-      .auth-gate-options {
+      .user-type-buttons {
         flex-direction: column;
         align-items: center;
-        gap: 25px;
       }
       
-      .auth-option {
+      .user-type-btn {
         width: 100%;
-        max-width: 350px;
-      }
-
-      .auth-gate-title {
-        font-size: 2rem;
+        max-width: 300px;
       }
     }
   </style>
@@ -933,238 +852,6 @@
   <!-- Authentication Styles -->
   <link rel="stylesheet" href="assets/css/auth-styles.css">
   <link rel="stylesheet" href="assets/css/enhanced-auth-buttons.css">
-  
-  <style>
-    /* Enhanced Auth Modal Styles */
-    .auth-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(189, 207, 0, 0.1), rgba(0, 0, 0, 0.7));
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      animation: fadeIn 0.3s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideIn {
-      from { 
-        transform: translateY(-50px) scale(0.9);
-        opacity: 0;
-      }
-      to { 
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-    }
-
-    .auth-modal-content {
-      background: linear-gradient(145deg, #ffffff, #f8f9fa);
-      padding: 40px;
-      border-radius: 24px;
-      width: 90%;
-      max-width: 450px;
-      box-shadow: 
-        0 25px 80px rgba(0, 0, 0, 0.15),
-        0 0 0 1px rgba(255, 255, 255, 0.05);
-      position: relative;
-      animation: slideIn 0.4s ease-out;
-      border: 1px solid rgba(189, 207, 0, 0.1);
-    }
-
-    .auth-modal-header {
-      text-align: center;
-      margin-bottom: 35px;
-      position: relative;
-    }
-
-    .auth-modal-header::before {
-      content: '';
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, #BDCF00, #a8b800);
-      border-radius: 2px;
-    }
-
-    .auth-modal-header h3 {
-      margin: 0;
-      color: #2c3e50;
-      font-size: 2rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #2c3e50, #34495e);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .auth-modal-header p {
-      margin: 8px 0 0 0;
-      color: #7f8c8d;
-      font-size: 0.95rem;
-    }
-
-    .auth-modal-close {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: rgba(255, 255, 255, 0.9);
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      color: #666;
-      padding: 0;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .auth-modal-close:hover {
-      background: #BDCF00;
-      color: white;
-      transform: rotate(90deg);
-    }
-
-    .auth-modal-body .form-group {
-      margin-bottom: 25px;
-      position: relative;
-    }
-
-    .auth-modal-body label {
-      display: block;
-      margin-bottom: 8px;
-      color: #2c3e50;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .auth-modal-body .input-wrapper {
-      position: relative;
-    }
-
-    .auth-modal-body input {
-      width: 100%;
-      padding: 16px 20px;
-      border: 2px solid #e9ecef;
-      border-radius: 12px;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      background: rgba(255, 255, 255, 0.9);
-      box-sizing: border-box;
-    }
-
-    .auth-modal-body input:focus {
-      outline: none;
-      border-color: #BDCF00;
-      background: white;
-      box-shadow: 0 0 0 3px rgba(189, 207, 0, 0.1);
-      transform: translateY(-2px);
-    }
-
-    .auth-modal-body input::placeholder {
-      color: #bdc3c7;
-      font-style: italic;
-    }
-
-    .auth-submit-btn {
-      width: 100%;
-      background: linear-gradient(135deg, #BDCF00, #a8b800);
-      color: white;
-      border: none;
-      padding: 16px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      position: relative;
-      overflow: hidden;
-      margin-top: 10px;
-    }
-
-    .auth-submit-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s;
-    }
-
-    .auth-submit-btn:hover {
-      background: linear-gradient(135deg, #a8b800, #96a600);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(189, 207, 0, 0.3);
-    }
-
-    .auth-submit-btn:hover::before {
-      left: 100%;
-    }
-
-    .auth-submit-btn:active {
-      transform: translateY(0);
-    }
-
-    .auth-modal-footer {
-      text-align: center;
-      margin-top: 25px;
-      padding-top: 20px;
-      border-top: 1px solid #ecf0f1;
-    }
-
-    .auth-modal-footer p {
-      margin: 0;
-      color: #7f8c8d;
-      font-size: 0.9rem;
-    }
-
-    .auth-modal-footer a {
-      color: #BDCF00;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    .auth-modal-footer a:hover {
-      color: #a8b800;
-      text-decoration: underline;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 480px) {
-      .auth-modal-content {
-        padding: 30px 25px;
-        margin: 20px;
-      }
-      
-      .auth-modal-header h3 {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -1176,14 +863,12 @@
 	==============================-->
   <header class="vs-header">
   <!--==============================
-		Header Area
+		Mobile Menu
 	==============================-->
-  <header class="vs-header">
-  <!--==============================
-		Header Area
+    <!--==============================
+		Mobile Menu
 	==============================-->
-  <header class="vs-header">
-  <!--==============================
+    <!--==============================
 		Mobile Menu
 	==============================-->
   <div class="vs-menu-wrapper">
@@ -1405,8 +1090,48 @@
             </div>
             <div class="col-auto">
               <div class="vs-header__action">
-                <div class="vs-header__right d-none d-md-inline-flex" style="display: flex; gap: 15px; align-items: center;">
-                  <!-- Enhanced Auth buttons will be inserted here by JavaScript -->
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="vs-svg-assets" href="spectacles.html">
+                      SPECTACLES
+                      <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
+                        <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="vs-svg-assets" href="gallery.html">
+                      GALERIE
+                      <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
+                        <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="vs-svg-assets" href="blog.html">
+                      BLOG
+                      <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
+                        <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="vs-svg-assets" href="contact.html">
+                      CONTACT
+                      <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
+                        <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
+                      </svg>
+                    </a>
+                </ul>
+              </nav>
+            </div>
+            <div class="col-auto">
+              <div class="vs-header__action">
+                <div class="d-none d-xxl-inline-flex" style="display: flex; gap: 15px; align-items: center;">
+                  <a href="auth" class="vs-btn-login" style="background: transparent; color: #BDCF00; border: 2px solid #BDCF00; padding: 10px 20px; border-radius: 25px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; font-size: 14px;">Se connecter</a>
+                  <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="vs-btn"><span class="vs-btn__border"></span>Je m'inscris</a>
                 </div>
                 <button class="vs-menu-toggle style2 d-inline-block d-lg-none">
                   <i class="fal fa-bars"></i>
@@ -1417,10 +1142,6 @@
         </div>
       </div>
     </div>
-  </header>
-
-  </header>
-
   </header>
 
   <!-- Breadcrumb -->
@@ -1444,51 +1165,282 @@
   </div>
   <!-- Breadcrumb End -->
 
-
-  <!-- Authentication Gate Section -->
-  <section class="auth-gate-section" id="authGateSection">
+  <!-- Vs Session Time Area -->
+  <section class="vs-session--area space space-extra-bottom z-index-common overflow-hidden" style="background-color: #f8f9fa; background-image: url('assets/img/Asset 9@4x.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="vs-session--bg-image" data-vs-gsap-parallax-speed="5" data-vs-gsap-parallax-zoom style="display: none;">
+      <img src="assets/img/Tara_Sur_La_Lune_Web_020.jpg" alt="Tara Sur La Lune">
+    </div>
+    <div class="vs-session--ele1" data-vs-gsap-parallax-speed="2" data-vs-gsap-parallax-zoom>
+      <img src="assets/img/session/session-ele-1.png" alt="session ele">
+    </div>
     <div class="container">
-      <div class="auth-gate-wrapper">
-        <div class="auth-gate-header">
-          <h2 class="auth-gate-title">Accès aux Spectacles</h2>
-          <p class="auth-gate-subtitle">Choisissez votre mode d'accès pour découvrir nos spectacles</p>
-          <div class="auth-gate-divider"></div>
+      <div class="row justify-content-center">
+        <div class="col-lg-7 wow animate__fadeInUp" data-wow-delay="0.15s">
+          <div class="vs-title text-center title-anime animation-style2">
+            <div class="title-anime__wrap">
+              <span class="vs-title__sub text-dark">Prochaines Séances</span>
+              <h2 class="vs-title__main text-dark px-xl-5">Réservez Vos Places
+                Maintenant</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-10">
+          <div class="row gx-30">
+            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.2s">
+              <div class="vs-session">
+                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
+                <div class="vs-session__content">
+                  <div class="vs-session__meta">
+                    <span class="vs-session__date">
+                      <i class="fa-solid fa-calendar-days"></i>
+                      OCT
+                    </span>
+                    <span class="vs-session__time">
+                      <i class="fa-solid fa-clock"></i>
+                      10:00 AM
+                    </span>
+                  </div>
+                  <h3 class="vs-session__title">Le Petit Prince</h3>
+                  <p class="vs-session__text">du 3 au 7 à Rabat | du 8 au 11 à Casablanca</p>
+                  <a href="spectacle-le-petit-prince.html" class="vs-session__link">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.4s">
+              <div class="vs-session">
+                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
+                <div class="vs-session__content">
+                  <div class="vs-session__meta">
+                    <span class="vs-session__date">
+                      <i class="fa-solid fa-calendar-days"></i>
+                      NOV
+                    </span>
+                    <span class="vs-session__time">
+                      <i class="fa-solid fa-clock"></i>
+                      2:00 PM
+                    </span>
+                  </div>
+                  <h3 class="vs-session__title">L'eau-là</h3>
+                  <p class="vs-session__text">du 7 au 11 à Rabat | du 12 au 15 à Casablanca</p>
+                  <a href="spectacle-leau-la.html" class="vs-session__link">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.6s">
+              <div class="vs-session">
+                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
+                <div class="vs-session__content">
+                  <div class="vs-session__meta">
+                    <span class="vs-session__date">
+                      <i class="fa-solid fa-calendar-days"></i>
+                      DEC
+                    </span>
+                    <span class="vs-session__time">
+                      <i class="fa-solid fa-clock"></i>
+                      3:00 PM
+                    </span>
+                  </div>
+                  <h3 class="vs-session__title">Simple Comme Bonjour !</h3>
+                  <p class="vs-session__text">du 12 au 16 à Rabat | du 17 au 20 à Casablanca</p>
+                  <a href="spectacle-simple-comme-bonjour.html" class="vs-session__link">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.8s">
+              <div class="vs-session">
+                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
+                <div class="vs-session__content">
+                  <div class="vs-session__meta">
+                    <span class="vs-session__date">
+                      <i class="fa-solid fa-calendar-days"></i>
+                      JAN
+                    </span>
+                    <span class="vs-session__time">
+                      <i class="fa-solid fa-clock"></i>
+                      11:00 AM
+                    </span>
+                  </div>
+                  <h3 class="vs-session__title">Charlotte</h3>
+                  <p class="vs-session__text">du 23 au 27 à Rabat | du 28 au 31 à Casablanca</p>
+                  <a href="spectacle-charlotte.html" class="vs-session__link">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="1.0s">
+              <div class="vs-session">
+                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
+                <div class="vs-session__content">
+                  <div class="vs-session__meta">
+                    <span class="vs-session__date">
+                      <i class="fa-solid fa-calendar-days"></i>
+                      FEV
+                    </span>
+                    <span class="vs-session__time">
+                      <i class="fa-solid fa-clock"></i>
+                      4:00 PM
+                    </span>
+                  </div>
+                  <h3 class="vs-session__title">Estevanico</h3>
+                  <p class="vs-session__text">du 13 au 17 à Rabat | du 18 au 21 à Casablanca</p>
+                  <a href="spectacle-estevanico.html" class="vs-session__link">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="1.2s">
+              <div class="vs-session">
+                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
+                <div class="vs-session__content">
+                  <div class="vs-session__meta">
+                    <span class="vs-session__date">
+                      <i class="fa-solid fa-calendar-days"></i>
+                      MAR
+                    </span>
+                    <span class="vs-session__time">
+                      <i class="fa-solid fa-clock"></i>
+                      1:00 PM
+                    </span>
+                  </div>
+                  <h3 class="vs-session__title">L'enfant de l'arbre</h3>
+                  <p class="vs-session__text">du 27 au 31 à Rabat | du 1 au 4 avril à Casablanca</p>
+                  <a href="spectacle-lenfant-de-larbre.html" class="vs-session__link">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="1.4s">
+              <div class="vs-session">
+                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
+                <div class="vs-session__content">
+                  <div class="vs-session__meta">
+                    <span class="vs-session__date">
+                      <i class="fa-solid fa-calendar-days"></i>
+                      AVR
+                    </span>
+                    <span class="vs-session__time">
+                      <i class="fa-solid fa-clock"></i>
+                      3:30 PM
+                    </span>
+                  </div>
+                  <h3 class="vs-session__title">Antigone</h3>
+                  <p class="vs-session__text">du 15 au 19 à Rabat | du 20 au 23 à Casablanca</p>
+                  <a href="spectacle-antigone.html" class="vs-session__link">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="1.6s">
+              <div class="vs-session">
+                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
+                <div class="vs-session__content">
+                  <div class="vs-session__meta">
+                    <span class="vs-session__date">
+                      <i class="fa-solid fa-calendar-days"></i>
+                      MAI
+                    </span>
+                    <span class="vs-session__time">
+                      <i class="fa-solid fa-clock"></i>
+                      10:30 AM
+                    </span>
+                  </div>
+                  <h3 class="vs-session__title">Alice chez les merveilles</h3>
+                  <p class="vs-session__text">du 5 au 9 à Rabat | du 10 au 13 à Casablanca</p>
+                  <a href="spectacle-alice-chez-les-merveilles.html" class="vs-session__link">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#F8F8F8"></div>
+    <div class="vs-balls vs-balls--screen" data-balls-bottm="-6px" data-balls-color="#F8F8F8"></div>
+  </section>
+  <!-- Vs Session Time Area End -->
+
+  <!-- User Type Selection Section -->
+  <section class="user-type-selection" id="userTypeSection">
+    <div class="container">
+      <div class="selection-wrapper">
+        <div class="selection-header">
+          <h2 class="selection-title">Vous êtes ?</h2>
+          <p class="selection-subtitle">Choisissez votre profil pour découvrir nos spectacles sur mesure</p>
+          <div class="selection-divider"></div>
         </div>
 
-        <div class="auth-gate-options">
-          <div class="auth-option professional">
-            <div class="option-icon">
-              <i class="fas fa-building"></i>
+        <div class="user-type-grid">
+          <div class="user-type-card" data-type="school">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
             </div>
-            <div class="option-content">
-              <h3>Professionnel</h3>
-              <p>Écoles, associations, centres culturels</p>
-              <button class="auth-btn" id="professionalLoginBtn">
-                <span>Se connecter</span>
-                <i class="fas fa-sign-in-alt"></i>
+            <div class="card-content">
+              <h3 class="card-title">Une École</h3>
+              <p class="card-description">Établissements scolaires publics et privés</p>
+            </div>
+            <div class="card-footer">
+              <button class="card-btn">
+                <span>Choisir ce profil</span>
+                <i class="fas fa-arrow-right"></i>
               </button>
             </div>
           </div>
 
-          <div class="auth-option guest">
-            <div class="option-icon">
-              <i class="fas fa-eye"></i>
+          <div class="user-type-card" data-type="association">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fas fa-users"></i>
+              </div>
             </div>
-            <div class="option-content">
-              <h3>Visiteur</h3>
-              <p>Découvrir les spectacles en tant qu'invité</p>
-              <button class="auth-btn guest-btn" id="guestAccessBtn">
-                <span>Continuer en tant qu'invité</span>
+            <div class="card-content">
+              <h3 class="card-title">Une Association</h3>
+              <p class="card-description">Organisations à but non lucratif et centres culturels</p>
+            </div>
+            <div class="card-footer">
+              <button class="card-btn">
+                <span>Choisir ce profil</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="user-type-card" data-type="particulier">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fas fa-home"></i>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Un Particulier</h3>
+              <p class="card-description">Familles et spectateurs individuels</p>
+            </div>
+            <div class="card-footer">
+              <button class="card-btn">
+                <span>Choisir ce profil</span>
                 <i class="fas fa-arrow-right"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <div class="auth-gate-footer">
+        <div class="selection-footer">
           <p class="help-text">
             <i class="fas fa-info-circle"></i>
-            Les particuliers peuvent s'inscrire via le bouton "S'inscrire" en haut de page
+            Vous pourrez modifier votre choix à tout moment
           </p>
         </div>
       </div>
@@ -2541,42 +2493,7 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    // Auth gate functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        const professionalBtn = document.getElementById('professionalLoginBtn');
-        const guestBtn = document.getElementById('guestAccessBtn');
-        const authGateSection = document.getElementById('authGateSection');
-        const spectaclesGrid = document.querySelector('.spectacles-grid');
-
-        if (professionalBtn) {
-            professionalBtn.addEventListener('click', () => {
-                // Trigger login modal for professionals
-                if (typeof authManager !== 'undefined' && authManager.showAuthModal) {
-                    authManager.showAuthModal('login');
-                } else {
-                    console.error('Auth manager not available');
-                }
-            });
-        }
-
-        if (guestBtn) {
-            guestBtn.addEventListener('click', () => {
-                // Set guest mode and show spectacles
-                if (typeof authManager !== 'undefined') {
-                    authManager.isGuest = true;
-                }
-                // Hide auth gate and show spectacles
-                if (authGateSection) {
-                    authGateSection.style.display = 'none';
-                }
-                if (spectaclesGrid) {
-                    spectaclesGrid.style.display = 'block';
-                }
-            });
-        }
-    });
-
-    // Filter functionality  
+    // Filter functionality
     document.addEventListener('DOMContentLoaded', function() {
       const filterButtons = document.querySelectorAll('.filter-btn');
       const spectacleItems = document.querySelectorAll('.spectacle-item');
@@ -2638,89 +2555,5 @@
   <!-- Authentication Scripts -->
   <script src="assets/js/supabase-config.js"></script>
   <script src="assets/js/spectacles-auth.js"></script>
-  
-  <script>
-    // Professional login button functionality with debugging
-    function initAuthGateButtons() {
-      console.log('Initializing auth gate buttons...');
-      
-      const professionalBtn = document.getElementById('professionalLoginBtn');
-      const guestBtn = document.getElementById('guestAccessBtn');
-      
-      console.log('Professional button found:', !!professionalBtn);
-      console.log('Guest button found:', !!guestBtn);
-      
-      if (professionalBtn) {
-        professionalBtn.onclick = function(e) {
-          console.log('Professional login button clicked!');
-          e.preventDefault();
-          e.stopPropagation();
-          
-          // Check auth manager immediately
-          console.log('Auth manager available:', typeof authManager !== 'undefined');
-          console.log('Auth manager object:', authManager);
-          
-          if (typeof authManager !== 'undefined') {
-            console.log('showLoginModal method:', typeof authManager.showLoginModal);
-            if (authManager.showLoginModal) {
-              console.log('Calling showLoginModal...');
-              try {
-                authManager.showLoginModal();
-                console.log('showLoginModal called successfully');
-                
-                // Check if modal was actually created
-                setTimeout(() => {
-                  const modal = document.querySelector('.auth-modal');
-                  console.log('Modal found after creation:', !!modal);
-                  if (modal) {
-                    console.log('Modal display style:', window.getComputedStyle(modal).display);
-                    console.log('Modal visibility:', window.getComputedStyle(modal).visibility);
-                  }
-                }, 100);
-              } catch (error) {
-                console.error('Error calling showLoginModal:', error);
-              }
-            } else {
-              console.error('showLoginModal method not found');
-            }
-          } else {
-            console.error('authManager not available');
-          }
-        };
-        console.log('Professional button click handler attached');
-      }
-      
-      if (guestBtn) {
-        guestBtn.onclick = function(e) {
-          console.log('Guest button clicked!');
-          e.preventDefault();
-          e.stopPropagation();
-          
-          // Hide auth gate and show spectacles
-          const authGateSection = document.getElementById('authGateSection');
-          const spectaclesGrid = document.querySelector('.spectacles-grid');
-          
-          if (authGateSection) {
-            authGateSection.style.display = 'none';
-          }
-          if (spectaclesGrid) {
-            spectaclesGrid.style.display = 'block';
-          }
-          
-          // Set guest mode
-          if (typeof authManager !== 'undefined') {
-            authManager.isGuest = true;
-          }
-        };
-        console.log('Guest button click handler attached');
-      }
-    }
-    
-    // Wait for all scripts to load
-    window.addEventListener('load', function() {
-      console.log('Window loaded, initializing auth buttons...');
-      setTimeout(initAuthGateButtons, 2000);
-    });
-  </script>
 </body>
 </html>
