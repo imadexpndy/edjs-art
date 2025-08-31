@@ -110,15 +110,23 @@ Version: 1.0.0
   --vs-section-space-mobile: 80px;
 }
 
-/* Hero Image Styling */
-.vs-hero__image {
-  position: absolute;
-  right: 5%;
+/* Rocket Floating Animation */
+.rocket-floating {
+  position: fixed;
+  right: 8%;
   top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  max-width: 400px;
-  width: 100%;
+  z-index: 9999;
+  animation: rocketFloat 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes rocketFloat {
+  0%, 100% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(-90px);
+  }
 }
 
 .hero-feature-image {
@@ -7903,8 +7911,15 @@ blockquote.vs-quote .quote-author {
 /*------------------- 4.11. About  -------------------*/
 .vs-about--ele1, .vs-about--ele1h3 {
   position: absolute;
-  right: 10%;
-  bottom: 0;
+  right: 8%;
+  top: 50%;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  z-index: 999 !important;
+  animation: floatingMotion 3s ease-in-out infinite;
+  transform-origin: center center;
   /* Small devices */
 }
 @media (max-width: 767px) {
@@ -14634,10 +14649,10 @@ body, p, span, div,
 
 @keyframes floatingMotion {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(-50%);
   }
   50% {
-    transform: translateY(-15px);
+    transform: translateY(-80px);
   }
 }
 
