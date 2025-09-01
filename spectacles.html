@@ -317,7 +317,7 @@
     }
 
     .filter-subtitle {
-      color: #28a745;
+      color: #BDCF00;
       font-size: 1.1rem;
       margin-bottom: 40px;
     }
@@ -545,7 +545,7 @@
       position: absolute;
       top: 15px;
       right: 15px;
-      background: #28a745;
+      background: #BDCF00;
       color: white;
       padding: 6px 12px;
       border-radius: 20px;
@@ -801,7 +801,7 @@
 
     .option-icon i {
       font-size: 3rem;
-      color: #28a745;
+      color: #BDCF00;
       transition: color 0.3s ease;
     }
 
@@ -1406,7 +1406,14 @@
             <div class="col-auto">
               <div class="vs-header__action">
                 <div class="vs-header__right d-none d-md-inline-flex" style="display: flex; gap: 15px; align-items: center;">
-                  <!-- Enhanced Auth buttons will be inserted here by JavaScript -->
+                  <button class="auth-btn login-btn" onclick="window.open('https://hello-planet-app.vercel.app/auth', '_blank')">
+                    <i class="fas fa-user-circle"></i>
+                    Se connecter
+                  </button>
+                  <button class="auth-btn register-btn" onclick="window.open('https://hello-planet-app.vercel.app/auth', '_blank')">
+                    <i class="fas fa-star"></i>
+                    S'inscrire
+                  </button>
                 </div>
                 <button class="vs-menu-toggle style2 d-inline-block d-lg-none">
                   <i class="fal fa-bars"></i>
@@ -1599,46 +1606,123 @@
   </section>
 
   <!-- Spectacles Grid -->
-  <section class="spectacles-grid">
+  <section class="spectacles-grid" style="display: block; min-height: 400px; background: #f8f9fa; padding: 60px 0;" id="spectaclesSection">
     <div class="container">
       <div class="row g-4" id="spectacles-container">
 
         <!-- Spectacle 1: Charlotte -->
         <div class="col-lg-4 col-md-6 spectacle-item maternelle primaire" data-category="maternelle primaire">
-          <div class="spectacle-card fade-in-up">
-            <div class="card-image-wrapper">
-              <img src="assets/img/spectacles/charlotte.png" alt="Charlotte" class="card-image">
-              <div class="card-status">Disponible</div>
-              <div class="card-category">Marionnettes</div>
+          <div class="spectacle-card fade-in-up" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column;">
+            <div class="spectacle-card__img" style="position: relative; height: 250px; overflow: hidden;">
+              <img src="assets/img/spectacles/charlotte.png" alt="Charlotte" style="width: 100%; height: 100%; object-fit: contain;">
+              <div class="spectacle-card__overlay" style="position: absolute; top: 15px; right: 15px;">
+                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">Disponible</div>
+              </div>
             </div>
-            <div class="card-content">
-              <h3 class="card-title">Charlotte</h3>
-              <p class="card-description">
-                Une histoire touchante avec Juliere Gillis et Pascal Miralles, mettant en scène la mise en scène de Pascal Miralles dans un spectacle de marionnettes captivant.
+            <div class="spectacle-card__content" style="padding: 25px; flex: 1; display: flex; flex-direction: column;">
+              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <div class="spectacle-card__category" style="background: #f8f9fa; color: #6c757d; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">Marionnettes</div>
+                <div class="spectacle-card__duration" style="color: #BDCF00; font-weight: 600; font-size: 14px;">50 min</div>
+              </div>
+              <h3 class="spectacle-card__title" style="font-size: 22px; font-weight: 700; color: #2c3e50; margin-bottom: 15px; line-height: 1.3;">Charlotte</h3>
+              <p class="spectacle-card__desc" style="color: #6c757d; font-size: 14px; line-height: 1.5; margin-bottom: 20px; flex: 1;">
+                L'histoire touchante de Charlotte, une petite fille qui découvre la force de l'amitié et du courage. Un spectacle émouvant sur la résilience et l'espoir.
               </p>
-              <div class="card-meta">
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-calendar-alt"></i></div>
-                  <span>Oct - Nov 2025</span>
+              <div class="spectacle-card__info" style="margin-bottom: 25px;">
+                <div class="info-item" style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #6c757d; font-size: 14px;">
+                  <i class="fas fa-users" style="color: #BDCF00;"></i>
+                  <span>7-16 ans</span>
                 </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-users"></i></div>
-                  <span>4-10 ans</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-clock"></i></div>
-                  <span>50 min</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-map-marker-alt"></i></div>
-                  <span>Théâtre Mohammed V</span>
+                <div class="info-item" style="display: flex; align-items: center; gap: 8px; color: #6c757d; font-size: 14px;">
+                  <i class="fas fa-map-marker-alt" style="color: #BDCF00;"></i>
+                  <span>École du Jeune Spectateur</span>
                 </div>
               </div>
-              <div class="card-actions">
-                <a href="contact.html?spectacle=charlotte" class="btn-primary-custom">
+              <div class="spectacle-card__actions" style="display: flex; gap: 10px; margin-top: auto;">
+                <a href="contact.html?spectacle=charlotte" style="flex: 1; text-align: center; padding: 10px 15px; background: #BDCF00; color: white; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease;">
                   <i class="fas fa-ticket-alt"></i> Réserver
                 </a>
-                <a href="spectacle-charlotte.html" class="btn-secondary-custom">
+                <a href="spectacle-charlotte.html" style="flex: 1; text-align: center; padding: 10px 15px; background: transparent; color: #BDCF00; border: 2px solid #BDCF00; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease;">
+                  <i class="fas fa-info-circle"></i> Détails
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spectacle 2: Casse-Noisette -->
+        <div class="col-lg-4 col-md-6 spectacle-item maternelle primaire" data-category="maternelle primaire">
+          <div class="spectacle-card fade-in-up" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column;">
+            <div class="spectacle-card__img" style="position: relative; height: 250px; overflow: hidden;">
+              <img src="assets/img/spectacles/casse-noisette.png" alt="Casse-Noisette" style="width: 100%; height: 100%; object-fit: contain;">
+              <div class="spectacle-card__overlay" style="position: absolute; top: 15px; right: 15px;">
+                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">Disponible</div>
+              </div>
+            </div>
+            <div class="spectacle-card__content" style="padding: 25px; flex: 1; display: flex; flex-direction: column;">
+              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <div class="spectacle-card__category" style="background: #f8f9fa; color: #6c757d; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">Ballet</div>
+                <div class="spectacle-card__duration" style="color: #BDCF00; font-weight: 600; font-size: 14px;">90 min</div>
+              </div>
+              <h3 class="spectacle-card__title" style="font-size: 22px; font-weight: 700; color: #2c3e50; margin-bottom: 15px; line-height: 1.3;">Casse-Noisette</h3>
+              <p class="spectacle-card__desc" style="color: #6c757d; font-size: 14px; line-height: 1.5; margin-bottom: 20px; flex: 1;">
+                Le célèbre ballet de Tchaïkovski adapté pour les jeunes spectateurs, une féerie musicale et visuelle qui transporte les enfants dans un monde magique.
+              </p>
+              <div class="spectacle-card__info" style="margin-bottom: 25px;">
+                <div class="info-item" style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #6c757d; font-size: 14px;">
+                  <i class="fas fa-users" style="color: #BDCF00;"></i>
+                  <span>4-16 ans</span>
+                </div>
+                <div class="info-item" style="display: flex; align-items: center; gap: 8px; color: #6c757d; font-size: 14px;">
+                  <i class="fas fa-map-marker-alt" style="color: #BDCF00;"></i>
+                  <span>École du Jeune Spectateur</span>
+                </div>
+              </div>
+              <div class="spectacle-card__actions" style="display: flex; gap: 10px; margin-top: auto;">
+                <a href="contact.html?spectacle=casse-noisette" style="flex: 1; text-align: center; padding: 10px 15px; background: #BDCF00; color: white; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease;">
+                  <i class="fas fa-ticket-alt"></i> Réserver
+                </a>
+                <a href="spectacle-casse-noisette.html" style="flex: 1; text-align: center; padding: 10px 15px; background: transparent; color: #BDCF00; border: 2px solid #BDCF00; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease;">
+                  <i class="fas fa-info-circle"></i> Détails
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spectacle 3: Alice aux Pays des Merveilles -->
+        <div class="col-lg-4 col-md-6 spectacle-item primaire college" data-category="primaire college">
+          <div class="spectacle-card fade-in-up" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column;">
+            <div class="spectacle-card__img" style="position: relative; height: 250px; overflow: hidden;">
+              <img src="assets/img/spectacles/alice chez le .png" alt="Alice aux Pays des Merveilles" style="width: 100%; height: 100%; object-fit: contain;">
+              <div class="spectacle-card__overlay" style="position: absolute; top: 15px; right: 15px;">
+                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">Disponible</div>
+              </div>
+            </div>
+            <div class="spectacle-card__content" style="padding: 25px; flex: 1; display: flex; flex-direction: column;">
+              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <div class="spectacle-card__category" style="background: #f8f9fa; color: #6c757d; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">Théâtre</div>
+                <div class="spectacle-card__duration" style="color: #BDCF00; font-weight: 600; font-size: 14px;">75 min</div>
+              </div>
+              <h3 class="spectacle-card__title" style="font-size: 22px; font-weight: 700; color: #2c3e50; margin-bottom: 15px; line-height: 1.3;">Alice aux Pays des Merveilles</h3>
+              <p class="spectacle-card__desc" style="color: #6c757d; font-size: 14px; line-height: 1.5; margin-bottom: 20px; flex: 1;">
+                Suivez Alice dans son voyage extraordinaire à travers le pays des merveilles, une adaptation théâtrale pleine de poésie et d'imagination.
+              </p>
+              <div class="spectacle-card__info" style="margin-bottom: 25px;">
+                <div class="info-item" style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #6c757d; font-size: 14px;">
+                  <i class="fas fa-users" style="color: #BDCF00;"></i>
+                  <span>6-14 ans</span>
+                </div>
+                <div class="info-item" style="display: flex; align-items: center; gap: 8px; color: #6c757d; font-size: 14px;">
+                  <i class="fas fa-map-marker-alt" style="color: #BDCF00;"></i>
+                  <span>École du Jeune Spectateur</span>
+                </div>
+              </div>
+              <div class="spectacle-card__actions" style="display: flex; gap: 10px; margin-top: auto;">
+                <a href="contact.html?spectacle=alice-chez-les-merveilles" style="flex: 1; text-align: center; padding: 10px 15px; background: #BDCF00; color: white; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease;">
+                  <i class="fas fa-ticket-alt"></i> Réserver
+                </a>
+                <a href="spectacle-alice-chez-les-merveilles.html" style="flex: 1; text-align: center; padding: 10px 15px; background: transparent; color: #BDCF00; border: 2px solid #BDCF00; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease;">
                   <i class="fas fa-info-circle"></i> Détails
                 </a>
               </div>
@@ -2484,27 +2568,27 @@
               <h3 class="vs-footer__title" style="color: #cccccc;">Gallery</h3>
               <div class="sidebar-gallery" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
                 <div class="gallery-thumb" style="aspect-ratio: 1; overflow: hidden;">
-                  <img src="assets/img/Les_Trois_Brigands_Web_026.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: cover;">
+                  <img src="assets/img/Les_Trois_Brigands_Web_026.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: contain;">
                   <a href="assets/img/Les_Trois_Brigands_Web_026.jpg" class="popup-image gal-btn"><i class="fal fa-plus" style="color: white;"></i></a>
                 </div>
                 <div class="gallery-thumb" style="aspect-ratio: 1; overflow: hidden;">
-                  <img src="assets/img/Casse-Noisette_Web_007.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: cover;">
+                  <img src="assets/img/Casse-Noisette_Web_007.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: contain;">
                   <a href="assets/img/Casse-Noisette_Web_007.jpg" class="popup-image gal-btn"><i class="fal fa-plus" style="color: white;"></i></a>
                 </div>
                 <div class="gallery-thumb" style="aspect-ratio: 1; overflow: hidden;">
-                  <img src="assets/img/Le_Petit_Prince_Web_032.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: cover;">
+                  <img src="assets/img/Le_Petit_Prince_Web_032.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: contain;">
                   <a href="assets/img/Le_Petit_Prince_Web_032.jpg" class="popup-image gal-btn"><i class="fal fa-plus" style="color: white;"></i></a>
                 </div>
                 <div class="gallery-thumb" style="aspect-ratio: 1; overflow: hidden;">
-                  <img src="assets/img/Gretel_Hansel_Web_023.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: cover;">
+                  <img src="assets/img/Gretel_Hansel_Web_023.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: contain;">
                   <a href="assets/img/Gretel_Hansel_Web_023.jpg" class="popup-image gal-btn"><i class="fal fa-plus" style="color: white;"></i></a>
                 </div>
                 <div class="gallery-thumb" style="aspect-ratio: 1; overflow: hidden;">
-                  <img src="assets/img/Dans_la_peau_de_Cyrano_Web_016.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: cover;">
+                  <img src="assets/img/Dans_la_peau_de_Cyrano_Web_016.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: contain;">
                   <a href="assets/img/Dans_la_peau_de_Cyrano_Web_016.jpg" class="popup-image gal-btn"><i class="fal fa-plus" style="color: white;"></i></a>
                 </div>
                 <div class="gallery-thumb" style="aspect-ratio: 1; overflow: hidden;">
-                  <img src="assets/img/Tara_Sur_La_Lune_Web_012.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: cover;">
+                  <img src="assets/img/Tara_Sur_La_Lune_Web_012.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: contain;">
                   <a href="assets/img/Tara_Sur_La_Lune_Web_012.jpg" class="popup-image gal-btn"><i class="fal fa-plus" style="color: white;"></i></a>
                 </div>
               </div>
@@ -2636,8 +2720,8 @@
 
 
   <!-- Authentication Scripts -->
-  <script src="assets/js/supabase-config.js"></script>
-  <script src="assets/js/spectacles-auth.js"></script>
+  <!-- <script src="assets/js/spectacles-auth.js"></script> -->
+  <!-- <script src="assets/js/spectacles-list-sync.js"></script> -->
   
   <script>
     // Professional login button functionality with debugging

@@ -254,6 +254,9 @@
   <!-- Authentication Styles -->
   <link rel="stylesheet" href="assets/css/auth-styles.css">
   <link rel="stylesheet" href="assets/css/enhanced-auth-buttons.css">
+  <!-- Spectacle Sync -->
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/spectacle-sync.js"></script>
 </head>
 
 <body>
@@ -489,7 +492,14 @@
             <div class="col-auto">
               <div class="vs-header__action">
                 <div class="vs-header__right d-none d-md-inline-flex" style="display: flex; gap: 15px; align-items: center;">
-                  <!-- Enhanced Auth buttons will be inserted here by JavaScript -->
+                  <button class="auth-btn login-btn" onclick="window.open('https://hello-planet-app.vercel.app/auth', '_blank')">
+                    <i class="fas fa-user-circle"></i>
+                    Se connecter
+                  </button>
+                  <button class="auth-btn register-btn" onclick="window.open('https://hello-planet-app.vercel.app/auth', '_blank')">
+                    <i class="fas fa-star"></i>
+                    S'inscrire
+                  </button>
                 </div>
                 <button class="vs-menu-toggle style2 d-inline-block d-lg-none">
                   <i class="fal fa-bars"></i>
@@ -1683,15 +1693,7 @@
             <h1 class="hero-title">Casse-Noisette</h1>
             <p class="hero-subtitle">La féerie de Noël de Tchaïkovski</p>
             <div class="info-pills">
-              <span class="info-pill">
-                <i class="fas fa-clock"></i>55 min
-              </span>
-              <span class="info-pill">
-                <i class="fas fa-child"></i>4 ans et +
-              </span>
-              <span class="info-pill">
-                <i class="fas fa-snowflake"></i>Féerie
-              </span>
+              <!-- Dynamic content will be populated by spectacle-sync.js -->
             </div>
             <div class="hero-buttons">
               <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="btn-primary">

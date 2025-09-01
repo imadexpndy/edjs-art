@@ -21,11 +21,8 @@ class SpectaclesManager {
     }
 
     handleSpectaclesPageAccess() {
-        // Set up auth gate event listeners
-        this.setupAuthGateListeners();
-        
-        // If user is already logged in, hide auth gate and show spectacles
-        if (authManager.currentUser || authManager.isGuest) {
+        // Check if user is logged in or in guest mode
+        if (window.authManager && (window.authManager.currentUser || window.authManager.isGuest)) {
             this.hideAuthGate();
             this.loadSpectacles();
         }
@@ -87,8 +84,8 @@ class SpectaclesManager {
         const spectaclesGrid = document.querySelector('.spectacles-grid, .row');
         if (!spectaclesGrid) return;
 
-        // Clear existing content
-        spectaclesGrid.innerHTML = '';
+        // Don't clear existing content - let the sync script handle it
+        // spectaclesGrid.innerHTML = '';
 
         if (this.spectacles.length === 0) {
             spectaclesGrid.innerHTML = `
@@ -283,8 +280,8 @@ const spectaclesManager = new SpectaclesManager();
 
 // Global function to update spectacles list (called by auth manager)
 function updateSpectaclesList() {
-    if (spectaclesManager) {
-        spectaclesManager.userRole = authManager.userRole;
+    // Check if user is authenticated or guest
+    if (window.authManager && (window.authManager.userRole === USER_ROLES.SCHOOL || window.authManager.userRole === USER_ROLES.ASSOCIATION)) {     
         spectaclesManager.isGuest = authManager.isGuest;
         spectaclesManager.loadSpectacles();
     }

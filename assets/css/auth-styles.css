@@ -1,4 +1,113 @@
-/* Authentication Styles */
+/* Playful Authentication Button Styles */
+.auth-btn {
+    position: relative;
+    padding: 14px 28px;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-family: inherit;
+    min-width: 140px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform-origin: center;
+}
+
+/* Playful shape variations */
+.login-btn {
+    border-radius: 25px 8px 25px 8px;
+    background: linear-gradient(135deg, #BDCF00 0%, #9BB800 50%, #BDCF00 100%);
+    color: #fff;
+    margin-right: 12px;
+    animation: gentle-bounce 3s ease-in-out infinite;
+}
+
+.register-btn {
+    border-radius: 35px 15px 35px 15px;
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #2c2c2c 100%);
+    color: #fff;
+    animation: gentle-wiggle 4s ease-in-out infinite;
+    border: 2px solid #333;
+}
+
+/* Fun animations */
+@keyframes gentle-bounce {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-2px); }
+}
+
+@keyframes gentle-wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    75% { transform: rotate(-1deg); }
+}
+
+/* Hover effects */
+.login-btn:hover {
+    background: linear-gradient(135deg, #9BB800 0%, #7A9600 50%, #9BB800 100%);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(189, 207, 0, 0.4);
+    color: #fff;
+    border-radius: 30px;
+    animation: none;
+}
+
+.register-btn:hover {
+    background: linear-gradient(135deg, #1a1a1a 0%, #000 50%, #1a1a1a 100%);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border-radius: 40px 20px 40px 20px;
+    animation: none;
+    border-color: #000;
+}
+
+/* Icon styles */
+.auth-btn i {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.auth-btn:hover i {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* Sparkle effect */
+.auth-btn::after {
+    content: '✨';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 12px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.auth-btn:hover::after {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.auth-btn:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: transform 0.1s;
+}
+
+/* Legacy support for existing auth-buttons class */
 .auth-buttons {
     display: flex;
     gap: 15px;
