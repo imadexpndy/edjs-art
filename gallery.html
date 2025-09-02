@@ -848,14 +848,7 @@
             </ul>
           </li>
           <li class="menu-item-has-children">
-            <a class="vs-svg-assets" href="about.html">
-              À PROPOS
-              <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
-                <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
-              </svg>
-            </a>
             <ul class="sub-menu">
-              <li><a href="about.html">About Us</a></li>
               <li><a href="why-choose-us">Why Choose Us</a></li>
               <li><a href="service-details">Service Details</a></li>
             </ul>
@@ -906,12 +899,6 @@
             </ul>
           </li>
           <li>
-            <a class="vs-svg-assets" href="contact.html">
-              CONTACT
-              <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
-                <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
-              </svg>
-            </a>
           </li>
         </ul>
         <div class="mobile-contact-info" style="padding: 20px; border-top: 1px solid #eee; margin-top: 20px;">
@@ -983,12 +970,6 @@
                     </a>
                   </li>
                   <li>
-                    <a class="vs-svg-assets" href="about.html">
-                      À PROPOS
-                      <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
-                        <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
-                      </svg>
-                    </a>
                   </li>
                   <li>
                     <a class="vs-svg-assets" href="spectacles.html">
@@ -1023,12 +1004,6 @@
                     </a>
                   </li>
                   <li>
-                    <a class="vs-svg-assets" href="contact.html">
-                      CONTACT
-                      <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
-                        <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
-                      </svg>
-                    </a>
                   </li>
                 </ul>
               </nav>
@@ -1063,8 +1038,8 @@
 
 
   <!-- Breadcrumb -->
-  <div class="breadcrumb-wrapper z-index-common overflow-hidden">
-    <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#ffffff" style="top: -6px;"></div>
+  <div class="breadcrumb-wrapper z-index-common overflow-hidden" style="position: relative;">
+    <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#ffffff" style="position: absolute; top: -6px; left: 0; width: 100vw; height: 14px; z-index: 10;"></div>
     <div class="breadcrumb-wrapper__bg wow animate__fadeInUp" data-wow-delay="0.15s" data-vs-gsap-parallax-speed="2" data-vs-gsap-parallax-zoom>
       <img src="assets/edjs img/bg-header-home-v2.webp" alt="L'École des jeunes spectateurs Background">
     </div>
@@ -1074,13 +1049,61 @@
         <div class="breadcrumb-wrapper__menu--wrap">
           <ul class="breadcrumb-wrapper__menu">
             <li class="breadcrumb-wrapper__menu--item"><a href="/">Accueil</a></li>
-            <li class="breadcrumb-wrapper__menu--item">Galerie</li>
+            <li class="breadcrumb-wrapper__menu--item">Saison 2024/2025</li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="vs-balls vs-balls--screen" data-balls-bottom="-6px" data-balls-color="#ffffff"></div>
+    <div class="vs-balls vs-balls--screen" data-balls-bottom="-6px" data-balls-color="#ffffff" style="position: absolute; bottom: -6px; left: 0; width: 100vw; height: 14px; z-index: 10;"></div>
   </div>
+  
+  <script>
+  // Force vs-balls rendering with immediate execution
+  (function() {
+    function createBalls() {
+      const strips = document.querySelectorAll('.vs-balls');
+      strips.forEach(function(strip) {
+        const topAttr = strip.getAttribute('data-balls-top');
+        const bottomAttr = strip.getAttribute('data-balls-bottom');
+        const colorAttr = strip.getAttribute('data-balls-color') || '#ffffff';
+        
+        // Clear existing content
+        strip.innerHTML = '';
+        
+        // Calculate number of balls needed
+        const ballSize = 14;
+        const step = 13.9;
+        const screenWidth = window.innerWidth;
+        const needed = Math.ceil(screenWidth / step) + 5;
+        
+        // Create balls
+        for (let i = 0; i < needed; i++) {
+          const ball = document.createElement('div');
+          ball.className = 'vs-balls__ball';
+          ball.style.cssText = `
+            position: absolute;
+            left: ${i * step}px;
+            top: 0;
+            width: ${ballSize}px;
+            height: ${ballSize}px;
+            background-color: ${colorAttr};
+            border-radius: 50%;
+            display: block;
+          `;
+          strip.appendChild(ball);
+        }
+      });
+    }
+    
+    // Execute immediately and on various events
+    createBalls();
+    document.addEventListener('DOMContentLoaded', createBalls);
+    window.addEventListener('load', createBalls);
+    setTimeout(createBalls, 100);
+    setTimeout(createBalls, 500);
+    setTimeout(createBalls, 1000);
+  })();
+  </script>
   <!-- Breadcrumb End -->
 
   <!-- Main Content -->
@@ -1091,12 +1114,14 @@
       <div class="container">
         <div class="filter-container">
           <button class="filter-btn active" data-filter="all">Tous les Spectacles</button>
-          <button class="filter-btn" data-filter="casse-noisette">Casse-Noisette</button>
+          <button class="filter-btn" data-filter="casse-noisette">Casse-noisette</button>
           <button class="filter-btn" data-filter="petit-prince">Le Petit Prince</button>
-          <button class="filter-btn" data-filter="gretel-hansel">Gretel & Hansel</button>
-          <button class="filter-btn" data-filter="cyrano">Cyrano</button>
-          <button class="filter-btn" data-filter="brigands">Les Trois Brigands</button>
-          <button class="filter-btn" data-filter="scapin">Scapin</button>
+          <button class="filter-btn" data-filter="gretel-hansel">Gretel &amp; Hansel</button>
+          <button class="filter-btn" data-filter="cyrano">Dans la peau de Cyrano</button>
+          <button class="filter-btn" data-filter="brigands">Les trois brigands</button>
+          <button class="filter-btn" data-filter="scapin">Les fourberies de Scapin</button>
+          <button class="filter-btn" data-filter="timote">Monsieur Timoté et le secret de Mme Louche</button>
+          <button class="filter-btn" data-filter="tara">Tara sur la Lune</button>
         </div>
       </div>
     </section>
@@ -1448,7 +1473,7 @@
               <div class="vs-footer__menu">
                 <ul class="vs-footer__menu--list">
                   <li><a href="/">Accueil</a></li>
-                  <li><a href="about.html">À Propos</a></li>
+                  <li><a href="contact.html">À Propos</a></li>
                   <li><a href="spectacles.html">Spectacles</a></li>
                   <li><a href="gallery.html">Galerie</a></li>
                   <li><a href="partners.html">Partenaires</a></li>
@@ -1502,8 +1527,8 @@
           </div>
           <div class="col-md-auto">
             <ul class="vs-footer__bottom--menu">
-              <li><a href="about.html">Conditions Générales</a></li>
-              <li><a href="about.html">Politique de Confidentialité</a></li>
+              <li><a href="contact.html">Conditions Générales</a></li>
+              <li><a href="contact.html">Politique de Confidentialité</a></li>
             </ul>
           </div>
         </div>

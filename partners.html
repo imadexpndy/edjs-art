@@ -48,6 +48,62 @@
   <!-- Theme Custom CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <!-- Animate CSS -->
+  
+  <style>
+    /* School Partner Cards Styling */
+    .school-partner-card {
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid transparent;
+    }
+    
+    .school-partner-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      border-color: #BDCF00;
+    }
+    
+    .school-logo {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .school-logo img {
+      max-width: 100%;
+      max-height: 120px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    
+    .school-partner-card:hover .school-logo img {
+      transform: scale(1.05);
+    }
+    
+    /* Fade in animation */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
   <link rel="stylesheet" href="assets/css/animate.min.css">
 
   <style>
@@ -58,6 +114,13 @@
     /* Header Menu Hover Color Fix */
     .vs-header .main-menu ul li a svg path {
       fill: #BDCF00 !important;
+    }
+    
+    /* Fix oversized menu text */
+    .vs-header .main-menu ul li a {
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.5px !important;
     }
 
     /* Mobile Responsive Styles */
@@ -334,10 +397,6 @@
 	==============================-->
   <header class="vs-header">
   <!--==============================
-		Header Area
-	==============================-->
-  <header class="vs-header">
-  <!--==============================
 		Mobile Menu
 	==============================-->
   <div class="vs-menu-wrapper">
@@ -372,14 +431,7 @@
             </ul>
           </li>
           <li class="menu-item-has-children">
-            <a class="vs-svg-assets" href="about.html">
-              À PROPOS
-              <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
-                <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
-              </svg>
-            </a>
             <ul class="sub-menu">
-              <li><a href="about.html">About Us</a></li>
               <li><a href="why-choose-us">Why Choose Us</a></li>
               <li><a href="service-details">Service Details</a></li>
             </ul>
@@ -430,12 +482,6 @@
             </ul>
           </li>
           <li>
-            <a class="vs-svg-assets" href="contact.html">
-              CONTACT
-              <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
-                <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
-              </svg>
-            </a>
           </li>
         </ul>
         <div class="mobile-contact-info" style="padding: 20px; border-top: 1px solid #eee; margin-top: 20px;">
@@ -475,7 +521,7 @@
           <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
           <a href="https://behance.com/"><i class="fab fa-behance"></i></a>
         </div>
-        <p class="sidemenu-text sidemenu-text--footer text-center mb-0">Copyright © 2025 <a class="vs-theme-color" href="/">Toddly</a>.
+        <p class="sidemenu-text sidemenu-text--footer text-center mb-0">Copyright  2025 <a class="vs-theme-color" href="/">Toddly</a>.
           All
           rights reserved.
         </p>
@@ -507,12 +553,6 @@
                     </a>
                   </li>
                   <li>
-                    <a class="vs-svg-assets" href="about.html">
-                      À PROPOS
-                      <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
-                        <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
-                      </svg>
-                    </a>
                   </li>
                   <li>
                     <a class="vs-svg-assets" href="spectacles.html">
@@ -547,12 +587,6 @@
                     </a>
                   </li>
                   <li>
-                    <a class="vs-svg-assets" href="contact.html">
-                      CONTACT
-                      <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
-                        <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
-                      </svg>
-                    </a>
                   </li>
                 </ul>
               </nav>
@@ -578,14 +612,6 @@
         </div>
       </div>
     </div>
-  </header>
-
-  </header>
-
-  </header>
-
-
-
   </header>
 
   <!-- Breadcrumb -->
@@ -795,6 +821,318 @@
         </div>
 
       </div>
+
+      <!-- School Partners Section -->
+      <h2 class="section-title fade-in-up" style="margin-top: 5rem;">NOS ÉCOLES PARTENAIRES</h2>
+      <div class="row g-4">
+        
+        <!-- School 1: Alphonse Daudet -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/ALPHONSE-DAUDET-COULEUR-verticale-png.webp" alt="Alphonse Daudet">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 2: Bab Rayan -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/Bab Rayan Hakimi.jpg" alt="Bab Rayan">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 3: EFI -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/EFI logo .jpeg" alt="EFI">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 4: Renan -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/EXE-LOGO-RENAN-FINAL logo png.png" alt="Renan">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 5: Fondation Marocaine -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/Fondation marocaine vivo.png" alt="Fondation Marocaine">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 6: Fondation Zakoura -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/Fondation zakoura logo VIVO.jpg" alt="Fondation Zakoura">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 7: Bizet -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/LogoBizet-png.jpg" alt="Bizet">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 8: Molière -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/LogoMoliere__png.png" alt="Molière">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 9: SOS Village -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/Sos village.jpg" alt="SOS Village">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 10: Tibu -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/Tibu Hakimi.webp" alt="Tibu">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 11: Al Fath -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/al fath logo.webp" alt="Al Fath">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 12: Al Jabr -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/aljabr logo png.png" alt="Al Jabr">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 13: Camus -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/camus logo .jpeg" alt="Camus">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 14: Centre Lalla Meriem -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/centre lalla meriem Hakimi .jpeg" alt="Centre Lalla Meriem">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 15: Claude Bernard -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/claude bernard logo png.png" alt="Claude Bernard">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 16: RAS -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/cropped-Official-Logo_RAS png logo .png" alt="RAS">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 17: Descartes -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/descartes logo .png" alt="Descartes">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 18: EBM -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/ebm logo .png" alt="EBM">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 19: El Farabi -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/el farabi logo.jpeg" alt="El Farabi">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 20: Heure Joyeuse -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/heure joyeuse logo VIVO.png" alt="Heure Joyeuse">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 21: Greenwood -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/images greenwood .jpeg" alt="Greenwood">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 22: La Résidence -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/la residence logo.png" alt="La Résidence">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 23: Théophile Gautier -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/logo theophile gautier.png" alt="Théophile Gautier">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 24: Malraux -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/logo-Malraux-V2 png.png" alt="Malraux">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 25: La Fourmilière -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/logo-la-fourmiliere logo png.webp" alt="La Fourmilière">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 26: Petit Maintenon -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/logo-petit maintenon logo.webp" alt="Petit Maintenon">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 27: Jacques Chirac -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/loogojacques chirac logo png.png" alt="Jacques Chirac">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 28: Mama Tabiaa -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/mama tabiaa Vivo .png" alt="Mama Tabiaa">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 29: Massignon -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/massignon logo png.png" alt="Massignon">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 30: Mohammed Zerktouni -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/mohmd zerktouni .jpeg" alt="Mohammed Zerktouni">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 31: Omar Ibn Khattab -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/omar ibnou khattab .jpeg" alt="Omar Ibn Khattab">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 32: Paul Cézanne -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/paul cezanne logo .jpeg" alt="Paul Cézanne">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 33: Rahma Sami -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/rahma sami logo.png" alt="Rahma Sami">
+            </div>
+          </div>
+        </div>
+
+        <!-- School 34: Saint-Exupéry -->
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="school-partner-card fade-in-up">
+            <div class="school-logo">
+              <img src="assets/img/pschools/st exupery logo png.webp" alt="Saint-Exupéry">
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -838,7 +1176,7 @@
               <div class="vs-footer__menu">
                 <ul class="vs-footer__menu--list">
                   <li><a href="/">Accueil</a></li>
-                  <li><a href="about.html">À Propos</a></li>
+                  <li><a href="contact.html">À Propos</a></li>
                   <li><a href="spectacles.html">Spectacles</a></li>
                   <li><a href="gallery.html">Galerie</a></li>
                   <li><a href="partners.html">Partenaires</a></li>
@@ -849,7 +1187,7 @@
           </div>
           <div class="col-lg-4 col-md-6 wow animate__fadeInUp" data-wow-delay="0.45s">
             <div class="vs-footer__widget">
-              <h3 class="vs-footer__title" style="color: #cccccc;">Gallery</h3>
+              <h3 class="vs-footer__title" style="color: #cccccc;">GALERIE</h3>
               <div class="sidebar-gallery" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
                 <div class="gallery-thumb" style="aspect-ratio: 1; overflow: hidden;">
                   <img src="assets/img/Les_Trois_Brigands_Web_026.jpg" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: cover;">
@@ -892,8 +1230,8 @@
           </div>
           <div class="col-md-auto">
             <ul class="vs-footer__bottom--menu">
-              <li><a href="about.html">Conditions Générales</a></li>
-              <li><a href="about.html">Politique de Confidentialité</a></li>
+              <li><a href="contact.html">Conditions Générales</a></li>
+              <li><a href="contact.html">Politique de Confidentialité</a></li>
             </ul>
           </div>
         </div>

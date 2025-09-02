@@ -1218,14 +1218,7 @@
             </ul>
           </li>
           <li class="menu-item-has-children">
-            <a class="vs-svg-assets" href="about.html">
-              À PROPOS
-              <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
-                <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
-              </svg>
-            </a>
             <ul class="sub-menu">
-              <li><a href="about.html">About Us</a></li>
               <li><a href="why-choose-us">Why Choose Us</a></li>
               <li><a href="service-details">Service Details</a></li>
             </ul>
@@ -1276,12 +1269,6 @@
             </ul>
           </li>
           <li>
-            <a class="vs-svg-assets" href="contact.html">
-              CONTACT
-              <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
-                <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
-              </svg>
-            </a>
           </li>
         </ul>
         <div class="mobile-contact-info" style="padding: 20px; border-top: 1px solid #eee; margin-top: 20px;">
@@ -1353,12 +1340,6 @@
                     </a>
                   </li>
                   <li>
-                    <a class="vs-svg-assets" href="about.html">
-                      À PROPOS
-                      <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
-                        <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
-                      </svg>
-                    </a>
                   </li>
                   <li>
                     <a class="vs-svg-assets" href="spectacles.html">
@@ -1393,12 +1374,6 @@
                     </a>
                   </li>
                   <li>
-                    <a class="vs-svg-assets" href="contact.html">
-                      CONTACT
-                      <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
-                        <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
-                      </svg>
-                    </a>
                   </li>
                 </ul>
               </nav>
@@ -1431,8 +1406,8 @@
   </header>
 
   <!-- Breadcrumb -->
-  <div class="breadcrumb-wrapper z-index-common overflow-hidden">
-    <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#ffffff" style="top: -6px;"></div>
+  <div class="breadcrumb-wrapper z-index-common overflow-hidden" style="position: relative;">
+    <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#ffffff" style="position: absolute; top: -6px; left: 0; width: 100vw; height: 14px; z-index: 10;"></div>
     <div class="breadcrumb-wrapper__bg wow animate__fadeInUp" data-wow-delay="0.15s" data-vs-gsap-parallax-speed="2" data-vs-gsap-parallax-zoom>
       <img src="assets/edjs img/bg-header-home-v2.webp" alt="L'École des jeunes spectateurs Background">
     </div>
@@ -1447,8 +1422,56 @@
         </div>
       </div>
     </div>
-    <div class="vs-balls vs-balls--screen" data-balls-bottom="-6px" data-balls-color="#ffffff"></div>
+    <div class="vs-balls vs-balls--screen" data-balls-bottom="-6px" data-balls-color="#ffffff" style="position: absolute; bottom: -6px; left: 0; width: 100vw; height: 14px; z-index: 10;"></div>
   </div>
+  
+  <script>
+  // Force vs-balls rendering with immediate execution
+  (function() {
+    function createBalls() {
+      const strips = document.querySelectorAll('.vs-balls');
+      strips.forEach(function(strip) {
+        const topAttr = strip.getAttribute('data-balls-top');
+        const bottomAttr = strip.getAttribute('data-balls-bottom');
+        const colorAttr = strip.getAttribute('data-balls-color') || '#ffffff';
+        
+        // Clear existing content
+        strip.innerHTML = '';
+        
+        // Calculate number of balls needed
+        const ballSize = 14;
+        const step = 13.9;
+        const screenWidth = window.innerWidth;
+        const needed = Math.ceil(screenWidth / step) + 5;
+        
+        // Create balls
+        for (let i = 0; i < needed; i++) {
+          const ball = document.createElement('div');
+          ball.className = 'vs-balls__ball';
+          ball.style.cssText = `
+            position: absolute;
+            left: ${i * step}px;
+            top: 0;
+            width: ${ballSize}px;
+            height: ${ballSize}px;
+            background-color: ${colorAttr};
+            border-radius: 50%;
+            display: block;
+          `;
+          strip.appendChild(ball);
+        }
+      });
+    }
+    
+    // Execute immediately and on various events
+    createBalls();
+    document.addEventListener('DOMContentLoaded', createBalls);
+    window.addEventListener('load', createBalls);
+    setTimeout(createBalls, 100);
+    setTimeout(createBalls, 500);
+    setTimeout(createBalls, 1000);
+  })();
+  </script>
   <!-- Breadcrumb End -->
 
 
@@ -1457,8 +1480,8 @@
     <div class="container">
       <div class="auth-gate-wrapper">
         <div class="auth-gate-header">
-          <h2 class="auth-gate-title">Accès aux Spectacles</h2>
-          <p class="auth-gate-subtitle">Choisissez votre mode d'accès pour découvrir nos spectacles</p>
+          <h2 class="auth-gate-title">Je réserve mon spectacle</h2>
+          <p class="auth-gate-subtitle">Choisissez votre profil et réservez en quelques clics !</p>
           <div class="auth-gate-divider"></div>
         </div>
 
@@ -1469,7 +1492,7 @@
             </div>
             <div class="option-content">
               <h3>Professionnel</h3>
-              <p>Écoles, associations, centres culturels</p>
+              <p>Écoles privées, écoles publiques, associations</p>
               <button class="auth-btn" id="professionalLoginBtn">
                 <span>Se connecter</span>
                 <i class="fas fa-sign-in-alt"></i>
@@ -1482,8 +1505,8 @@
               <i class="fas fa-eye"></i>
             </div>
             <div class="option-content">
-              <h3>Visiteur</h3>
-              <p>Découvrir les spectacles en tant qu'invité</p>
+              <h3>PARTICULIER</h3>
+              <p>Parents, familles, amis, amoureux du théâtre</p>
               <button class="auth-btn guest-btn" id="guestAccessBtn">
                 <span>Continuer en tant qu'invité</span>
                 <i class="fas fa-arrow-right"></i>
@@ -1493,10 +1516,6 @@
         </div>
 
         <div class="auth-gate-footer">
-          <p class="help-text">
-            <i class="fas fa-info-circle"></i>
-            Les particuliers peuvent s'inscrire via le bouton "S'inscrire" en haut de page
-          </p>
         </div>
       </div>
     </div>
@@ -1610,653 +1629,481 @@
     <div class="container">
       <div class="row g-4" id="spectacles-container">
 
-        <!-- Spectacle 1: Charlotte -->
-        <div class="col-lg-4 col-md-6 spectacle-item maternelle primaire" data-category="maternelle primaire">
-          <div class="spectacle-card fade-in-up" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column;">
-            <div class="spectacle-card__img" style="position: relative; height: 250px; overflow: hidden;">
-              <img src="assets/img/spectacles/charlotte.png" alt="Charlotte" style="width: 100%; height: 100%; object-fit: contain;">
-              <div class="spectacle-card__overlay" style="position: absolute; top: 15px; right: 15px;">
-                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">Disponible</div>
+        <!-- Spectacle 1: Le Petit Prince - Octobre 2025 -->
+        <div class="col-lg-6 col-md-12 spectacle-item" data-category="primaire">
+          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
+            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden;">
+              <img src="assets/img/spectacles/petite prince.png" alt="Le Petit Prince" style="width: 100%; height: 100%; object-fit: contain; background: #f8f9fa;">
+              <img src="assets/img/spectacles elements/petit prince@4x.png" alt="Le Petit Prince Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
+              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
+                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
               </div>
             </div>
-            <div class="spectacle-card__content" style="padding: 25px; flex: 1; display: flex; flex-direction: column;">
-              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <div class="spectacle-card__category" style="background: #f8f9fa; color: #6c757d; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">Marionnettes</div>
-                <div class="spectacle-card__duration" style="color: #BDCF00; font-weight: 600; font-size: 14px;">50 min</div>
+            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
+              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; padding: 8px 18px; border-radius: 25px; font-size: 12px; font-weight: 700; text-transform: uppercase; box-shadow: 0 2px 8px rgba(189, 207, 0, 0.3);">Poétique</div>
+                <div class="spectacle-card__date" style="color: #888; font-size: 14px; font-weight: 600; background: #f8f9fa; padding: 6px 12px; border-radius: 15px;">Octobre 2025</div>
               </div>
-              <h3 class="spectacle-card__title" style="font-size: 22px; font-weight: 700; color: #2c3e50; margin-bottom: 15px; line-height: 1.3;">Charlotte</h3>
-              <p class="spectacle-card__desc" style="color: #6c757d; font-size: 14px; line-height: 1.5; margin-bottom: 20px; flex: 1;">
-                L'histoire touchante de Charlotte, une petite fille qui découvre la force de l'amitié et du courage. Un spectacle émouvant sur la résilience et l'espoir.
-              </p>
-              <div class="spectacle-card__info" style="margin-bottom: 25px;">
-                <div class="info-item" style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #6c757d; font-size: 14px;">
-                  <i class="fas fa-users" style="color: #BDCF00;"></i>
-                  <span>7-16 ans</span>
-                </div>
-                <div class="info-item" style="display: flex; align-items: center; gap: 8px; color: #6c757d; font-size: 14px;">
-                  <i class="fas fa-map-marker-alt" style="color: #BDCF00;"></i>
-                  <span>École du Jeune Spectateur</span>
-                </div>
-              </div>
-              <div class="spectacle-card__actions" style="display: flex; gap: 10px; margin-top: auto;">
-                <a href="contact.html?spectacle=charlotte" style="flex: 1; text-align: center; padding: 10px 15px; background: #BDCF00; color: white; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease;">
-                  <i class="fas fa-ticket-alt"></i> Réserver
-                </a>
-                <a href="spectacle-charlotte.html" style="flex: 1; text-align: center; padding: 10px 15px; background: transparent; color: #BDCF00; border: 2px solid #BDCF00; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease;">
-                  <i class="fas fa-info-circle"></i> Détails
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Spectacle 2: Casse-Noisette -->
-        <div class="col-lg-4 col-md-6 spectacle-item maternelle primaire" data-category="maternelle primaire">
-          <div class="spectacle-card fade-in-up" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column;">
-            <div class="spectacle-card__img" style="position: relative; height: 250px; overflow: hidden;">
-              <img src="assets/img/spectacles/casse-noisette.png" alt="Casse-Noisette" style="width: 100%; height: 100%; object-fit: contain;">
-              <div class="spectacle-card__overlay" style="position: absolute; top: 15px; right: 15px;">
-                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">Disponible</div>
-              </div>
-            </div>
-            <div class="spectacle-card__content" style="padding: 25px; flex: 1; display: flex; flex-direction: column;">
-              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <div class="spectacle-card__category" style="background: #f8f9fa; color: #6c757d; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">Ballet</div>
-                <div class="spectacle-card__duration" style="color: #BDCF00; font-weight: 600; font-size: 14px;">90 min</div>
-              </div>
-              <h3 class="spectacle-card__title" style="font-size: 22px; font-weight: 700; color: #2c3e50; margin-bottom: 15px; line-height: 1.3;">Casse-Noisette</h3>
-              <p class="spectacle-card__desc" style="color: #6c757d; font-size: 14px; line-height: 1.5; margin-bottom: 20px; flex: 1;">
-                Le célèbre ballet de Tchaïkovski adapté pour les jeunes spectateurs, une féerie musicale et visuelle qui transporte les enfants dans un monde magique.
-              </p>
-              <div class="spectacle-card__info" style="margin-bottom: 25px;">
-                <div class="info-item" style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #6c757d; font-size: 14px;">
-                  <i class="fas fa-users" style="color: #BDCF00;"></i>
-                  <span>4-16 ans</span>
-                </div>
-                <div class="info-item" style="display: flex; align-items: center; gap: 8px; color: #6c757d; font-size: 14px;">
-                  <i class="fas fa-map-marker-alt" style="color: #BDCF00;"></i>
-                  <span>École du Jeune Spectateur</span>
+              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; font-family: 'Amatic SC', cursive;">Le Petit Prince</h3>
+                <p class="spectacle-card__subtitle" style="color: #BDCF00; font-size: 14px; margin-bottom: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Versions française & Version Arabe</p>
+                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">Une adaptation poétique du chef-d'œuvre de Saint-Exupéry qui nous emmène dans un voyage extraordinaire à travers les étoiles.</p>
+                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(189, 207, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-clock" style="color: #BDCF00; font-size: 14px;"></i>
+                    </div>
+                    <span>55 min</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(189, 207, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-child" style="color: #BDCF00; font-size: 14px;"></i>
+                    </div>
+                    <span>8 ans+</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(189, 207, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-heart" style="color: #BDCF00; font-size: 14px;"></i>
+                    </div>
+                    <span>Poétique</span>
+                  </div>
                 </div>
               </div>
-              <div class="spectacle-card__actions" style="display: flex; gap: 10px; margin-top: auto;">
-                <a href="contact.html?spectacle=casse-noisette" style="flex: 1; text-align: center; padding: 10px 15px; background: #BDCF00; color: white; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease;">
-                  <i class="fas fa-ticket-alt"></i> Réserver
-                </a>
-                <a href="spectacle-casse-noisette.html" style="flex: 1; text-align: center; padding: 10px 15px; background: transparent; color: #BDCF00; border: 2px solid #BDCF00; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease;">
-                  <i class="fas fa-info-circle"></i> Détails
-                </a>
+              <div class="spectacle-card__actions" style="display: flex; gap: 12px;">
+                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(189, 207, 0, 0.3);" onclick="window.location.href='spectacles.html'">Réserver</button>
+                <button class="btn-details" style="flex: 1; background: white; color: #BDCF00; border: 2px solid #BDCF00; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-le-petit-prince.html'">Détails</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Spectacle 3: Alice aux Pays des Merveilles -->
-        <div class="col-lg-4 col-md-6 spectacle-item primaire college" data-category="primaire college">
-          <div class="spectacle-card fade-in-up" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column;">
-            <div class="spectacle-card__img" style="position: relative; height: 250px; overflow: hidden;">
-              <img src="assets/img/spectacles/alice chez le .png" alt="Alice aux Pays des Merveilles" style="width: 100%; height: 100%; object-fit: contain;">
-              <div class="spectacle-card__overlay" style="position: absolute; top: 15px; right: 15px;">
-                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">Disponible</div>
+        <!-- Spectacle 2: Tara sur la Lune - Octobre 2025 -->
+        <div class="col-lg-6 col-md-12 spectacle-item" data-category="primaire">
+          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
+            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden;">
+              <img src="assets/img/spectacles/tara sur la lune.png" alt="Tara sur la Lune" style="width: 100%; height: 100%; object-fit: contain; background: #f8f9fa;">
+              <img src="assets/img/spectacles elements/tara@4x.png" alt="Tara Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
+              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
+                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
               </div>
             </div>
-            <div class="spectacle-card__content" style="padding: 25px; flex: 1; display: flex; flex-direction: column;">
-              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <div class="spectacle-card__category" style="background: #f8f9fa; color: #6c757d; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">Théâtre</div>
-                <div class="spectacle-card__duration" style="color: #BDCF00; font-weight: 600; font-size: 14px;">75 min</div>
+            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
+              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #6f42c1, #8b5cf6); color: white; padding: 8px 18px; border-radius: 25px; font-size: 12px; font-weight: 700; text-transform: uppercase; box-shadow: 0 2px 8px rgba(111, 66, 193, 0.3);">Spatial</div>
+                <div class="spectacle-card__date" style="color: #888; font-size: 14px; font-weight: 600; background: #f8f9fa; padding: 6px 12px; border-radius: 15px;">Octobre 2025</div>
               </div>
-              <h3 class="spectacle-card__title" style="font-size: 22px; font-weight: 700; color: #2c3e50; margin-bottom: 15px; line-height: 1.3;">Alice aux Pays des Merveilles</h3>
-              <p class="spectacle-card__desc" style="color: #6c757d; font-size: 14px; line-height: 1.5; margin-bottom: 20px; flex: 1;">
-                Suivez Alice dans son voyage extraordinaire à travers le pays des merveilles, une adaptation théâtrale pleine de poésie et d'imagination.
-              </p>
-              <div class="spectacle-card__info" style="margin-bottom: 25px;">
-                <div class="info-item" style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #6c757d; font-size: 14px;">
-                  <i class="fas fa-users" style="color: #BDCF00;"></i>
-                  <span>6-14 ans</span>
-                </div>
-                <div class="info-item" style="display: flex; align-items: center; gap: 8px; color: #6c757d; font-size: 14px;">
-                  <i class="fas fa-map-marker-alt" style="color: #BDCF00;"></i>
-                  <span>École du Jeune Spectateur</span>
-                </div>
-              </div>
-              <div class="spectacle-card__actions" style="display: flex; gap: 10px; margin-top: auto;">
-                <a href="contact.html?spectacle=alice-chez-les-merveilles" style="flex: 1; text-align: center; padding: 10px 15px; background: #BDCF00; color: white; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease;">
-                  <i class="fas fa-ticket-alt"></i> Réserver
-                </a>
-                <a href="spectacle-alice-chez-les-merveilles.html" style="flex: 1; text-align: center; padding: 10px 15px; background: transparent; color: #BDCF00; border: 2px solid #BDCF00; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease;">
-                  <i class="fas fa-info-circle"></i> Détails
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Spectacle 2: Tara Sur La Lune -->
-        <div class="col-lg-4 col-md-6 spectacle-item maternelle primaire famille" data-category="maternelle primaire famille">
-          <div class="spectacle-card fade-in-up">
-            <div class="card-image-wrapper">
-              <img src="assets/img/spectacles/tara sur la lune.png" alt="Tara sur la Lune" class="card-image">
-
-              <div class="card-status">Disponible</div>
-              <div class="card-category">Musical</div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">تارا إلى القمر</h3>
-              <p class="card-description">
-                Une aventure spatiale musicale bilingue qui emmène les enfants dans un voyage extraordinaire à travers l'espace et l'imagination, pour les enfants de 5 ans et plus.
-              </p>
-              <div class="card-meta">
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-calendar-alt"></i></div>
-                  <span>Nov - Déc 2025</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-users"></i></div>
-                  <span>5+ ans</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-clock"></i></div>
-                  <span>1h10</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-map-marker-alt"></i></div>
-                  <span>Théâtre Mohammed V</span>
+              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; font-family: 'Amatic SC', cursive;">Tara sur la Lune</h3>
+                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">Une aventure spatiale captivante qui stimule l'imagination et émerveille petits et grands.</p>
+                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(111, 66, 193, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-clock" style="color: #6f42c1; font-size: 14px;"></i>
+                    </div>
+                    <span>45 min</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(111, 66, 193, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-child" style="color: #6f42c1; font-size: 14px;"></i>
+                    </div>
+                    <span>5 ans+</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(111, 66, 193, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-rocket" style="color: #6f42c1; font-size: 14px;"></i>
+                    </div>
+                    <span>Spatial</span>
+                  </div>
                 </div>
               </div>
-              <div class="card-actions">
-                <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="btn-primary-custom">
-                  <i class="fas fa-ticket-alt"></i> Réserver
-                </a>
-                <a href="spectacle-tara-sur-la-lune.html" class="btn-secondary-custom">
-                  <i class="fas fa-info-circle"></i> Détails
-                </a>
+              <div class="spectacle-card__actions" style="display: flex; gap: 12px;">
+                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(189, 207, 0, 0.3);" onclick="window.location.href='spectacles.html'">Réserver</button>
+                <button class="btn-details" style="flex: 1; background: white; color: #BDCF00; border: 2px solid #BDCF00; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-tara-sur-la-lune.html'">Détails</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Spectacle 3: L'Eau-Là -->
-        <div class="col-lg-4 col-md-6 spectacle-item primaire college famille" data-category="primaire college famille">
-          <div class="spectacle-card fade-in-up">
-            <div class="card-image-wrapper">
-              <img src="assets/img/spectacles/l'eau la.png" alt="L'Eau-Là" class="card-image">
-
-              <div class="card-status">Disponible</div>
-              <div class="card-category">Poétique</div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">L'Eau-Là</h3>
-              <p class="card-description">
-                Un spectacle poétique et rafraîchissant porté par la voix de Zaz, explorant la beauté et l'importance de l'eau dans nos vies et notre environnement.
-              </p>
-              <div class="card-meta">
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-calendar-alt"></i></div>
-                  <span>Jan - Fév 2026</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-users"></i></div>
-                  <span>8-16 ans</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-clock"></i></div>
-                  <span>1h15</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-map-marker-alt"></i></div>
-                  <span>Centre Culturel Sidi Belyout</span>
-                </div>
-              </div>
-              <div class="card-actions">
-                <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="btn-primary-custom">
-                  <i class="fas fa-ticket-alt"></i> Réserver
-                </a>
-                <a href="spectacle-leau-la.html" class="btn-secondary-custom">
-                  <i class="fas fa-info-circle"></i> Détails
-                </a>
+        <!-- Spectacle 3: L'eau-là - Novembre 2025 -->
+        <div class="col-lg-6 col-md-12 spectacle-item" data-category="primaire">
+          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
+            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden;">
+              <img src="assets/img/spectacles/l'eau la.png" alt="L'eau-là" style="width: 100%; height: 100%; object-fit: contain; background: #f8f9fa;">
+              <img src="assets/img/spectacles elements/leau@4x.png" alt="L'eau-là Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
+              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
+                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Spectacle 4: L'Enfant de l'Arbre -->
-        <div class="col-lg-4 col-md-6 spectacle-item maternelle primaire famille" data-category="maternelle primaire famille">
-          <div class="spectacle-card fade-in-up">
-            <div class="card-image-wrapper">
-              <img src="assets/img/spectacles/enfant de l'arbre.png" alt="L'Enfant et l'Arbre" class="card-image">
-
-              <div class="card-status">Disponible</div>
-              <div class="card-category">Conte Écologique</div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">L'Enfant de l'Arbre</h3>
-              <p class="card-description">
-                Un conte poétique sur la relation entre l'homme et la nature, racontant l'histoire d'un enfant qui grandit avec un arbre centenaire.
-              </p>
-              <div class="card-meta">
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-calendar-alt"></i></div>
-                  <span>Mar - Avr 2026</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-users"></i></div>
-                  <span>5-12 ans</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-clock"></i></div>
-                  <span>1h00</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-map-marker-alt"></i></div>
-                  <span>Théâtre National</span>
+            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
+              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 8px 18px; border-radius: 25px; font-size: 12px; font-weight: 700; text-transform: uppercase; box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);">Écologique</div>
+                <div class="spectacle-card__date" style="color: #888; font-size: 14px; font-weight: 600; background: #f8f9fa; padding: 6px 12px; border-radius: 15px;">Novembre 2025</div>
+              </div>
+              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; font-family: 'Amatic SC', cursive;">L'EAU-LÀ</h3>
+                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">Un spectacle poétique et rafraîchissant qui explore la beauté et l'importance de l'eau dans nos vies et notre environnement.</p>
+                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(40, 167, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-clock" style="color: #28a745; font-size: 14px;"></i>
+                    </div>
+                    <span>40 min</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(40, 167, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-child" style="color: #28a745; font-size: 14px;"></i>
+                    </div>
+                    <span>6 ans+</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(40, 167, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-tint" style="color: #28a745; font-size: 14px;"></i>
+                    </div>
+                    <span>Écologique</span>
+                  </div>
                 </div>
               </div>
-
-              <div class="card-actions">
-                <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="btn-primary-custom">
-                  <i class="fas fa-ticket-alt"></i> Réserver
-                </a>
-                <a href="spectacle-lenfant-de-larbre.html" class="btn-secondary-custom">
-                  <i class="fas fa-info-circle"></i> Détails
-                </a>
+              <div class="spectacle-card__actions" style="display: flex; gap: 12px;">
+                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(189, 207, 0, 0.3);" onclick="window.location.href='spectacles.html'">Réserver</button>
+                <button class="btn-details" style="flex: 1; background: white; color: #BDCF00; border: 2px solid #BDCF00; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-leau-la.html'">Détails</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Spectacle 5: Alice chez les Merveilles -->
-        <div class="col-lg-4 col-md-6 spectacle-item primaire college famille" data-category="primaire college famille">
-          <div class="spectacle-card fade-in-up">
-            <div class="card-image-wrapper">
-              <img src="assets/img/spectacles/alice chez le .png" alt="Alice aux Merveilles" class="card-image">
-
-              <div class="card-status">Disponible</div>
-              <div class="card-category">Conte Fantastique</div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Alice chez les Merveilles</h3>
-              <p class="card-description">
-                Une adaptation moderne et créative du classique de Lewis Carroll, plongeant Alice et le public dans un monde fantastique rempli de surprises.
-              </p>
-              <div class="card-meta">
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-calendar-alt"></i></div>
-                  <span>Déc 2025</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-users"></i></div>
-                  <span>6-14 ans</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-clock"></i></div>
-                  <span>1h20</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-map-marker-alt"></i></div>
-                  <span>Opéra de Casablanca</span>
-                </div>
-              </div>
-              <div class="card-actions">
-                <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="btn-primary-custom">
-                  <i class="fas fa-ticket-alt"></i> Réserver
-                </a>
-                <a href="spectacle-alice-chez-les-merveilles.html" class="btn-secondary-custom">
-                  <i class="fas fa-info-circle"></i> Détails
-                </a>
+        <!-- Spectacle 4: Mirath Atfal - Novembre 2025 -->
+        <div class="col-lg-6 col-md-12 spectacle-item" data-category="primaire">
+          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
+            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden;">
+              <img src="assets/img/spectacles/petite prince.png" alt="Mirath Atfal" style="width: 100%; height: 100%; object-fit: contain; background: #f8f9fa;">
+              <img src="assets/img/spectacles elements/petit prince@4x.png" alt="Mirath Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
+              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
+                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Spectacle 6: الأمير الصغير (Le Petit Prince) -->
-        <div class="col-lg-4 col-md-6 spectacle-item primaire famille" data-category="primaire famille">
-          <div class="spectacle-card fade-in-up">
-            <div class="card-image-wrapper">
-              <img src="assets/img/spectacles/petite prince.png" alt="الأمير الصغير" class="card-image">
-
-              <div class="card-status">Disponible</div>
-              <div class="card-category">Conte Musical Arabe</div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">الأمير الصغير</h3>
-              <p class="card-description">
-                L'adaptation en arabe du chef-d'œuvre de Saint-Exupéry, une histoire poétique universelle sur l'amitié, l'amour et les valeurs humaines essentielles.
-              </p>
-              <div class="card-meta">
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-calendar-alt"></i></div>
-                  <span>Fév - Mar 2026</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-users"></i></div>
-                  <span>6-12 ans</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-clock"></i></div>
-                  <span>1h15</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-map-marker-alt"></i></div>
-                  <span>Théâtre Mohammed V</span>
+            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
+              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #dc3545, #e74c3c); color: white; box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase;">Musical historique</div>
+                <div class="spectacle-card__date" style="color: #666; font-size: 14px; font-weight: 600;">Novembre 2025</div>
+              </div>
+              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; font-family: 'Amatic SC', cursive;">Mirath ATFAL</h3>
+                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">Un spectacle musical historique qui célèbre le patrimoine culturel et transmet les valeurs aux nouvelles générations.</p>
+                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(220, 53, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-clock" style="color: #dc3545; font-size: 14px;"></i>
+                    </div>
+                    <span>60 min</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(220, 53, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-child" style="color: #dc3545; font-size: 14px;"></i>
+                    </div>
+                    <span>5 ans+</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(220, 53, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-music" style="color: #dc3545; font-size: 14px;"></i>
+                    </div>
+                    <span>Musical historique</span>
+                  </div>
                 </div>
               </div>
-
-              <div class="card-actions">
-                <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="btn-primary-custom">
-                  <i class="fas fa-ticket-alt"></i> Réserver
-                </a>
-                <a href="spectacle-le-petit-prince.html" class="btn-secondary-custom">
-                  <i class="fas fa-info-circle"></i> Détails
-                </a>
+              <div class="spectacle-card__actions" style="display: flex; gap: 15px;">
+                <button class="btn-reserve" style="flex: 1; background: #BDCF00; color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacles.html'">Réserver</button>
+                <button class="btn-details" style="flex: 1; background: transparent; color: #BDCF00; border: 2px solid #BDCF00; padding: 15px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-mirath-atfal.html'">Détails</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Spectacle 7: Simple Comme Bonjour -->
-        <div class="col-lg-4 col-md-6 spectacle-item maternelle primaire famille" data-category="maternelle primaire famille">
-          <div class="spectacle-card fade-in-up">
-            <div class="card-image-wrapper">
-              <img src="assets/img/spectacles/simple.png" alt="Simple comme Bonjour" class="card-image">
-
-              <div class="card-status">Disponible</div>
-              <div class="card-category">Musical</div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Simple Comme Bonjour</h3>
-              <p class="card-description">
-                Un spectacle joyeux et interactif de Jacques Serres, célébrant la simplicité des petits bonheurs quotidiens avec musique, chants et sourires.
-              </p>
-              <div class="card-meta">
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-calendar-alt"></i></div>
-                  <span>Avr - Mai 2026</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-users"></i></div>
-                  <span>3-10 ans</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-clock"></i></div>
-                  <span>45 min</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-map-marker-alt"></i></div>
-                  <span>Centre Culturel Sidi Belyout</span>
-                </div>
-              </div>
-              <div class="card-actions">
-                <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="btn-primary-custom">
-                  <i class="fas fa-ticket-alt"></i> Réserver
-                </a>
-                <a href="spectacle-simple-comme-bonjour.html" class="btn-secondary-custom">
-                  <i class="fas fa-info-circle"></i> Détails
-                </a>
+        <!-- Spectacle 5: Simple comme bonjour - Décembre 2025 -->
+        <div class="col-lg-6 col-md-12 spectacle-item" data-category="primaire">
+          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
+            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden;">
+              <img src="assets/img/spectacles/simple.png" alt="Simple comme bonjour" style="width: 100%; height: 100%; object-fit: contain; background: #f8f9fa;">
+              <img src="assets/img/spectacles elements/simple comme bonjour@4x.png" alt="Simple Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
+              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
+                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Spectacle 8: Estuaires -->
-        <div class="col-lg-4 col-md-6 spectacle-item college lycee" data-category="college lycee">
-          <div class="spectacle-card fade-in-up">
-            <div class="card-image-wrapper">
-              <img src="assets/img/spectacles/estavine.png" alt="Estuaires" class="card-image">
-
-              <div class="card-status coming-soon">Bientôt</div>
-              <div class="card-category">Théâtre Contemporain</div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Estuaires</h3>
-              <p class="card-description">
-                Une pièce contemporaine explorant les rencontres entre différentes cultures, comme les eaux qui se mélangent dans un estuaire.
-              </p>
-              <div class="card-meta">
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-calendar-alt"></i></div>
-                  <span>Mai - Juin 2026</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-users"></i></div>
-                  <span>12-18 ans</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-clock"></i></div>
-                  <span>1h30</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-map-marker-alt"></i></div>
-                  <span>Institut Français</span>
+            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
+              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #ffc107, #ffcd39); color: white; padding: 8px 18px; border-radius: 25px; font-size: 12px; font-weight: 700; text-transform: uppercase; box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);">Musical</div>
+                <div class="spectacle-card__date" style="color: #888; font-size: 14px; font-weight: 600; background: #f8f9fa; padding: 6px 12px; border-radius: 15px;">Décembre 2025</div>
+              </div>
+              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; font-family: 'Amatic SC', cursive;">Simple comme bonjour</h3>
+                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">Un spectacle musical joyeux qui célèbre la simplicité des petits bonheurs quotidiens avec musique, chants et sourires.</p>
+                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(255, 193, 7, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-clock" style="color: #ffc107; font-size: 14px;"></i>
+                    </div>
+                    <span>60 min</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(255, 193, 7, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-child" style="color: #ffc107; font-size: 14px;"></i>
+                    </div>
+                    <span>6 ans+</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(255, 193, 7, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-music" style="color: #ffc107; font-size: 14px;"></i>
+                    </div>
+                    <span>Musical</span>
+                  </div>
                 </div>
               </div>
-              <div class="card-actions">
-                <a href="contact?spectacle=estuaires" class="btn-primary-custom" style="opacity: 0.7; cursor: not-allowed;">
-                  <i class="fas fa-clock"></i> Pré-réserver
-                </a>
-                <a href="spectacle-estevanico.html" class="btn-secondary-custom">
-                  <i class="fas fa-info-circle"></i> Détails
-                </a>
+              <div class="spectacle-card__actions" style="display: flex; gap: 12px;">
+                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(189, 207, 0, 0.3);" onclick="window.location.href='spectacles.html'">Réserver</button>
+                <button class="btn-details" style="flex: 1; background: white; color: #BDCF00; border: 2px solid #BDCF00; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-simple-comme-bonjour.html'">Détails</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Spectacle 9: Antigone -->
-        <div class="col-lg-4 col-md-6 spectacle-item college famille" data-category="college famille">
-          <div class="spectacle-card fade-in-up">
-            <div class="card-image-wrapper">
-              <img src="assets/img/spectacles/antigone.png" alt="Antigone" class="card-image">
-
-              <div class="card-status">Disponible</div>
-              <div class="card-category">Tragédie Classique</div>
+        <!-- Spectacle 6: Charlotte - Janvier 2026 -->
+        <div class="col-lg-6 col-md-12 spectacle-item" data-category="primaire">
+          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
+            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden;">
+              <img src="assets/img/spectacles/charlotte.png" alt="Charlotte" style="width: 100%; height: 100%; object-fit: contain; background: #f8f9fa;">
+              <img src="assets/img/spectacles elements/charlotte@4x.png" alt="Charlotte Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
+              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
+                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
+              </div>
             </div>
-            <div class="card-content">
-              <h3 class="card-title">Antigone</h3>
-              <p class="card-description">
-                La tragédie intemporelle de Sophocle adaptée pour les jeunes spectateurs. Une œuvre puissante sur la résistance, le courage et les valeurs morales face à la tyrannie.
-              </p>
-              <div class="card-meta">
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-calendar-alt"></i></div>
-                  <span>Mars - Avril 2025</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-users"></i></div>
-                  <span>14-18 ans</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-clock"></i></div>
-                  <span>1h45</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-map-marker-alt"></i></div>
-                  <span>Théâtre National</span>
+            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
+              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #e91e63, #f06292); color: white; padding: 8px 18px; border-radius: 25px; font-size: 12px; font-weight: 700; text-transform: uppercase; box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);">Émouvant</div>
+                <div class="spectacle-card__date" style="color: #888; font-size: 14px; font-weight: 600; background: #f8f9fa; padding: 6px 12px; border-radius: 15px;">Janvier 2026</div>
+              </div>
+              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; font-family: 'Amatic SC', cursive;">Charlotte</h3>
+                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">L'histoire touchante de Charlotte, une petite fille qui découvre la force de l'amitié et du courage face aux défis de la vie.</p>
+                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(233, 30, 99, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-clock" style="color: #e91e63; font-size: 14px;"></i>
+                    </div>
+                    <span>55 min</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(233, 30, 99, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-child" style="color: #e91e63; font-size: 14px;"></i>
+                    </div>
+                    <span>8 ans+</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(233, 30, 99, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-heart" style="color: #e91e63; font-size: 14px;"></i>
+                    </div>
+                    <span>Émouvant</span>
+                  </div>
                 </div>
               </div>
+              <div class="spectacle-card__actions" style="display: flex; gap: 12px;">
+                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(189, 207, 0, 0.3);" onclick="window.location.href='spectacles.html'">Réserver</button>
+                <button class="btn-details" style="flex: 1; background: white; color: #BDCF00; border: 2px solid #BDCF00; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-charlotte.html'">Détails</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-              <div class="card-actions">
-                <a href="contact?spectacle=antigone" class="btn-primary-custom">
-                  <i class="fas fa-ticket-alt"></i> Réserver
-                </a>
-                <a href="spectacle-antigone.html" class="btn-secondary-custom">
-                  <i class="fas fa-info-circle"></i> Détails
-                </a>
+        <!-- Spectacle 7: Estevanico - Février 2026 -->
+        <div class="col-lg-6 col-md-12 spectacle-item" data-category="primaire">
+          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
+            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden;">
+              <img src="assets/img/spectacles/estavine.png" alt="Estevanico" style="width: 100%; height: 100%; object-fit: contain; background: #f8f9fa;">
+              <img src="assets/img/spectacles elements/estevanico@4x.png" alt="Estevanico Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
+              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
+                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
+              </div>
+            </div>
+            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
+              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #17a2b8, #20c997); color: white; box-shadow: 0 2px 8px rgba(23, 162, 184, 0.3); padding: 8px 18px; border-radius: 25px; font-size: 12px; font-weight: 700; text-transform: uppercase;">Aventure</div>
+                <div class="spectacle-card__date" style="color: #888; font-size: 14px; font-weight: 600; background: #f8f9fa; padding: 6px 12px; border-radius: 15px;">Février 2026</div>
+              </div>
+              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; font-family: 'Amatic SC', cursive;">Estevanico</h3>
+                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">L'épopée extraordinaire d'Estevanico, explorateur et aventurier, dans un récit captivant d'exploration et de découverte.</p>
+                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(23, 162, 184, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-clock" style="color: #17a2b8; font-size: 14px;"></i>
+                    </div>
+                    <span>50 min</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(23, 162, 184, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-child" style="color: #17a2b8; font-size: 14px;"></i>
+                    </div>
+                    <span>10 ans+</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(23, 162, 184, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-compass" style="color: #17a2b8; font-size: 14px;"></i>
+                    </div>
+                    <span>Aventure</span>
+                  </div>
+                </div>
+              </div>
+              <div class="spectacle-card__actions" style="display: flex; gap: 12px;">
+                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(189, 207, 0, 0.3);" onclick="window.location.href='spectacles.html'">Réserver</button>
+                <button class="btn-details" style="flex: 1; background: white; color: #BDCF00; border: 2px solid #BDCF00; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-estevanico.html'">Détails</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Spectacle 10: Casse-Noisette -->
-        <div class="col-lg-4 col-md-6 spectacle-item maternelle primaire famille" data-category="maternelle primaire famille">
-          <div class="spectacle-card fade-in-up">
-            <div class="card-image-wrapper">
-              <img src="assets/img/spectacles/casse-noisette.png" alt="Casse-Noisette" class="card-image">
-
-              <div class="card-status">Disponible</div>
-              <div class="card-category">Ballet Musical</div>
+        <!-- Spectacle 8: L'enfant de l'arbre - Mars 2026 -->
+        <div class="col-lg-6 col-md-12 spectacle-item" data-category="primaire">
+          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
+            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden;">
+              <img src="assets/img/spectacles/enfant de l'arbre.png" alt="L'enfant de l'arbre" style="width: 100%; height: 100%; object-fit: contain; background: #f8f9fa;">
+              <img src="assets/img/spectacles elements/larbre@4x.png" alt="L'enfant Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
+              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
+                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
+              </div>
             </div>
-            <div class="card-content">
-              <h3 class="card-title">Casse-Noisette</h3>
-              <p class="card-description">
-                Le célèbre ballet de Tchaïkovski adapté pour les jeunes spectateurs, une féerie musicale et visuelle qui transporte les enfants dans un monde magique de Noël.
-              </p>
-              <div class="card-meta">
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-calendar-alt"></i></div>
-                  <span>Déc 2025 - Jan 2026</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-users"></i></div>
-                  <span>4-12 ans</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-clock"></i></div>
-                  <span>1h30</span>
-                </div>
-                <div class="meta-item">
-                  <div class="meta-icon"><i class="fas fa-map-marker-alt"></i></div>
-                  <span>Opéra de Casablanca</span>
+            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
+              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #28a745, #20c997); color: white; box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3); padding: 8px 18px; border-radius: 25px; font-size: 12px; font-weight: 700; text-transform: uppercase;">Nature</div>
+                <div class="spectacle-card__date" style="color: #888; font-size: 14px; font-weight: 600; background: #f8f9fa; padding: 6px 12px; border-radius: 15px;">Mars 2026</div>
+              </div>
+              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; font-family: 'Amatic SC', cursive;">L'enfant de l'arbre</h3>
+                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">Un conte poétique sur la relation entre l'homme et la nature, racontant l'histoire d'un enfant qui grandit avec un arbre centenaire.</p>
+                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(40, 167, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-clock" style="color: #28a745; font-size: 14px;"></i>
+                    </div>
+                    <span>1h05 min</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(40, 167, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-child" style="color: #28a745; font-size: 14px;"></i>
+                    </div>
+                    <span>10 ans+</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(40, 167, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-tree" style="color: #28a745; font-size: 14px;"></i>
+                    </div>
+                    <span>Nature</span>
+                  </div>
                 </div>
               </div>
-              <div class="card-actions">
-                <a href="contact.html?spectacle=casse-noisette" class="btn-primary-custom">
-                  <i class="fas fa-ticket-alt"></i> Réserver
-                </a>
-                <a href="spectacle-casse-noisette.html" class="btn-secondary-custom">
-                  <i class="fas fa-info-circle"></i> Détails
-                </a>
+              <div class="spectacle-card__actions" style="display: flex; gap: 12px;">
+                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(189, 207, 0, 0.3);" onclick="window.location.href='spectacles.html'">Réserver</button>
+                <button class="btn-details" style="flex: 1; background: white; color: #BDCF00; border: 2px solid #BDCF00; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-lenfant-de-larbre.html'">Détails</button>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Spectacle 9: Antigone, Sophocle - Avril 2026 -->
+        <div class="col-lg-6 col-md-12 spectacle-item" data-category="college">
+          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
+            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden;">
+              <img src="assets/img/spectacles/antigone.png" alt="Antigone, Sophocle" style="width: 100%; height: 100%; object-fit: contain; background: #f8f9fa;">
+              <img src="assets/img/spectacles elements/antigone@4x.png" alt="Antigone Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
+              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
+                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
+              </div>
+            </div>
+            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
+              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #6f42c1, #8b5cf6); color: white; box-shadow: 0 2px 8px rgba(111, 66, 193, 0.3); padding: 8px 18px; border-radius: 25px; font-size: 12px; font-weight: 700; text-transform: uppercase;">Tragédie classique</div>
+                <div class="spectacle-card__date" style="color: #888; font-size: 14px; font-weight: 600; background: #f8f9fa; padding: 6px 12px; border-radius: 15px;">Avril 2026</div>
+              </div>
+              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; font-family: 'Amatic SC', cursive;">Antigone, Sophocle</h3>
+                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">La tragédie intemporelle de Sophocle adaptée pour les jeunes spectateurs. Une œuvre puissante sur la résistance et les valeurs morales.</p>
+                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(111, 66, 193, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-clock" style="color: #6f42c1; font-size: 14px;"></i>
+                    </div>
+                    <span>60 min</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(111, 66, 193, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-child" style="color: #6f42c1; font-size: 14px;"></i>
+                    </div>
+                    <span>12 ans+</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(111, 66, 193, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-theater-masks" style="color: #6f42c1; font-size: 14px;"></i>
+                    </div>
+                    <span>Tragédie classique</span>
+                  </div>
+                </div>
+              </div>
+              <div class="spectacle-card__actions" style="display: flex; gap: 12px;">
+                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(189, 207, 0, 0.3);" onclick="window.location.href='spectacles.html'">Réserver</button>
+                <button class="btn-details" style="flex: 1; background: white; color: #BDCF00; border: 2px solid #BDCF00; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-antigone.html'">Détails</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spectacle 10: Alice chez les merveilles - Mai 2026 -->
+        <div class="col-lg-6 col-md-12 spectacle-item" data-category="primaire">
+          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
+            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden;">
+              <img src="assets/img/spectacles/alice chez le .png" alt="Alice chez les merveilles" style="width: 100%; height: 100%; object-fit: contain; background: #f8f9fa;">
+              <img src="assets/img/spectacles elements/alice@4x.png" alt="Alice Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
+              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
+                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
+              </div>
+            </div>
+            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
+              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #e83e8c, #fd7e14); color: white; box-shadow: 0 2px 8px rgba(232, 62, 140, 0.3); padding: 8px 18px; border-radius: 25px; font-size: 12px; font-weight: 700; text-transform: uppercase;">Conte fantastique</div>
+                <div class="spectacle-card__date" style="color: #888; font-size: 14px; font-weight: 600; background: #f8f9fa; padding: 6px 12px; border-radius: 15px;">Mai 2026</div>
+              </div>
+              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; font-family: 'Amatic SC', cursive;">Alice chez les merveilles</h3>
+                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">Une adaptation moderne et créative du classique de Lewis Carroll, plongeant Alice et le public dans un monde fantastique rempli de surprises.</p>
+                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(232, 62, 140, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-clock" style="color: #e83e8c; font-size: 14px;"></i>
+                    </div>
+                    <span>50 min</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(232, 62, 140, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-child" style="color: #e83e8c; font-size: 14px;"></i>
+                    </div>
+                    <span>5 ans+</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
+                    <div style="width: 32px; height: 32px; background: rgba(232, 62, 140, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fas fa-magic" style="color: #e83e8c; font-size: 14px;"></i>
+                    </div>
+                    <span>Conte fantastique</span>
+                  </div>
+                </div>
+              </div>
+              <div class="spectacle-card__actions" style="display: flex; gap: 12px;">
+                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(189, 207, 0, 0.3);" onclick="window.location.href='spectacles.html'">Réserver</button>
+                <button class="btn-details" style="flex: 1; background: white; color: #BDCF00; border: 2px solid #BDCF00; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-alice-chez-les-merveilles.html'">Détails</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Vs Session Time Area -->
-  <section class="vs-session--area space space-extra-bottom z-index-common overflow-hidden" style="background-color: #f8f9fa; background-image: url('assets/img/Asset 9@4x.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-    <div class="vs-session--bg-image" data-vs-gsap-parallax-speed="5" data-vs-gsap-parallax-zoom style="display: none;">
-      <img src="assets/img/Tara_Sur_La_Lune_Web_020.jpg" alt="Tara Sur La Lune">
-    </div>
-    <div class="vs-session--ele1" data-vs-gsap-parallax-speed="2" data-vs-gsap-parallax-zoom>
-      <img src="assets/img/session/session-ele-1.png" alt="session ele">
-    </div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-7 wow animate__fadeInUp" data-wow-delay="0.15s">
-          <div class="vs-title text-center title-anime animation-style2">
-            <div class="title-anime__wrap">
-              <span class="vs-title__sub text-dark">Prochaines Séances</span>
-              <h2 class="vs-title__main text-dark px-xl-5">Réservez Vos Places
-                Maintenant</h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-10">
-          <div class="row gx-30">
-            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.2s">
-              <div class="vs-session">
-                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                <div class="vs-session__content">
-                  <h3 class="vs-session__title">Le Petit Prince</h3>
-                  <time class="vs-session__time" datetime="14:00">du 3 au 7 à Rabat | du 8 au 11 à Casablanca</time>
-                </div>
-                <span class="vs-session__icon">
-                  <span style="font-size: 16px; font-weight: bold; color: white;">OCT</span>
-                </span>
-              </div>
-            </div>
-            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.3s">
-              <div class="vs-session">
-                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                <div class="vs-session__content">
-                  <h3 class="vs-session__title">L'eau-là</h3>
-                  <time class="vs-session__time" datetime="16:00">du 7 au 11 à Rabat | du 12 au 15 à Casablanca</time>
-                </div>
-                <span class="vs-session__icon">
-                  <span style="font-size: 16px; font-weight: bold; color: white;">NOV</span>
-                </span>
-              </div>
-            </div>
-            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.4s">
-              <div class="vs-session">
-                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                <div class="vs-session__content">
-                  <h3 class="vs-session__title">Simple comme bonjour !</h3>
-                  <time class="vs-session__time" datetime="15:00">du 12 au 16 à Rabat | du 17 au 20 à Casablanca</time>
-                </div>
-                <span class="vs-session__icon">
-                  <span style="font-size: 16px; font-weight: bold; color: white;">DÉC</span>
-                </span>
-              </div>
-            </div>
-            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.5s">
-              <div class="vs-session">
-                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                <div class="vs-session__content">
-                  <h3 class="vs-session__title">Charlotte</h3>
-                  <time class="vs-session__time" datetime="14:30">du 23 au 27 à Rabat | du 28 au 31 à Casablanca</time>
-                </div>
-                <span class="vs-session__icon">
-                  <span style="font-size: 16px; font-weight: bold; color: white;">JAN</span>
-                </span>
-              </div>
-            </div>
-            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.6s">
-              <div class="vs-session">
-                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                <div class="vs-session__content">
-                  <h3 class="vs-session__title">Estevanico</h3>
-                  <time class="vs-session__time" datetime="14:30">du 13 au 17 à Rabat | du 18 au 21 à Casablanca</time>
-                </div>
-                <span class="vs-session__icon">
-                  <span style="font-size: 16px; font-weight: bold; color: white;">FÉV</span>
-                </span>
-              </div>
-            </div>
-            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.7s">
-              <div class="vs-session">
-                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                <div class="vs-session__content">
-                  <h3 class="vs-session__title">L'enfant de l'arbre</h3>
-                  <time class="vs-session__time" datetime="14:30">du 27 au 31 à Rabat | du 1 au 4 avril à Casablanca</time>
-                </div>
-                <span class="vs-session__icon">
-                  <span style="font-size: 16px; font-weight: bold; color: white;">MAR</span>
-                </span>
-              </div>
-            </div>
-            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.8s">
-              <div class="vs-session">
-                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                <div class="vs-session__content">
-                  <h3 class="vs-session__title">Antigone</h3>
-                  <time class="vs-session__time" datetime="14:30">du 17 au 21 à Rabat | du 22 au 25 à Casablanca</time>
-                </div>
-                <span class="vs-session__icon">
-                  <span style="font-size: 16px; font-weight: bold; color: white;">AVR</span>
-                </span>
-              </div>
-            </div>
-            <div class="col-lg-6 wow animate__fadeInUp" data-wow-delay="0.9s">
-              <div class="vs-session">
-                <img class="vs-session__bg" src="assets/img/elements/session-main-block.png" alt="">
-                <div class="vs-session__content">
-                  <h3 class="vs-session__title">Alice chez les merveilles</h3>
-                  <time class="vs-session__time" datetime="14:30">du 15 au 19 à Rabat | du 20 au 23 à Casablanca</time>
-                </div>
-                <span class="vs-session__icon">
-                  <span style="font-size: 16px; font-weight: bold; color: white;">MAI</span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="vs-balls vs-balls--screen" data-balls-top="-6px" data-balls-color="#F8F8F8"></div>
-    <div class="vs-balls vs-balls--screen" data-balls-bottm="-6px" data-balls-color="#F8F8F8"></div>
-  </section>
-  <!-- Vs Session Time Area End -->
 
 
   <!-- JavaScript for User Type Selection and Filtering -->
@@ -2554,7 +2401,7 @@
               <div class="vs-footer__menu">
                 <ul class="vs-footer__menu--list">
                   <li><a href="/">Accueil</a></li>
-                  <li><a href="about.html">À Propos</a></li>
+                  <li><a href="contact.html">À Propos</a></li>
                   <li><a href="spectacles.html">Spectacles</a></li>
                   <li><a href="gallery.html">Galerie</a></li>
                   <li><a href="blog.html">Blog</a></li>
@@ -2608,8 +2455,8 @@
           </div>
           <div class="col-md-auto">
             <ul class="vs-footer__bottom--menu">
-              <li><a href="about.html">Conditions Générales</a></li>
-              <li><a href="about.html">Politique de Confidentialité</a></li>
+              <li><a href="contact.html">Conditions Générales</a></li>
+              <li><a href="contact.html">Politique de Confidentialité</a></li>
             </ul>
           </div>
         </div>

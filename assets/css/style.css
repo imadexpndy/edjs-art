@@ -5353,7 +5353,7 @@ a.text-theme:hover,
   font-weight: 700;
   color: var(--vs-text-color);
   padding-right: 9%;
-  text-transform: capitalize;
+  text-transform: none;
   /* Small devices */
 }
 @media (max-width: 767px) {
@@ -5568,6 +5568,7 @@ a.text-theme:hover,
   padding-top: 140px;
   padding-bottom: 135px;
   background-color: var(--vs-title-color);
+  position: relative;
   min-height: 465px;
   display: flex;
   align-items: center;
@@ -7375,7 +7376,7 @@ blockquote.vs-quote .quote-author {
   font-size: 18px;
   font-weight: 500;
   color: var(--vs-body-color);
-  text-transform: capitalize;
+  text-transform: none;
   margin: 0 0 30px 0;
 }
 .vs-hero__character {
@@ -15522,3 +15523,8 @@ body, p, span, div,
 }
 
 /* Enhanced Footer Styles End */
+
+/* Fix hero text capitalization */
+.vs-hero__desc {
+  text-transform: none !important;
+}

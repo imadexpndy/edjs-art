@@ -1822,18 +1822,26 @@
     const STEP = BALL_SIZE - OVERLAP;
 
     function buildBallStrip(strip) {
-      const topAttr = strip.dataset.ballsTop;
-      const bottomAttr = strip.dataset.ballsBottom;
-      const colorAttr = strip.dataset.ballsColor;
+      const topAttr = strip.getAttribute('data-balls-top');
+      const bottomAttr = strip.getAttribute('data-balls-bottom');
+      const colorAttr = strip.getAttribute('data-balls-color');
 
-      strip.style.top = topAttr ?? '';
-      strip.style.bottom = topAttr ? '' : (bottomAttr ?? '-8px');
+      strip.style.position = 'absolute';
+      strip.style.width = '100vw';
+      strip.style.height = '14px';
+      strip.style.display = 'flex';
+      strip.style.top = topAttr || '';
+      strip.style.bottom = topAttr ? '' : (bottomAttr || '-6px');
+      strip.style.left = '0';
+      strip.style.zIndex = '2';
+      strip.style.pointerEvents = 'none';
 
       const ballColor = colorAttr || '#ffffff';
 
       strip.innerHTML = ''; // clear previous
 
-      const needed = Math.ceil(strip.offsetWidth / STEP) + 5;
+      const containerWidth = window.innerWidth;
+      const needed = Math.ceil(containerWidth / STEP) + 5;
 
       for (let i = 0; i < needed; i++) {
         const ball = document.createElement('div');
@@ -1848,7 +1856,17 @@
       document.querySelectorAll('.vs-balls').forEach(buildBallStrip);
     }
 
-    window.addEventListener('DOMContentLoaded', renderAllStrips);
+    // Multiple initialization attempts to ensure vs-balls render
+    window.addEventListener('DOMContentLoaded', function() {
+      setTimeout(renderAllStrips, 100);
+      setTimeout(renderAllStrips, 500);
+      setTimeout(renderAllStrips, 1000);
+    });
+    
+    window.addEventListener('load', function() {
+      setTimeout(renderAllStrips, 100);
+    });
+    
     window.addEventListener('resize', renderAllStrips);
   })();
 })(jQuery);
