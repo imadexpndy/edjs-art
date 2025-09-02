@@ -469,21 +469,35 @@
 
     .spectacle-card {
       background: white;
-      border-radius: 24px;
+      border-radius: 35px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       height: 100%;
       display: flex;
       flex-direction: column;
       position: relative;
-      border: 1px solid rgba(0,0,0,0.04);
+      margin: 20px 0;
     }
 
     .spectacle-card:hover {
-      transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(189, 207, 0, 0.1);
-      border-color: rgba(189, 207, 0, 0.2);
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 35px 80px rgba(0,0,0,0.2);
+    }
+
+    .spectacle-card:hover .spectacle-card__img img:first-child {
+      transform: scale(1.1);
+    }
+
+    .spectacle-card:hover .btn-reserve {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(44, 62, 80, 0.3);
+    }
+
+    .spectacle-card:hover .btn-details {
+      transform: translateY(-2px);
+      background: #2c3e50;
+      color: white;
     }
 
     .card-image-wrapper {
@@ -509,8 +523,8 @@
       image-rendering: crisp-edges;
     }
 
-    .spectacle-card:hover .card-image {
-      transform: scale(1.05);
+    .spectacle-card .spectacle-card__img img:first-child {
+      transition: transform 0.4s ease;
     }
 
     .card-overlay {
@@ -527,8 +541,16 @@
       justify-content: center;
     }
 
-    .spectacle-card:hover .card-overlay {
-      opacity: 1;
+    .btn-reserve, .btn-details {
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .btn-reserve:hover {
+      background: linear-gradient(135deg, #34495e, #2c3e50) !important;
+    }
+
+    .btn-details:hover {
+      transform: translateY(-1px);
     }
 
     .overlay-content {
@@ -1634,47 +1656,55 @@
 
         <!-- Spectacle 1: Le Petit Prince - Octobre 2025 -->
         <div class="col-lg-6 col-md-12 spectacle-item" data-category="primaire">
-          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
-            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden; background-image: url('assets/img/Asset 9@4x.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-              <img src="assets/img/spectacles/petite prince.png" alt="Le Petit Prince" style="width: 100%; height: 100%; object-fit: contain;">
-              <img src="assets/img/spectacles elements/petit prince@4x.png" alt="Le Petit Prince Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
-              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
-                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
-              </div>
+          <div class="spectacle-card fade-in-up visible" style="background: linear-gradient(145deg, #BDCF00, #a8b800); border-radius: 35px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; margin: 20px 0;">
+            <!-- Status Badge -->
+            <div style="position: absolute; top: 25px; right: 25px; z-index: 10;">
+              <div class="spectacle-card__status available" style="background: rgba(255,255,255,0.95); color: #BDCF00; padding: 10px 20px; border-radius: 30px; font-size: 14px; font-weight: 800; text-transform: uppercase; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">Disponible</div>
             </div>
-            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
-              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; padding: 8px 18px; border-radius: 25px; font-size: 12px; font-weight: 700; text-transform: uppercase; box-shadow: 0 2px 8px rgba(189, 207, 0, 0.3);">Poétique</div>
-                <div class="spectacle-card__date" style="color: #888; font-size: 14px; font-weight: 600; background: #f8f9fa; padding: 6px 12px; border-radius: 15px;">Octobre 2025</div>
+            
+            <!-- Main Content Card -->
+            <div style="background: white; margin: 25px; border-radius: 25px; overflow: hidden; flex: 1; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+              <!-- Image Section -->
+              <div class="spectacle-card__img" style="position: relative; height: 280px; overflow: hidden; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <img src="assets/img/spectacles/petite prince.png" alt="Le Petit Prince" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0;">
+                <img src="assets/img/spectacles elements/petit prince@4x.png" alt="Le Petit Prince Character" style="position: absolute; bottom: -10px; right: 15px; width: 120px; height: 120px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
               </div>
-              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
-                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; font-family: 'Amatic SC', cursive;">Le Petit Prince</h3>
-                <p class="spectacle-card__subtitle" style="color: #BDCF00; font-size: 14px; margin-bottom: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Versions française & Version Arabe</p>
-                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">Une adaptation poétique du chef-d'œuvre de Saint-Exupéry qui nous emmène dans un voyage extraordinaire à travers les étoiles.</p>
-                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
-                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
-                    <div style="width: 32px; height: 32px; background: rgba(189, 207, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      <i class="fas fa-clock" style="color: #BDCF00; font-size: 14px;"></i>
-                    </div>
-                    <span>55 min</span>
+              
+              <!-- Content Section -->
+              <div class="spectacle-card__content" style="padding: 30px; flex: 1; display: flex; flex-direction: column;">
+                <!-- Category and Date -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                  <div class="spectacle-card__category" style="background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase;">Poétique</div>
+                  <div class="spectacle-card__date" style="color: #999; font-size: 14px; font-weight: 600;">Octobre 2025</div>
+                </div>
+                
+                <!-- Title and Description -->
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 32px; font-weight: 800; margin-bottom: 12px; line-height: 1.1; font-family: 'Amatic SC', cursive;">LE PETIT PRINCE</h3>
+                <p class="spectacle-card__description" style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 25px; flex: 1;">Une aventure spatiale captivante qui stimule l'imagination et émerveille petits et grands.</p>
+                
+                <!-- Info Pills -->
+                <div class="spectacle-card__info" style="display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
+                  <div style="display: flex; align-items: center; gap: 8px; background: #f8f9fa; padding: 8px 15px; border-radius: 20px; font-size: 14px; color: #666; font-weight: 600;">
+                    <i class="fas fa-clock" style="color: #BDCF00;"></i>
+                    <span>50 min</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
-                    <div style="width: 32px; height: 32px; background: rgba(189, 207, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      <i class="fas fa-child" style="color: #BDCF00; font-size: 14px;"></i>
-                    </div>
-                    <span>8 ans+</span>
+                  <div style="display: flex; align-items: center; gap: 8px; background: #f8f9fa; padding: 8px 15px; border-radius: 20px; font-size: 14px; color: #666; font-weight: 600;">
+                    <i class="fas fa-child" style="color: #BDCF00;"></i>
+                    <span>7 ans+</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
-                    <div style="width: 32px; height: 32px; background: rgba(189, 207, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      <i class="fas fa-heart" style="color: #BDCF00; font-size: 14px;"></i>
-                    </div>
+                  <div style="display: flex; align-items: center; gap: 8px; background: #f8f9fa; padding: 8px 15px; border-radius: 20px; font-size: 14px; color: #666; font-weight: 600;">
+                    <i class="fas fa-heart" style="color: #BDCF00;"></i>
                     <span>Poétique</span>
                   </div>
                 </div>
               </div>
-              <div class="spectacle-card__actions" style="display: flex; gap: 12px;">
-                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(189, 207, 0, 0.3);" onclick="window.location.href='spectacles.html'">Réserver</button>
-                <button class="btn-details" style="flex: 1; background: white; color: #BDCF00; border: 2px solid #BDCF00; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-le-petit-prince.html'">Détails</button>
+            </div>
+            
+            <!-- Bottom Action Bar -->
+            <div style="padding: 0 25px 25px 25px;">
+              <div style="background: rgba(255,255,255,0.95); border-radius: 20px; padding: 20px; display: flex; gap: 15px; backdrop-filter: blur(10px);">
+                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #2c3e50, #34495e); color: white; border: none; padding: 15px 25px; border-radius: 15px; font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='registration.html'">Réserver</button>
+                <button class="btn-details" style="background: white; color: #2c3e50; border: 2px solid #2c3e50; padding: 15px 25px; border-radius: 15px; font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-le-petit-prince.html'">Détails</button>
               </div>
             </div>
           </div>
@@ -1682,46 +1712,55 @@
 
         <!-- Spectacle 2: Tara sur la Lune - Octobre 2025 -->
         <div class="col-lg-6 col-md-12 spectacle-item" data-category="primaire">
-          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
-            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden; background-image: url('assets/img/Asset 9@4x.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-              <img src="assets/img/spectacles/tara sur la lune.png" alt="Tara sur la Lune" style="width: 100%; height: 100%; object-fit: contain;">
-              <img src="assets/img/spectacles elements/tara@4x.png" alt="Tara Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
-              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
-                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
-              </div>
+          <div class="spectacle-card fade-in-up visible" style="background: linear-gradient(145deg, #6f42c1, #8b5cf6); border-radius: 35px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; margin: 20px 0;">
+            <!-- Status Badge -->
+            <div style="position: absolute; top: 25px; right: 25px; z-index: 10;">
+              <div class="spectacle-card__status available" style="background: rgba(255,255,255,0.95); color: #6f42c1; padding: 10px 20px; border-radius: 30px; font-size: 14px; font-weight: 800; text-transform: uppercase; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">Disponible</div>
             </div>
-            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
-              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #6f42c1, #8b5cf6); color: white; padding: 8px 18px; border-radius: 25px; font-size: 12px; font-weight: 700; text-transform: uppercase; box-shadow: 0 2px 8px rgba(111, 66, 193, 0.3);">Spatial</div>
-                <div class="spectacle-card__date" style="color: #888; font-size: 14px; font-weight: 600; background: #f8f9fa; padding: 6px 12px; border-radius: 15px;">Octobre 2025</div>
+            
+            <!-- Main Content Card -->
+            <div style="background: white; margin: 25px; border-radius: 25px; overflow: hidden; flex: 1; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+              <!-- Image Section -->
+              <div class="spectacle-card__img" style="position: relative; height: 280px; overflow: hidden; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <img src="assets/img/spectacles/tara sur la lune.png" alt="Tara sur la Lune" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0;">
+                <img src="assets/img/spectacles elements/tara@4x.png" alt="Tara Character" style="position: absolute; bottom: -10px; right: 15px; width: 120px; height: 120px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
               </div>
-              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
-                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; font-family: 'Amatic SC', cursive;">Tara sur la Lune</h3>
-                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">Une aventure spatiale captivante qui stimule l'imagination et émerveille petits et grands.</p>
-                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
-                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
-                    <div style="width: 32px; height: 32px; background: rgba(111, 66, 193, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      <i class="fas fa-clock" style="color: #6f42c1; font-size: 14px;"></i>
-                    </div>
+              
+              <!-- Content Section -->
+              <div class="spectacle-card__content" style="padding: 30px; flex: 1; display: flex; flex-direction: column;">
+                <!-- Category and Date -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                  <div class="spectacle-card__category" style="background: linear-gradient(135deg, #6f42c1, #8b5cf6); color: white; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase;">Spatial</div>
+                  <div class="spectacle-card__date" style="color: #999; font-size: 14px; font-weight: 600;">Octobre 2025</div>
+                </div>
+                
+                <!-- Title and Description -->
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 32px; font-weight: 800; margin-bottom: 12px; line-height: 1.1; font-family: 'Amatic SC', cursive;">TARA SUR LA LUNE</h3>
+                <p class="spectacle-card__description" style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 25px; flex: 1;">Une aventure spatiale captivante qui stimule l'imagination et émerveille petits et grands.</p>
+                
+                <!-- Info Pills -->
+                <div class="spectacle-card__info" style="display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
+                  <div style="display: flex; align-items: center; gap: 8px; background: #f8f9fa; padding: 8px 15px; border-radius: 20px; font-size: 14px; color: #666; font-weight: 600;">
+                    <i class="fas fa-clock" style="color: #6f42c1;"></i>
                     <span>45 min</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
-                    <div style="width: 32px; height: 32px; background: rgba(111, 66, 193, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      <i class="fas fa-child" style="color: #6f42c1; font-size: 14px;"></i>
-                    </div>
+                  <div style="display: flex; align-items: center; gap: 8px; background: #f8f9fa; padding: 8px 15px; border-radius: 20px; font-size: 14px; color: #666; font-weight: 600;">
+                    <i class="fas fa-child" style="color: #6f42c1;"></i>
                     <span>5 ans+</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
-                    <div style="width: 32px; height: 32px; background: rgba(111, 66, 193, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      <i class="fas fa-rocket" style="color: #6f42c1; font-size: 14px;"></i>
-                    </div>
+                  <div style="display: flex; align-items: center; gap: 8px; background: #f8f9fa; padding: 8px 15px; border-radius: 20px; font-size: 14px; color: #666; font-weight: 600;">
+                    <i class="fas fa-rocket" style="color: #6f42c1;"></i>
                     <span>Spatial</span>
                   </div>
                 </div>
               </div>
-              <div class="spectacle-card__actions" style="display: flex; gap: 12px;">
-                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(189, 207, 0, 0.3);" onclick="window.location.href='spectacles.html'">Réserver</button>
-                <button class="btn-details" style="flex: 1; background: white; color: #BDCF00; border: 2px solid #BDCF00; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-tara-sur-la-lune.html'">Détails</button>
+            </div>
+            
+            <!-- Bottom Action Bar -->
+            <div style="padding: 0 25px 25px 25px;">
+              <div style="background: rgba(255,255,255,0.95); border-radius: 20px; padding: 20px; display: flex; gap: 15px; backdrop-filter: blur(10px);">
+                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #2c3e50, #34495e); color: white; border: none; padding: 15px 25px; border-radius: 15px; font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='registration.html'">Réserver</button>
+                <button class="btn-details" style="background: white; color: #2c3e50; border: 2px solid #2c3e50; padding: 15px 25px; border-radius: 15px; font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-tara-sur-la-lune.html'">Détails</button>
               </div>
             </div>
           </div>
@@ -1729,46 +1768,55 @@
 
         <!-- Spectacle 3: L'eau-là - Novembre 2025 -->
         <div class="col-lg-6 col-md-12 spectacle-item" data-category="primaire">
-          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
-            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden; background-image: url('assets/img/Asset 9@4x.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-              <img src="assets/img/spectacles/l'eau la.png" alt="L'eau-là" style="width: 100%; height: 100%; object-fit: contain;">
-              <img src="assets/img/spectacles elements/leau@4x.png" alt="L'eau-là Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
-              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
-                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
-              </div>
+          <div class="spectacle-card fade-in-up visible" style="background: linear-gradient(145deg, #28a745, #20c997); border-radius: 35px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; margin: 20px 0;">
+            <!-- Status Badge -->
+            <div style="position: absolute; top: 25px; right: 25px; z-index: 10;">
+              <div class="spectacle-card__status available" style="background: rgba(255,255,255,0.95); color: #28a745; padding: 10px 20px; border-radius: 30px; font-size: 14px; font-weight: 800; text-transform: uppercase; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">Disponible</div>
             </div>
-            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
-              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 8px 18px; border-radius: 25px; font-size: 12px; font-weight: 700; text-transform: uppercase; box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);">Écologique</div>
-                <div class="spectacle-card__date" style="color: #888; font-size: 14px; font-weight: 600; background: #f8f9fa; padding: 6px 12px; border-radius: 15px;">Novembre 2025</div>
+            
+            <!-- Main Content Card -->
+            <div style="background: white; margin: 25px; border-radius: 25px; overflow: hidden; flex: 1; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+              <!-- Image Section -->
+              <div class="spectacle-card__img" style="position: relative; height: 280px; overflow: hidden; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <img src="assets/img/spectacles/l'eau la.png" alt="L'eau-là" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0;">
+                <img src="assets/img/spectacles elements/leau@4x.png" alt="L'eau-là Character" style="position: absolute; bottom: -10px; right: 15px; width: 120px; height: 120px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
               </div>
-              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
-                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; font-family: 'Amatic SC', cursive;">L'EAU-LÀ</h3>
-                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">Un spectacle poétique et rafraîchissant qui explore la beauté et l'importance de l'eau dans nos vies et notre environnement.</p>
-                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
-                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
-                    <div style="width: 32px; height: 32px; background: rgba(40, 167, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      <i class="fas fa-clock" style="color: #28a745; font-size: 14px;"></i>
-                    </div>
+              
+              <!-- Content Section -->
+              <div class="spectacle-card__content" style="padding: 30px; flex: 1; display: flex; flex-direction: column;">
+                <!-- Category and Date -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                  <div class="spectacle-card__category" style="background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase;">Écologique</div>
+                  <div class="spectacle-card__date" style="color: #999; font-size: 14px; font-weight: 600;">Novembre 2025</div>
+                </div>
+                
+                <!-- Title and Description -->
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 32px; font-weight: 800; margin-bottom: 12px; line-height: 1.1; font-family: 'Amatic SC', cursive;">L'EAU-LÀ</h3>
+                <p class="spectacle-card__description" style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 25px; flex: 1;">Un spectacle poétique et rafraîchissant qui explore la beauté et l'importance de l'eau dans nos vies et notre environnement.</p>
+                
+                <!-- Info Pills -->
+                <div class="spectacle-card__info" style="display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
+                  <div style="display: flex; align-items: center; gap: 8px; background: #f8f9fa; padding: 8px 15px; border-radius: 20px; font-size: 14px; color: #666; font-weight: 600;">
+                    <i class="fas fa-clock" style="color: #28a745;"></i>
                     <span>40 min</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
-                    <div style="width: 32px; height: 32px; background: rgba(40, 167, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      <i class="fas fa-child" style="color: #28a745; font-size: 14px;"></i>
-                    </div>
+                  <div style="display: flex; align-items: center; gap: 8px; background: #f8f9fa; padding: 8px 15px; border-radius: 20px; font-size: 14px; color: #666; font-weight: 600;">
+                    <i class="fas fa-child" style="color: #28a745;"></i>
                     <span>6 ans+</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
-                    <div style="width: 32px; height: 32px; background: rgba(40, 167, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      <i class="fas fa-tint" style="color: #28a745; font-size: 14px;"></i>
-                    </div>
+                  <div style="display: flex; align-items: center; gap: 8px; background: #f8f9fa; padding: 8px 15px; border-radius: 20px; font-size: 14px; color: #666; font-weight: 600;">
+                    <i class="fas fa-tint" style="color: #28a745;"></i>
                     <span>Écologique</span>
                   </div>
                 </div>
               </div>
-              <div class="spectacle-card__actions" style="display: flex; gap: 12px;">
-                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #BDCF00, #a8b800); color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(189, 207, 0, 0.3);" onclick="window.location.href='spectacles.html'">Réserver</button>
-                <button class="btn-details" style="flex: 1; background: white; color: #BDCF00; border: 2px solid #BDCF00; padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-leau-la.html'">Détails</button>
+            </div>
+            
+            <!-- Bottom Action Bar -->
+            <div style="padding: 0 25px 25px 25px;">
+              <div style="background: rgba(255,255,255,0.95); border-radius: 20px; padding: 20px; display: flex; gap: 15px; backdrop-filter: blur(10px);">
+                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #2c3e50, #34495e); color: white; border: none; padding: 15px 25px; border-radius: 15px; font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='registration.html'">Réserver</button>
+                <button class="btn-details" style="background: white; color: #2c3e50; border: 2px solid #2c3e50; padding: 15px 25px; border-radius: 15px; font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-leau-la.html'">Détails</button>
               </div>
             </div>
           </div>
@@ -1776,46 +1824,55 @@
 
         <!-- Spectacle 4: Mirath Atfal - Novembre 2025 -->
         <div class="col-lg-6 col-md-12 spectacle-item" data-category="primaire">
-          <div class="spectacle-card fade-in-up visible" style="background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease;">
-            <div class="spectacle-card__img" style="position: relative; height: 300px; overflow: hidden; background-image: url('assets/img/Asset 9@4x.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-              <img src="assets/img/spectacles/petite prince.png" alt="Mirath Atfal" style="width: 100%; height: 100%; object-fit: contain;">
-              <img src="assets/img/spectacles elements/petit prince@4x.png" alt="Mirath Character" style="position: absolute; bottom: 10px; right: 10px; width: 160px; height: 160px; object-fit: contain;">
-              <div class="spectacle-card__overlay" style="position: absolute; top: 20px; right: 20px;">
-                <div class="spectacle-card__status available" style="background: #BDCF00; color: white; padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;">Disponible</div>
-              </div>
+          <div class="spectacle-card fade-in-up visible" style="background: linear-gradient(145deg, #dc3545, #e74c3c); border-radius: 35px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; margin: 20px 0;">
+            <!-- Status Badge -->
+            <div style="position: absolute; top: 25px; right: 25px; z-index: 10;">
+              <div class="spectacle-card__status available" style="background: rgba(255,255,255,0.95); color: #dc3545; padding: 10px 20px; border-radius: 30px; font-size: 14px; font-weight: 800; text-transform: uppercase; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">Disponible</div>
             </div>
-            <div class="spectacle-card__content" style="padding: 35px; flex: 1; display: flex; flex-direction: column; background: white; border-top: 1px solid #f0f0f0;">
-              <div class="spectacle-card__meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <div class="spectacle-card__category" style="background: linear-gradient(135deg, #dc3545, #e74c3c); color: white; box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase;">Musical historique</div>
-                <div class="spectacle-card__date" style="color: #666; font-size: 14px; font-weight: 600;">Novembre 2025</div>
+            
+            <!-- Main Content Card -->
+            <div style="background: white; margin: 25px; border-radius: 25px; overflow: hidden; flex: 1; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+              <!-- Image Section -->
+              <div class="spectacle-card__img" style="position: relative; height: 280px; overflow: hidden; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <img src="assets/img/spectacles/petite prince.png" alt="Mirath Atfal" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0;">
+                <img src="assets/img/spectacles elements/petit prince@4x.png" alt="Mirath Character" style="position: absolute; bottom: -10px; right: 15px; width: 120px; height: 120px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
               </div>
-              <div style="background-image: url('assets/img/spectacles elements/back of text@4x.png'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 60px 55px; border-radius: 15px; margin-bottom: 30px;">
-                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 28px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; font-family: 'Amatic SC', cursive;">Mirath ATFAL</h3>
-                <p class="spectacle-card__description" style="color: #5a6c7d; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">Un spectacle musical historique qui célèbre le patrimoine culturel et transmet les valeurs aux nouvelles générations.</p>
-                <div class="spectacle-card__info" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; background: rgba(248, 249, 250, 0.9); border-radius: 15px;">
-                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
-                    <div style="width: 32px; height: 32px; background: rgba(220, 53, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      <i class="fas fa-clock" style="color: #dc3545; font-size: 14px;"></i>
-                    </div>
+              
+              <!-- Content Section -->
+              <div class="spectacle-card__content" style="padding: 30px; flex: 1; display: flex; flex-direction: column;">
+                <!-- Category and Date -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                  <div class="spectacle-card__category" style="background: linear-gradient(135deg, #dc3545, #e74c3c); color: white; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase;">Musical historique</div>
+                  <div class="spectacle-card__date" style="color: #999; font-size: 14px; font-weight: 600;">Novembre 2025</div>
+                </div>
+                
+                <!-- Title and Description -->
+                <h3 class="spectacle-card__title" style="color: #2c3e50; font-size: 32px; font-weight: 800; margin-bottom: 12px; line-height: 1.1; font-family: 'Amatic SC', cursive;">MIRATH ATFAL</h3>
+                <p class="spectacle-card__description" style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 25px; flex: 1;">Un spectacle musical historique qui célèbre le patrimoine culturel et transmet les valeurs aux nouvelles générations.</p>
+                
+                <!-- Info Pills -->
+                <div class="spectacle-card__info" style="display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
+                  <div style="display: flex; align-items: center; gap: 8px; background: #f8f9fa; padding: 8px 15px; border-radius: 20px; font-size: 14px; color: #666; font-weight: 600;">
+                    <i class="fas fa-clock" style="color: #dc3545;"></i>
                     <span>60 min</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
-                    <div style="width: 32px; height: 32px; background: rgba(220, 53, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      <i class="fas fa-child" style="color: #dc3545; font-size: 14px;"></i>
-                    </div>
+                  <div style="display: flex; align-items: center; gap: 8px; background: #f8f9fa; padding: 8px 15px; border-radius: 20px; font-size: 14px; color: #666; font-weight: 600;">
+                    <i class="fas fa-child" style="color: #dc3545;"></i>
                     <span>5 ans+</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; font-weight: 600;">
-                    <div style="width: 32px; height: 32px; background: rgba(220, 53, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      <i class="fas fa-music" style="color: #dc3545; font-size: 14px;"></i>
-                    </div>
-                    <span>Musical historique</span>
+                  <div style="display: flex; align-items: center; gap: 8px; background: #f8f9fa; padding: 8px 15px; border-radius: 20px; font-size: 14px; color: #666; font-weight: 600;">
+                    <i class="fas fa-music" style="color: #dc3545;"></i>
+                    <span>Musical</span>
                   </div>
                 </div>
               </div>
-              <div class="spectacle-card__actions" style="display: flex; gap: 15px;">
-                <button class="btn-reserve" style="flex: 1; background: #BDCF00; color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacles.html'">Réserver</button>
-                <button class="btn-details" style="flex: 1; background: transparent; color: #BDCF00; border: 2px solid #BDCF00; padding: 15px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-mirath-atfal.html'">Détails</button>
+            </div>
+            
+            <!-- Bottom Action Bar -->
+            <div style="padding: 0 25px 25px 25px;">
+              <div style="background: rgba(255,255,255,0.95); border-radius: 20px; padding: 20px; display: flex; gap: 15px; backdrop-filter: blur(10px);">
+                <button class="btn-reserve" style="flex: 1; background: linear-gradient(135deg, #2c3e50, #34495e); color: white; border: none; padding: 15px 25px; border-radius: 15px; font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='registration.html'">Réserver</button>
+                <button class="btn-details" style="background: white; color: #2c3e50; border: 2px solid #2c3e50; padding: 15px 25px; border-radius: 15px; font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='spectacle-mirath-atfal.html'">Détails</button>
               </div>
             </div>
           </div>
