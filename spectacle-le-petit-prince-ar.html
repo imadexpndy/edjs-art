@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="ar" dir="rtl">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Simple comme bonjour ! - École du Jeune Spectateur</title>
-  <meta name="author" content="L'École des jeunes spectateurs">
-  <meta name="description" content="Un spectacle musical avec les mots de Prévert, des chansons inédites et des grands classiques. Poésie sensible et engagée pour petits et grands.">
-  <meta name="keywords" content="simple comme bonjour, prévert, spectacle musical, poésie, enfants, théâtre, L'École des jeunes spectateurs, nathan">
+  <title>الأمير الصغير - مدرسة المتفرج الصغير</title>
+  <meta name="author" content="مدرسة المتفرجين الصغار">
+  <meta name="description" content="التكيف المسرحي لتحفة سانت إكزوبيري. رحلة شاعرية وفلسفية عبر النجوم واللقاءات الاستثنائية.">
+  <meta name="keywords" content="الأمير الصغير, سانت إكزوبيري, رحلة, نجوم, شعر, فلسفة, أطفال, مسرح, مدرسة المتفرجين الصغار">
   <meta name="robots" content="INDEX,FOLLOW">
 
   <!-- Mobile Specific Metas -->
@@ -605,7 +605,8 @@
         inset 0 0 20px rgba(0,0,0,0.2),
         inset 0 2px 5px rgba(255,255,255,0.1);
       position: relative;
-      max-width: 500px;
+      max-width: 600px;
+      width: 100%;
       margin: 0 auto;
     }
 
@@ -620,9 +621,10 @@
 
     .tv-video {
       width: 100%;
-      height: auto;
+      height: 300px;
       border-radius: 10px;
       display: block;
+      object-fit: cover;
     }
 
     .play-button-overlay {
@@ -1635,6 +1637,98 @@
           playButton.style.display = 'flex';
         });
       }
+
+      // Review System
+      const starButtons = document.querySelectorAll('.star-btn');
+      const reviewForm = document.getElementById('reviewForm');
+      const reviewsContainer = document.getElementById('reviewsContainer');
+      let selectedRating = 0;
+
+      // Star rating functionality
+      starButtons.forEach(star => {
+        star.addEventListener('click', function() {
+          selectedRating = parseInt(this.dataset.rating);
+          document.getElementById('reviewRating').value = selectedRating;
+          
+          starButtons.forEach((s, index) => {
+            if (index < selectedRating) {
+              s.style.color = '#ffc107';
+            } else {
+              s.style.color = '#ddd';
+            }
+          });
+        });
+
+        star.addEventListener('mouseover', function() {
+          const hoverRating = parseInt(this.dataset.rating);
+          starButtons.forEach((s, index) => {
+            if (index < hoverRating) {
+              s.style.color = '#ffc107';
+            } else {
+              s.style.color = '#ddd';
+            }
+          });
+        });
+      });
+
+      // Reset stars on mouse leave
+      document.querySelector('.star-rating').addEventListener('mouseleave', function() {
+        starButtons.forEach((s, index) => {
+          if (index < selectedRating) {
+            s.style.color = '#ffc107';
+          } else {
+            s.style.color = '#ddd';
+          }
+        });
+      });
+
+      // Review form submission
+      reviewForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('reviewName').value;
+        const rating = document.getElementById('reviewRating').value;
+        const text = document.getElementById('reviewText').value;
+        
+        if (rating === '0') {
+          alert('Veuillez sélectionner une note');
+          return;
+        }
+        
+        // Create new review element
+        const newReview = document.createElement('div');
+        newReview.className = 'review-item';
+        newReview.style.animation = 'fadeInUp 0.5s ease';
+        
+        const starsHtml = Array.from({length: 5}, (_, i) => 
+          `<i class="fas fa-star" style="color: ${i < rating ? '#ffc107' : '#ddd'}"></i>`
+        ).join('');
+        
+        newReview.innerHTML = `
+          <div class="review-header">
+            <div class="review-stars">${starsHtml}</div>
+            <div class="review-author">${name}</div>
+          </div>
+          <p class="review-text">"${text}"</p>
+        `;
+        
+        // Add to top of reviews
+        reviewsContainer.insertBefore(newReview, reviewsContainer.firstChild);
+        
+        // Reset form
+        reviewForm.reset();
+        selectedRating = 0;
+        document.getElementById('reviewRating').value = '0';
+        starButtons.forEach(s => s.style.color = '#ddd');
+        
+        // Show success message
+        const successMsg = document.createElement('div');
+        successMsg.style.cssText = 'background: #d4edda; color: #155724; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid #c3e6cb;';
+        successMsg.innerHTML = '<i class="fas fa-check-circle"></i> Merci pour votre avis !';
+        reviewForm.parentNode.insertBefore(successMsg, reviewForm);
+        
+        setTimeout(() => successMsg.remove(), 3000);
+      });
     });
   </script>
 
@@ -1648,23 +1742,23 @@
               <i class="fas fa-music me-2"></i>
               Spectacle Musical
             </div>
-            <h1 class="hero-title">Alice chez les Merveilles</h1>
-            <p class="hero-subtitle">Un voyage musical au pays des merveilles</p>
+            <h1 class="hero-title">الأمير الصغير</h1>
+            <p class="hero-subtitle">رحلة شاعرية عبر النجوم</p>
             <div class="info-pills">
-              <span class="info-pill">
-                <i class="fas fa-clock"></i>45 min
+              <span class="info-pill" style="font-size: 1rem; padding: 0.6rem 1.2rem; direction: rtl;">
+                <i class="fas fa-clock"></i>50 دقيقة
               </span>
-              <span class="info-pill">
-                <i class="fas fa-child"></i>6 ans et +
+              <span class="info-pill" style="font-size: 1rem; padding: 0.6rem 1.2rem; direction: rtl;">
+                <i class="fas fa-child"></i>7 سنوات فما فوق
               </span>
-              <span class="info-pill">
-                <i class="fas fa-magic"></i>Merveilleux
+              <span class="info-pill" style="font-size: 1rem; padding: 0.6rem 1.2rem; direction: rtl;">
+                <i class="fas fa-star"></i>شاعري
               </span>
             </div>
             <div class="hero-buttons">
-              <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="btn-primary">
+              <a href="registration.html" class="btn-primary">
                 <i class="fas fa-ticket-alt"></i>
-                Réserver Maintenant
+                احجز الآن
               </a>
               <button class="btn-secondary">
                 <i class="fas fa-play"></i>
@@ -1678,20 +1772,20 @@
           <div class="hero-slider">
             <div class="slider-container">
               <div class="slide">
-                <img src="assets/img/alice-poster.jpg" alt="Alice chez les Merveilles - Photo 1">
+                <img src="assets/img/spectacles/petite prince.png" alt="Le Petit Prince - Photo 1">
               </div>
               <div class="slide">
-                <img src="assets/img/spectacle-posters/alice-merveilles-poster.jpg" alt="Alice chez les Merveilles - Photo 2">
+                <img src="assets/img/spectacle-posters/petit-prince-poster.jpg" alt="Le Petit Prince - Photo 2">
               </div>
               <div class="slide">
-                <img src="assets/img/spectacle-posters/alice-merveilles-poster-new.jpg" alt="Alice chez les Merveilles - Photo 3">
+                <img src="assets/img/spectacle-posters/petit-prince-poster-new.jpg" alt="Le Petit Prince - Photo 3">
               </div>
               <div class="slide active">
                 <div class="vintage-tv-container">
                   <div class="tv-frame">
                     <div class="tv-screen">
-                      <video class="tv-video" poster="assets/img/alice-poster.jpg">
-                        <source src="assets/video/alice-trailer.mp4" type="video/mp4">
+                      <video class="tv-video" poster="assets/img/spectacles/petite prince.png">
+                        <source src="assets/video/petit-prince-trailer.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                       </video>
                       <div class="play-button-overlay">
@@ -1738,10 +1832,10 @@
               Histoire & Synopsis
             </h2>
             <p style="color: var(--text-light); font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem;">
-              Alice s'endort et tombe dans un trou qui la mène au pays des merveilles. Elle y rencontre des personnages extraordinaires : le Lapin Blanc, le Chat du Cheshire, le Chapelier Fou...
+              Suivez le Petit Prince dans son voyage extraordinaire de planète en planète, à la rencontre de personnages étonnants : le roi, le vaniteux, l'allumeur de réverbères...
             </p>
             <p style="color: var(--text-light); line-height: 1.7; margin-bottom: 2rem;">
-              Ce spectacle musical célèbre l'imaginaire et aborde avec délicatesse la question universelle : qu'est-ce que grandir ? Une aventure poétique et musicale qui émerveillera petits et grands.
+              Cette adaptation fidèle du chef-d'œuvre de Saint-Exupéry nous rappelle l'importance de l'amitié, de l'amour et de garder son âme d'enfant. Un spectacle poétique qui touche le cœur de toute la famille.
             </p>
           </div>
 
@@ -1753,25 +1847,25 @@
             </h2>
             <div class="gallery-grid">
               <div class="gallery-item">
-                <img src="assets/img/alice-poster.jpg" alt="Alice chez les Merveilles - Photo 1" class="gallery-img">
+                <img src="assets/img/spectacles/petite prince.png" alt="Le Petit Prince - Photo 1" class="gallery-img">
                 <div class="gallery-overlay">
                   <i class="fas fa-expand"></i>
                 </div>
               </div>
               <div class="gallery-item">
-                <img src="assets/img/spectacle-posters/alice-merveilles-poster.jpg" alt="Alice chez les Merveilles - Photo 2" class="gallery-img">
+                <img src="assets/img/spectacle-posters/petit-prince-poster.jpg" alt="Le Petit Prince - Photo 2" class="gallery-img">
                 <div class="gallery-overlay">
                   <i class="fas fa-expand"></i>
                 </div>
               </div>
               <div class="gallery-item">
-                <img src="assets/img/spectacle-posters/alice-merveilles-poster-new.jpg" alt="Alice chez les Merveilles - Photo 3" class="gallery-img">
+                <img src="assets/img/spectacle-posters/petit-prince-poster-new.jpg" alt="Le Petit Prince - Photo 3" class="gallery-img">
                 <div class="gallery-overlay">
                   <i class="fas fa-expand"></i>
                 </div>
               </div>
               <div class="gallery-item">
-                <img src="assets/img/spectacles/alice chez le .png" alt="Alice chez les Merveilles - Photo 4" class="gallery-img">
+                <img src="assets/img/spectacles/petite prince.png" alt="Le Petit Prince - Photo 4" class="gallery-img">
                 <div class="gallery-overlay">
                   <i class="fas fa-expand"></i>
                 </div>
@@ -1785,7 +1879,37 @@
               <i class="fas fa-star"></i>
               Avis & Témoignages
             </h2>
-            <div class="reviews-container">
+            
+            <!-- Add Review Form -->
+            <div class="add-review-form" style="background: var(--bg-light); padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 2rem;">
+              <h4 style="color: var(--text-dark); margin-bottom: 1rem;">Partagez votre avis</h4>
+              <form id="reviewForm">
+                <div style="margin-bottom: 1rem;">
+                  <label for="reviewName" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Nom d'utilisateur</label>
+                  <input type="text" id="reviewName" placeholder="Votre nom" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 0.5rem; font-size: 1rem;" required>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                  <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Note</label>
+                  <div class="star-rating" style="display: flex; gap: 0.25rem; margin-bottom: 0.5rem;">
+                    <i class="fas fa-star star-btn" data-rating="1" style="color: #ddd; cursor: pointer; font-size: 1.5rem;"></i>
+                    <i class="fas fa-star star-btn" data-rating="2" style="color: #ddd; cursor: pointer; font-size: 1.5rem;"></i>
+                    <i class="fas fa-star star-btn" data-rating="3" style="color: #ddd; cursor: pointer; font-size: 1.5rem;"></i>
+                    <i class="fas fa-star star-btn" data-rating="4" style="color: #ddd; cursor: pointer; font-size: 1.5rem;"></i>
+                    <i class="fas fa-star star-btn" data-rating="5" style="color: #ddd; cursor: pointer; font-size: 1.5rem;"></i>
+                  </div>
+                  <input type="hidden" id="reviewRating" value="0">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                  <label for="reviewText" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Votre commentaire</label>
+                  <textarea id="reviewText" placeholder="Partagez votre expérience..." style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 0.5rem; font-size: 1rem; min-height: 100px; resize: vertical;" required></textarea>
+                </div>
+                <button type="submit" style="background: var(--primary-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                  <i class="fas fa-paper-plane"></i> Publier l'avis
+                </button>
+              </form>
+            </div>
+            
+            <div class="reviews-container" id="reviewsContainer">
               <div class="review-item">
                 <div class="review-header">
                   <div class="review-stars">
@@ -1797,7 +1921,7 @@
                   </div>
                   <div class="review-author">Sarah M. - Parent</div>
                 </div>
-                <p class="review-text">"Ma fille de 7 ans était complètement captivée par l'univers d'Alice. Un spectacle magique qui stimule l'imagination !"</p>
+                <p class="review-text">"Magique ! Ma fille de 7 ans a été transportée dans l'univers du Petit Prince. Les messages de Saint-Exupéry touchent vraiment."</p>
               </div>
               <div class="review-item">
                 <div class="review-header">
@@ -1810,7 +1934,7 @@
                   </div>
                   <div class="review-author">Ahmed K. - Enseignant</div>
                 </div>
-                <p class="review-text">"Excellent pour une sortie scolaire. Les enfants ont adoré suivre Alice dans ses aventures fantastiques."</p>
+                <p class="review-text">"Une adaptation respectueuse et poétique. Parfait pour initier les enfants à la littérature française classique."</p>
               </div>
               <div class="review-item">
                 <div class="review-header">
@@ -1823,7 +1947,7 @@
                   </div>
                   <div class="review-author">Fatima L. - Grand-mère</div>
                 </div>
-                <p class="review-text">"Un merveilleux moment partagé avec mes petits-enfants. L'histoire d'Alice nous a tous transportés !"</p>
+                <p class="review-text">"Un spectacle intemporel qui parle à tous les âges. J'ai redécouvert l'histoire avec mes petits-enfants !"</p>
               </div>
             </div>
           </div>
@@ -1838,10 +1962,10 @@
               <div class="faq-item">
                 <div class="faq-question">
                   <i class="fas fa-chevron-right"></i>
-                  <span>Le spectacle convient-il vraiment aux enfants de 6 ans ?</span>
+                  <span>Les plus jeunes comprennent-ils les messages philosophiques ?</span>
                 </div>
                 <div class="faq-answer">
-                  Oui ! Alice chez les Merveilles est parfaitement adapté aux enfants à partir de 6 ans, avec des personnages colorés et une histoire captivante.
+                  Oui, l'adaptation rend les messages de Saint-Exupéry accessibles dès 6 ans grâce à une mise en scène poétique et visuelle.
                 </div>
               </div>
               <div class="faq-item">
@@ -1850,7 +1974,7 @@
                   <span>Y a-t-il un entracte pendant le spectacle ?</span>
                 </div>
                 <div class="faq-answer">
-                  Non, le spectacle dure 45 minutes en continu, parfait pour maintenir l'attention des jeunes spectateurs dans l'univers d'Alice.
+                  Non, le spectacle dure 55 minutes en continu, permettant une immersion totale dans l'univers du Petit Prince.
                 </div>
               </div>
               <div class="faq-item">
@@ -1869,41 +1993,41 @@
         <div class="col-lg-4">
           <!-- Show Information Card -->
           <div class="sidebar-card">
-            <h3><i class="fas fa-info-circle"></i> Informations Spectacle</h3>
-            <div class="info-item">
+            <h3 style="font-size: 1.4rem;"><i class="fas fa-info-circle"></i> Informations Spectacle</h3>
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-clock"></i>
-              <span>Durée : 45 minutes</span>
+              <span>Durée : 50 minutes</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-child"></i>
-              <span>Âge : 6 ans et +</span>
+              <span>Âge : 7 ans et +</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-language"></i>
               <span>Langue : Français</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-users"></i>
-              <span>Genre : Familial</span>
+              <span>Genre : Poétique</span>
             </div>
           </div>
 
           <!-- Venue Information Card -->
           <div class="sidebar-card">
-            <h3><i class="fas fa-map-marker-alt"></i> Lieu & Contact</h3>
-            <div class="info-item">
+            <h3 style="font-size: 1.4rem;"><i class="fas fa-map-marker-alt"></i> Lieu & Contact</h3>
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-building"></i>
               <span>École du Jeune Spectateur</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-map-pin"></i>
               <span>Casablanca, Maroc</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-phone"></i>
               <span>+212 5 22 98 10 85</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-envelope"></i>
               <span>info@edjs.ma</span>
             </div>
@@ -1911,27 +2035,25 @@
 
           <!-- Available Showtimes Card -->
           <div class="sidebar-card">
-            <h3><i class="fas fa-calendar-alt"></i> Séances Disponibles</h3>
-            <div class="showtime-item">
-              <div class="showtime-date">12 au 16 Décembre 2025</div>
-              <div class="showtime-time">Rabat - Représentations</div>
-              <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="showtime-btn">
+            <h3 style="font-size: 1.4rem;"><i class="fas fa-calendar-alt"></i> Séances Disponibles</h3>
+            <div class="showtime-item" style="padding: 1.2rem; margin-bottom: 1rem;">
+              <div class="showtime-date" style="font-size: 1.1rem; font-weight: 600;">4-7 Octobre 2025</div>
+              <div class="showtime-time" style="font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
+                <i class="fas fa-map-marker-alt" style="color: #BDCF00;"></i>
+                Rabat
+              </div>
+              <a href="registration.html" class="showtime-btn">
                 <i class="fas fa-ticket-alt"></i>
                 Réserver
               </a>
             </div>
-            <div class="showtime-item">
-              <div class="showtime-date">17 au 20 Décembre 2025</div>
-              <div class="showtime-time">Casablanca - Représentations</div>
-              <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="showtime-btn">
-                <i class="fas fa-ticket-alt"></i>
-                Réserver
-              </a>
-            </div>
-            <div class="showtime-item">
-              <div class="showtime-date">Décembre 2025</div>
-              <div class="showtime-time">Séances supplémentaires</div>
-              <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="showtime-btn">
+            <div class="showtime-item" style="padding: 1.2rem; margin-bottom: 1rem;">
+              <div class="showtime-date" style="font-size: 1.1rem; font-weight: 600;">9-11 Octobre 2025</div>
+              <div class="showtime-time" style="font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
+                <i class="fas fa-map-marker-alt" style="color: #BDCF00;"></i>
+                Casablanca
+              </div>
+              <a href="registration.html" class="showtime-btn">
                 <i class="fas fa-ticket-alt"></i>
                 Réserver
               </a>
@@ -2117,7 +2239,5 @@
   <!-- Authentication Scripts -->
   <script src="assets/js/supabase-config.js"></script>
   <script src="assets/js/spectacles-auth.js"></script>
-  <!-- Spectacle Sync -->
-  <script src="assets/js/spectacle-sync.js"></script>
 </body>
 </html>

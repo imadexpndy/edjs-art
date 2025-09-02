@@ -277,7 +277,7 @@
         <ul>
           <li class="menu-item-has-children">
             <a class="vs-svg-assets" href="/">
-              ACCUEIL
+              QUI SOMMES NOUS
               <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
                 <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
               </svg>
@@ -402,7 +402,7 @@
                 <ul>
                   <li>
                     <a class="vs-svg-assets" href="/">
-                      ACCUEIL
+                      QUI SOMMES NOUS
                       <svg xmlns="http://www.w3.org/2000/svg" width="87" height="31" viewBox="0 0 87 31" fill="none">
                         <path d="M0 4.14031C0 1.87713 1.87602 0.0646902 4.13785 0.142684L83.1379 2.86682C85.2921 2.94111 87 4.70896 87 6.86445V25.0909C87 27.2642 85.2647 29.0399 83.0919 29.0898L4.09193 30.9059C1.84739 30.9575 0 29.1521 0 26.907V4.14031Z" fill="#70167E"></path>
                       </svg>
@@ -605,7 +605,8 @@
         inset 0 0 20px rgba(0,0,0,0.2),
         inset 0 2px 5px rgba(255,255,255,0.1);
       position: relative;
-      max-width: 500px;
+      max-width: 600px;
+      width: 100%;
       margin: 0 auto;
     }
 
@@ -620,9 +621,10 @@
 
     .tv-video {
       width: 100%;
-      height: auto;
+      height: 300px;
       border-radius: 10px;
       display: block;
+      object-fit: cover;
     }
 
     .play-button-overlay {
@@ -1635,6 +1637,98 @@
           playButton.style.display = 'flex';
         });
       }
+
+      // Review System
+      const starButtons = document.querySelectorAll('.star-btn');
+      const reviewForm = document.getElementById('reviewForm');
+      const reviewsContainer = document.getElementById('reviewsContainer');
+      let selectedRating = 0;
+
+      // Star rating functionality
+      starButtons.forEach(star => {
+        star.addEventListener('click', function() {
+          selectedRating = parseInt(this.dataset.rating);
+          document.getElementById('reviewRating').value = selectedRating;
+          
+          starButtons.forEach((s, index) => {
+            if (index < selectedRating) {
+              s.style.color = '#ffc107';
+            } else {
+              s.style.color = '#ddd';
+            }
+          });
+        });
+
+        star.addEventListener('mouseover', function() {
+          const hoverRating = parseInt(this.dataset.rating);
+          starButtons.forEach((s, index) => {
+            if (index < hoverRating) {
+              s.style.color = '#ffc107';
+            } else {
+              s.style.color = '#ddd';
+            }
+          });
+        });
+      });
+
+      // Reset stars on mouse leave
+      document.querySelector('.star-rating').addEventListener('mouseleave', function() {
+        starButtons.forEach((s, index) => {
+          if (index < selectedRating) {
+            s.style.color = '#ffc107';
+          } else {
+            s.style.color = '#ddd';
+          }
+        });
+      });
+
+      // Review form submission
+      reviewForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('reviewName').value;
+        const rating = document.getElementById('reviewRating').value;
+        const text = document.getElementById('reviewText').value;
+        
+        if (rating === '0') {
+          alert('Veuillez sélectionner une note');
+          return;
+        }
+        
+        // Create new review element
+        const newReview = document.createElement('div');
+        newReview.className = 'review-item';
+        newReview.style.animation = 'fadeInUp 0.5s ease';
+        
+        const starsHtml = Array.from({length: 5}, (_, i) => 
+          `<i class="fas fa-star" style="color: ${i < rating ? '#ffc107' : '#ddd'}"></i>`
+        ).join('');
+        
+        newReview.innerHTML = `
+          <div class="review-header">
+            <div class="review-stars">${starsHtml}</div>
+            <div class="review-author">${name}</div>
+          </div>
+          <p class="review-text">"${text}"</p>
+        `;
+        
+        // Add to top of reviews
+        reviewsContainer.insertBefore(newReview, reviewsContainer.firstChild);
+        
+        // Reset form
+        reviewForm.reset();
+        selectedRating = 0;
+        document.getElementById('reviewRating').value = '0';
+        starButtons.forEach(s => s.style.color = '#ddd');
+        
+        // Show success message
+        const successMsg = document.createElement('div');
+        successMsg.style.cssText = 'background: #d4edda; color: #155724; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid #c3e6cb;';
+        successMsg.innerHTML = '<i class="fas fa-check-circle"></i> Merci pour votre avis !';
+        reviewForm.parentNode.insertBefore(successMsg, reviewForm);
+        
+        setTimeout(() => successMsg.remove(), 3000);
+      });
     });
   </script>
 
@@ -1651,18 +1745,18 @@
             <h1 class="hero-title">Le Petit Prince</h1>
             <p class="hero-subtitle">Un voyage poétique à travers les étoiles</p>
             <div class="info-pills">
-              <span class="info-pill">
-                <i class="fas fa-clock"></i>55 min
+              <span class="info-pill" style="font-size: 1rem; padding: 0.6rem 1.2rem;">
+                <i class="fas fa-clock"></i>50 min
               </span>
-              <span class="info-pill">
-                <i class="fas fa-child"></i>6 ans et +
+              <span class="info-pill" style="font-size: 1rem; padding: 0.6rem 1.2rem;">
+                <i class="fas fa-child"></i>7 ans et +
               </span>
-              <span class="info-pill">
+              <span class="info-pill" style="font-size: 1rem; padding: 0.6rem 1.2rem;">
                 <i class="fas fa-star"></i>Poétique
               </span>
             </div>
             <div class="hero-buttons">
-              <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="btn-primary">
+              <a href="registration.html" class="btn-primary">
                 <i class="fas fa-ticket-alt"></i>
                 Réserver Maintenant
               </a>
@@ -1785,7 +1879,37 @@
               <i class="fas fa-star"></i>
               Avis & Témoignages
             </h2>
-            <div class="reviews-container">
+            
+            <!-- Add Review Form -->
+            <div class="add-review-form" style="background: var(--bg-light); padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 2rem;">
+              <h4 style="color: var(--text-dark); margin-bottom: 1rem;">Partagez votre avis</h4>
+              <form id="reviewForm">
+                <div style="margin-bottom: 1rem;">
+                  <label for="reviewName" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Nom d'utilisateur</label>
+                  <input type="text" id="reviewName" placeholder="Votre nom" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 0.5rem; font-size: 1rem;" required>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                  <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Note</label>
+                  <div class="star-rating" style="display: flex; gap: 0.25rem; margin-bottom: 0.5rem;">
+                    <i class="fas fa-star star-btn" data-rating="1" style="color: #ddd; cursor: pointer; font-size: 1.5rem;"></i>
+                    <i class="fas fa-star star-btn" data-rating="2" style="color: #ddd; cursor: pointer; font-size: 1.5rem;"></i>
+                    <i class="fas fa-star star-btn" data-rating="3" style="color: #ddd; cursor: pointer; font-size: 1.5rem;"></i>
+                    <i class="fas fa-star star-btn" data-rating="4" style="color: #ddd; cursor: pointer; font-size: 1.5rem;"></i>
+                    <i class="fas fa-star star-btn" data-rating="5" style="color: #ddd; cursor: pointer; font-size: 1.5rem;"></i>
+                  </div>
+                  <input type="hidden" id="reviewRating" value="0">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                  <label for="reviewText" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Votre commentaire</label>
+                  <textarea id="reviewText" placeholder="Partagez votre expérience..." style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 0.5rem; font-size: 1rem; min-height: 100px; resize: vertical;" required></textarea>
+                </div>
+                <button type="submit" style="background: var(--primary-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                  <i class="fas fa-paper-plane"></i> Publier l'avis
+                </button>
+              </form>
+            </div>
+            
+            <div class="reviews-container" id="reviewsContainer">
               <div class="review-item">
                 <div class="review-header">
                   <div class="review-stars">
@@ -1869,41 +1993,41 @@
         <div class="col-lg-4">
           <!-- Show Information Card -->
           <div class="sidebar-card">
-            <h3><i class="fas fa-info-circle"></i> Informations Spectacle</h3>
-            <div class="info-item">
+            <h3 style="font-size: 1.4rem;"><i class="fas fa-info-circle"></i> Informations Spectacle</h3>
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-clock"></i>
-              <span>Durée : 55 minutes</span>
+              <span>Durée : 50 minutes</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-child"></i>
-              <span>Âge : 6 ans et +</span>
+              <span>Âge : 7 ans et +</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-language"></i>
               <span>Langue : Français</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-users"></i>
-              <span>Genre : Familial</span>
+              <span>Genre : Poétique</span>
             </div>
           </div>
 
           <!-- Venue Information Card -->
           <div class="sidebar-card">
-            <h3><i class="fas fa-map-marker-alt"></i> Lieu & Contact</h3>
-            <div class="info-item">
+            <h3 style="font-size: 1.4rem;"><i class="fas fa-map-marker-alt"></i> Lieu & Contact</h3>
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-building"></i>
               <span>École du Jeune Spectateur</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-map-pin"></i>
               <span>Casablanca, Maroc</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-phone"></i>
               <span>+212 5 22 98 10 85</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="font-size: 1.1rem; padding: 0.8rem 0;">
               <i class="fas fa-envelope"></i>
               <span>info@edjs.ma</span>
             </div>
@@ -1911,27 +2035,25 @@
 
           <!-- Available Showtimes Card -->
           <div class="sidebar-card">
-            <h3><i class="fas fa-calendar-alt"></i> Séances Disponibles</h3>
-            <div class="showtime-item">
-              <div class="showtime-date">12 au 16 Décembre 2025</div>
-              <div class="showtime-time">Rabat - Représentations</div>
-              <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="showtime-btn">
+            <h3 style="font-size: 1.4rem;"><i class="fas fa-calendar-alt"></i> Séances Disponibles</h3>
+            <div class="showtime-item" style="padding: 1.2rem; margin-bottom: 1rem;">
+              <div class="showtime-date" style="font-size: 1.1rem; font-weight: 600;">4-7 Octobre 2025</div>
+              <div class="showtime-time" style="font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
+                <i class="fas fa-map-marker-alt" style="color: #BDCF00;"></i>
+                Rabat
+              </div>
+              <a href="registration.html" class="showtime-btn">
                 <i class="fas fa-ticket-alt"></i>
                 Réserver
               </a>
             </div>
-            <div class="showtime-item">
-              <div class="showtime-date">17 au 20 Décembre 2025</div>
-              <div class="showtime-time">Casablanca - Représentations</div>
-              <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="showtime-btn">
-                <i class="fas fa-ticket-alt"></i>
-                Réserver
-              </a>
-            </div>
-            <div class="showtime-item">
-              <div class="showtime-date">Décembre 2025</div>
-              <div class="showtime-time">Séances supplémentaires</div>
-              <a href="https://alexpriier-cloud-hel-3u3k.bolt.host/" class="showtime-btn">
+            <div class="showtime-item" style="padding: 1.2rem; margin-bottom: 1rem;">
+              <div class="showtime-date" style="font-size: 1.1rem; font-weight: 600;">9-11 Octobre 2025</div>
+              <div class="showtime-time" style="font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
+                <i class="fas fa-map-marker-alt" style="color: #BDCF00;"></i>
+                Casablanca
+              </div>
+              <a href="registration.html" class="showtime-btn">
                 <i class="fas fa-ticket-alt"></i>
                 Réserver
               </a>
